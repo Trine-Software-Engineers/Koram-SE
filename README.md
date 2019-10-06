@@ -3,5 +3,5 @@
 ### Developers
 * Clayton Wilson
 * Cole Harding
-* Justin DeClarck
+* Justin DeClark
 * Andrew
