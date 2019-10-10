@@ -10,10 +10,15 @@ using UnityEngine.UI;
 public class player_hud : MonoBehaviour
 {
     public float TimeLimit = 120;
+    public int PlayerHealth = 100;
+
     public GameObject TimeLeftUI;
+    public Slider HealthBarUI;
+
 
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -25,5 +30,8 @@ public class player_hud : MonoBehaviour
 
         //if time reaches 0, reload level (restart level). temporary until we get a proper game over
         if(TimeLimit < 0.1f) SceneManager.LoadScene("Koram");
+
+        //Health Bar
+        HealthBarUI.value = PlayerHealth;
     }
 }
