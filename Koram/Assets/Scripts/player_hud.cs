@@ -24,7 +24,7 @@ public class player_hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //every second, count down and then update the UI.
+        //every second, count down and then update the UI.  
         TimeLimit -= Time.deltaTime;
         TimeLeftUI.gameObject.GetComponent<Text>().text = ("Time Left: " + (int)TimeLimit);
 
