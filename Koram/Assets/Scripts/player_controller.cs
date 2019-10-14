@@ -10,9 +10,6 @@ public class player_controller : MonoBehaviour
     private float MoveX;
     private bool FacingRight = true;
     
-    //Combat
-    public int playerHealth = 100;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +24,7 @@ public class player_controller : MonoBehaviour
     void PlayerMove(){
         MoveX = Input.GetAxis("Horizontal");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (MoveX * PlayerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
 
         //Flip Sprite
         if (MoveX < 0.0f && FacingRight == true) FlipPlayer();
