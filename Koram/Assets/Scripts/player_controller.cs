@@ -43,9 +43,10 @@ public class player_controller : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        
-        if (collision.collider.tag == "Enemy"){
-            player_hud.PlayerHealth -= 5;
+        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy1");
+        enemy enemyScript = myEnemy.GetComponent<enemy>();
+        if (collision.collider.tag == "Enemy1"){
+            player_hud.PlayerHealth -= enemyScript.damage; 
             Debug.Log(player_hud.PlayerHealth);
         }
     }
