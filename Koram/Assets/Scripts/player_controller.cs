@@ -7,14 +7,8 @@ public class player_controller : MonoBehaviour
     //Movement
     public int PlayerSpeed = 10;
     public int PlayerJump = 10;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     public bool isGrounded = false;
-=======
->>>>>>> 6cefe6eedb598d495873f3fe5b467cd86e4d2659
-=======
->>>>>>> 008620c849675d8d26aeaa1a35bfcf0288b1173a
     private float MoveX;
     private bool FacingRight = true;
     
@@ -39,23 +33,19 @@ public class player_controller : MonoBehaviour
         else if (MoveX > 0.0f && FacingRight == false) FlipPlayer();
 
         //Jumping
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         if (Input.GetButtonDown("Jump") && isGrounded == true) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
     }
 
-    
 
-=======
         if (Input.GetButtonDown("Jump")) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
     }
 
->>>>>>> 6cefe6eedb598d495873f3fe5b467cd86e4d2659
-=======
+        if (Input.GetButtonDown("Jump")) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
+    }
         if (Input.GetButtonDown("Jump")) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
     }
 
->>>>>>> 008620c849675d8d26aeaa1a35bfcf0288b1173a
     void FlipPlayer()
     {
         Vector2 theScale = gameObject.transform.localScale;
