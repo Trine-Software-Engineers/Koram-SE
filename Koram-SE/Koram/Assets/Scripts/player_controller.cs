@@ -7,6 +7,7 @@ public class player_controller : MonoBehaviour
     //Movement
     public int PlayerSpeed = 10;
     public int PlayerJump = 10;
+    public bool isGrounded = false;
     private float MoveX;
     private bool FacingRight = true;
     
@@ -31,7 +32,7 @@ public class player_controller : MonoBehaviour
         else if (MoveX > 0.0f && FacingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButtonDown("Jump")) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
+        if (Input.GetButtonDown("Jump") && isGrounded == true) GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
     }
 
     void FlipPlayer()
