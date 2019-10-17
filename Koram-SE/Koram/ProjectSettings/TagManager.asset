@@ -7,13 +7,6 @@ TagManager:
   - Enemy
   - deathZone
   - Enemy1
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - Ground
-=======
->>>>>>> 6cefe6eedb598d495873f3fe5b467cd86e4d2659
-=======
->>>>>>> 008620c849675d8d26aeaa1a35bfcf0288b1173a
   layers:
   - Default
   - TransparentFX
