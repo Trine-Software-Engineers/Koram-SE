@@ -567,7 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 10
   PlayerJump: 15
-  isGrounded: 1
+  isGrounded: 0
 --- !u!1001 &259397056
 PrefabInstance:
   m_ObjectHideFlags: 0
