@@ -26,6 +26,14 @@ public class player_controller : MonoBehaviour
         MoveX = Input.GetAxis("Horizontal");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (MoveX * PlayerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
+        if (MoveX != 0.0f)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isRunning",true);
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("isRunning",false);   
+        }
 
         //Flip Sprite
         if (MoveX < 0.0f && FacingRight == true) FlipPlayer();

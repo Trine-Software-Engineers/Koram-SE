@@ -29,8 +29,8 @@ public class player_hud : MonoBehaviour
         TimeLeftUI.gameObject.GetComponent<Text>().text = ("Time Left: " + (int)TimeLimit);
 
         //if time reaches 0, reload level (restart level). temporary until we get a proper game over
-        if(TimeLimit < 0.1f) SceneManager.LoadScene("Koram");
-        if(gameObject.transform.position.y < -3) SceneManager.LoadScene("Koram");
+        //if(TimeLimit < 0.1f) SceneManager.LoadScene("Koram");
+        //if(gameObject.transform.position.y < -3) SceneManager.LoadScene("Koram");
 
         //Health Bar
         HealthBarUI.value = PlayerHealth;
