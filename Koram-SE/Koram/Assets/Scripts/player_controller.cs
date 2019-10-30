@@ -37,10 +37,8 @@ public class player_controller : MonoBehaviour
 
     void FlipPlayer()
     {
-        Vector2 theScale = gameObject.transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
         FacingRight = !FacingRight;
+        gameObject.transform.Rotate (0f, 180, 0f);
     }
 
     void OnCollisionEnter2D(Collision2D collision){
