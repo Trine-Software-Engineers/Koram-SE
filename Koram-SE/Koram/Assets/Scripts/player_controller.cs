@@ -7,7 +7,7 @@ public class player_controller : MonoBehaviour
     //Movement
     public int PlayerSpeed = 10;
     public int PlayerJump = 10;
-    public bool isGrounded = false;
+    public static bool isGrounded = false;
     private float MoveX;
     private bool FacingRight = true;
     
@@ -48,6 +48,17 @@ public class player_controller : MonoBehaviour
             player_hud.PlayerHealth -= enemyScript.damage; 
             Debug.Log(player_hud.PlayerHealth);
         }
+    }
+
+    public void TakeDamage ( int damage) {
+        player_hud.PlayerHealth -= damage;
+        if (player_hud.PlayerHealth <=0){
+            Die();
+        }
+    }
+  
+    void Die(){
+        Destroy(gameObject);
     }
 
 }

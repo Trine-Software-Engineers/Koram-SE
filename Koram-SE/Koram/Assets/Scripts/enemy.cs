@@ -15,7 +15,18 @@ public class enemy : MonoBehaviour
 
     public Transform groundDetection;
 
+    public int health;
+
+    public void TakeDamage ( int damage) {
+        health -= damage;
+        if (health <=0){
+            Die();
+        }
+    }
   
+    void Die(){
+        Destroy(gameObject);
+    }
 
     void FixedUpdate()
     {
