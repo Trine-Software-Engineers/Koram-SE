@@ -5,26 +5,33 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
 
-    public float speed = 2;
-    Rigidbody2D body_enemy;
-    Transform transform_enemy;
+    public float speed;
 
-    public int damage = 5;//change to non static
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        body_enemy = this.GetComponent<Rigidbody2D>();
-    }
 
-    // Update is called once per frame
+    public int damage;
+    
+    public bool movingRight = true;
+
+    public Transform groundDetection;
+
+  
+
     void FixedUpdate()
     {
-        if (gameObject.transform.position.x == 3) speed *= -1;//attempting to reverse direction
-        
-        //Always move forward
-        Vector2 myVel = body_enemy.velocity;
-        myVel.x = speed;
-        body_enemy.velocity = myVel;
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 1f);
+        if(groundInfo.collider == false) {
+            if(movingRight == true) {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0,0,0);
+                movingRight = true;
+            }
+        }
     }
+
+
 }
