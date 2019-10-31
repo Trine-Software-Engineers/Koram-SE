@@ -21,10 +21,6 @@ public class enemy_vertical : MonoBehaviour
 
     int projectile_time;
 
-    /*void Start(){
-        projectile_time = 0;
-    }*/
-
     void FixedUpdate()
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
@@ -39,15 +35,6 @@ public class enemy_vertical : MonoBehaviour
                 movingUp = true;
             }
         }
-
-        /*if (projectile_time == projectile_timer ) {
-            projectile.transform.Translate(Vector2.left * projectile_speed * Time.deltaTime);
-            //detach from parent object?
-            //die after period of time?
-            projectile_time = projectile_timer;
-        } else {
-            projectile_time++;
-        }*/
     }
 
 
