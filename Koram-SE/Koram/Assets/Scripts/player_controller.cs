@@ -45,19 +45,28 @@ public class player_controller : MonoBehaviour
 
     void FlipPlayer()
     {
-        Vector2 theScale = gameObject.transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
         FacingRight = !FacingRight;
+        gameObject.transform.Rotate (0f, 180, 0f);
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy1");
-        enemy enemyScript = myEnemy.GetComponent<enemy>();
-        if (collision.collider.tag == "Enemy1"){
+        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
+        if (collision.collider.tag == "Enemy"){
             player_hud.PlayerHealth -= enemyScript.damage; 
             Debug.Log(player_hud.PlayerHealth);
         }
+    }
+
+    public void TakeDamage ( int damage) {
+        player_hud.PlayerHealth -= damage;
+        if (player_hud.PlayerHealth <=0){
+            Die();
+        }
+    }
+  
+    void Die(){
+        Destroy(gameObject);
     }
 
 }

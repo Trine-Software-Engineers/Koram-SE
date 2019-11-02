@@ -17,10 +17,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Transparent Enemy
+  - Ground
   - 
   - 
   - 
