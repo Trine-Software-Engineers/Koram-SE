@@ -8,18 +8,10 @@ public class enemy_vertical : MonoBehaviour
     public float speed;
 
     public int damage;
-
-    public float projectile_speed;
-
-    public int projectile_timer;
     
     public bool movingUp = true;
 
     public Transform terrainDetection;
-
-    public Transform projectile;
-
-    int projectile_time;
 
     void FixedUpdate()
     {
