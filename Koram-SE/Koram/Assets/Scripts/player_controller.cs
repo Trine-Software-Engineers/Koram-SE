@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class player_controller : MonoBehaviour
     public bool isGrounded = false;
     private float MoveX;
     private bool FacingRight = true;
+
+    public player_hud PlayerHud;
     
     // Start is called before the first frame update
     void Start()
@@ -53,20 +56,21 @@ public class player_controller : MonoBehaviour
         GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
         enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
         if (collision.collider.tag == "Enemy"){
-            player_hud.PlayerHealth -= enemyScript.damage; 
-            Debug.Log(player_hud.PlayerHealth);
+            PlayerHud.PlayerHealth -= enemyScript.damage; 
+            Debug.Log(PlayerHud.PlayerHealth);
         }
     }
 
     public void TakeDamage ( int damage) {
-        player_hud.PlayerHealth -= damage;
-        if (player_hud.PlayerHealth <=0){
+        PlayerHud.PlayerHealth -= damage;
+        if (PlayerHud.PlayerHealth <=0){
             Die();
         }
     }
   
     void Die(){
         Destroy(gameObject);
+        SceneManager.LoadScene("level1");
     }
 
 }

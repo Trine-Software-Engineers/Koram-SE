@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class player_hud : MonoBehaviour
 {
     public float TimeLimit = 120;
-    public static int PlayerHealth = 100;
+    public int PlayerHealth = 100;
 
     public GameObject TimeLeftUI;
     public Slider HealthBarUI;
