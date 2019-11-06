@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//We don't have to have a time limit,
-//it can easily be changed to be a hidden way to calculate score by how fast you complete a level
-
 public class player_hud : MonoBehaviour
 {
-    public float TimeLimit = 120;
-    public static int PlayerHealth = 100;
+    public int CurrentHealth = 3; // only used in inspector DO NOT USE IN CODE
+    public int MaxHealth = 3;  // supports up to 10 hearts
+    public float TimeTaken = 0;
 
-    public GameObject TimeLeftUI;
-    public Slider HealthBarUI;
-
+    public static int PlayerHealth = 3; // actual player health
+    public Image[] hearts;
+    public Sprite HeartFull;
+    public Sprite HeartEmpty;
+    public GameObject TimeTakenUI;
 
     void Start()
     {
@@ -24,15 +24,41 @@ public class player_hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //every second, count down and then update the UI.  
-        TimeLimit -= Time.deltaTime;
-        TimeLeftUI.gameObject.GetComponent<Text>().text = ("Time Left: " + (int)TimeLimit);
+        if(PlayerHealth != CurrentHealth) 
+        {
+            PlayerHealth = CurrentHealth;
+        }
 
-        //if time reaches 0, reload level (restart level). temporary until we get a proper game over
-        //if(TimeLimit < 0.1f) SceneManager.LoadScene("Koram");
-        //if(gameObject.transform.position.y < -3) SceneManager.LoadScene("Koram");
+        if(PlayerHealth > MaxHealth) 
+        {
+            PlayerHealth = MaxHealth;
+        }
 
-        //Health Bar
-        HealthBarUI.value = PlayerHealth;
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i < PlayerHealth)
+            {
+                hearts[i].sprite = HeartFull;
+            } 
+            else 
+            {
+                hearts[i].sprite = HeartEmpty;
+            }
+
+            if(i < MaxHealth)
+            {
+                hearts[i].enabled = true;
+            } 
+            else 
+            {
+                hearts[i].enabled = false;
+            }
+        }
+
+        //every second, count up and then update the UI.  
+        TimeTaken += Time.deltaTime;
+        TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
+
     }
+
 }
