@@ -18,7 +18,7 @@ public class EnemySpider : MonoBehaviour
     private bool TargetInSights = false;
     private bool IsAwake = false;
     private bool SpiderCurrentlyShooting = false;
-    int layerMask = ~(1 << 8);
+    int layerMask = ~(1 << 8); //raycast ignores all but player layer
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,7 @@ public class EnemySpider : MonoBehaviour
         direction.y += 2f; //offset vector so spider looks for head
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
         
-        if((hitInfo != null && hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
+        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && (direction.x > 0)) || (!FacingRight && (direction.x < 0))))
         {
             Debug.DrawRay(transform.position,direction,Color.green);
             return true;
@@ -90,7 +90,7 @@ public class EnemySpider : MonoBehaviour
         direction.y += .25f; //offset vector so spider looks for feet
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
         
-        if((hitInfo != null && hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
+        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
         {
             Debug.DrawRay(transform.position,direction,Color.green);
             return true;
