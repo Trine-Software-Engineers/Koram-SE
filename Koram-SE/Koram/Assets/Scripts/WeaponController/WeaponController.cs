@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class WeaponController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform firePoint;
