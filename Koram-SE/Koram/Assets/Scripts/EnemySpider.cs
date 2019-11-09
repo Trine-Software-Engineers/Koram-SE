@@ -20,6 +20,9 @@ public class EnemySpider : MonoBehaviour
     private bool SpiderCurrentlyShooting = false;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
 
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,7 @@ public class EnemySpider : MonoBehaviour
             gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
             IsAwake = true;
             }
+            //ShootBullet();
         }
         else 
         {
@@ -57,6 +61,16 @@ public class EnemySpider : MonoBehaviour
         }
 
     }
+
+    void ShootBullet()
+    {
+        Transform firePoint = gameObject.transform;
+
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("fired Bullet");
+    }
+
+
 
     void PlayerDetect()
     {
