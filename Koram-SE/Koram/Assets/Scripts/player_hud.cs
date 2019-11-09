@@ -8,7 +8,7 @@ public class player_hud : MonoBehaviour
 {
     public int CurrentHealth = 3; // only used in inspector DO NOT USE IN CODE
     public int MaxHealth = 3;  // supports up to 10 hearts
-    public float TimeTaken = 0;
+    public static float TimeTaken = 0;
 
     public static int PlayerHealth = 3; // actual player health
     public Image[] hearts;
@@ -54,11 +54,13 @@ public class player_hud : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-
-        //every second, count up and then update the UI.  
-        TimeTaken += Time.deltaTime;
-        TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
-
+        if(gameObject != null)
+        {
+            //every second, count up and then update the UI.  
+            TimeTaken += Time.deltaTime;
+            TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
+        }
+        
     }
 
 }

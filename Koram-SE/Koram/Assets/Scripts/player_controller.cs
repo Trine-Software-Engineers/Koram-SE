@@ -51,10 +51,24 @@ public class player_controller : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
-        enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
-        if (collision.collider.tag == "Enemy"){
-            player_hud.PlayerHealth -= enemyScript.damage; 
-            Debug.Log(player_hud.PlayerHealth);
+        enemyFollower script = gameObject.GetComponent<enemyFollower>();
+        if (script != null)
+        {
+            enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
+
+            if (collision.collider.tag == "Enemy")
+            {
+                player_hud.PlayerHealth -= enemyScript.damage; 
+                Debug.Log(player_hud.PlayerHealth);
+            }
+        }         
+    }
+
+    void OnTriggerEnter2D(Collider2D trig) 
+    {
+        if (trig.gameObject.name == "EndOfLevel") 
+        {
+            WinScreen.Win = true;
         }
     }
 
