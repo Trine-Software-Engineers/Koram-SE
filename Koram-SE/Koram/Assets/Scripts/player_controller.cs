@@ -40,17 +40,16 @@ public class player_controller : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (MoveX * PlayerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
-        if (MoveX != 0.0f && Input.GetButton("Walk"))
+        if (MoveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
         {
             anim.SetBool("isRunning",false);
             anim.SetBool("isWalking",true);
         }
-        else if (MoveX != 0.0f )
+        else if (MoveX != 0.0f ) //default sprint for this game 
         {   
             anim.SetBool("isRunning",true);
-            anim.SetBool("isWalking",false);  
         }
-        else
+        else //idle state
         {
             anim.SetBool("isRunning",false);   
             anim.SetBool("isWalking",false);
@@ -69,13 +68,10 @@ public class player_controller : MonoBehaviour
     //Detects which way the sprite is currently facing and flips it if a movement is made in the opposite direction
     void FlipPlayer()
     {
-        Vector2 theScale = gameObject.transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
         FacingRight = !FacingRight;
         gameObject.transform.Rotate (0f, 180, 0f);
     }
-
+    //function to detect when the character comes in contact with object tagged enemy    
     void OnCollisionEnter2D(Collision2D collision){
         GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
         enemyFollower script = gameObject.GetComponent<enemyFollower>();
@@ -90,7 +86,7 @@ public class player_controller : MonoBehaviour
             }
         }         
     }
-
+    //how a player can complete/win a level
     void OnTriggerEnter2D(Collider2D trig) 
     {
         if (trig.gameObject.name == "EndOfLevel") 
@@ -107,14 +103,4 @@ public class player_controller : MonoBehaviour
     void Die(){
         Destroy(gameObject);
     }
-
-    void OnCollisionEnter2D(Collision2D collision){
-        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy1");
-        enemy enemyScript = myEnemy.GetComponent<enemy>();
-        if (collision.collider.tag == "Enemy1"){
-            player_hud.PlayerHealth -= enemyScript.damage; 
-            Debug.Log(player_hud.PlayerHealth);
-        }
-    }
-
 }
