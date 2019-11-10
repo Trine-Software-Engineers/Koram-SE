@@ -73,6 +73,30 @@ public class player_controller : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
         FacingRight = !FacingRight;
+        gameObject.transform.Rotate (0f, 180, 0f);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        enemyFollower script = gameObject.GetComponent<enemyFollower>();
+        if (script != null)
+        {
+            enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
+
+            if (collision.collider.tag == "Enemy")
+            {
+                player_hud.PlayerHealth -= enemyScript.damage; 
+                Debug.Log(player_hud.PlayerHealth);
+            }
+        }         
+    }
+
+    void OnTriggerEnter2D(Collider2D trig) 
+    {
+        if (trig.gameObject.name == "EndOfLevel") 
+        {
+            WinScreen.Win = true;
+        }
     }
     public void TakeDamage ( int damage) {
         player_hud.PlayerHealth -= damage;

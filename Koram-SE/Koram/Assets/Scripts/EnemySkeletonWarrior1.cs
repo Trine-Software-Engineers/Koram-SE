@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpider : MonoBehaviour
+public class EnemySkeletonWarrior1 : MonoBehaviour
 {
 
 
@@ -22,6 +22,7 @@ public class EnemySpider : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -45,16 +46,22 @@ public class EnemySpider : MonoBehaviour
             SpiderCurrentlyShooting = true;
             if(!IsAwake) 
             {
-            gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
+            //gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
             IsAwake = true;
             }
             //ShootBullet();
+            
+            if(player.transform.position.x > gameObject.transform.position.x){
+                transform.Translate(Vector2.right * SpiderSpeed * Time.deltaTime);
+            } else {
+                transform.Translate(Vector2.left * SpiderSpeed * Time.deltaTime);
+        }
         }
         else 
         {
             if(SpiderCurrentlyShooting)
             {
-                gameObject.GetComponent<Animator>().SetTrigger("HolsterThenWalk");
+                //gameObject.GetComponent<Animator>().SetTrigger("HolsterThenWalk");
             }
             SpiderCurrentlyShooting = false;
             IsAwake = false;
@@ -101,7 +108,7 @@ public class EnemySpider : MonoBehaviour
     bool FeetFound()
     {
         Vector2 direction = TargetObject.transform.position - transform.position;
-        direction.y += .25f; //offset vector so spider looks for feet
+        direction.y += 0.25f; //offset vector so spider looks for feet
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
         
         if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
