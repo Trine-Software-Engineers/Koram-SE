@@ -40,13 +40,15 @@ public class player_controller : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (MoveX * PlayerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
-        if (MoveX != 0.0f)
+        if (MoveX != 0.0f && Input.GetButton("Walk"))
         {
-            anim.SetBool("isRunning",true);
-        }
-        else if (MoveX != 0.0f && Input.GetButtonDown("Walk"))
-        {
+            anim.SetBool("isRunning",false);
             anim.SetBool("isWalking",true);
+        }
+        else if (MoveX != 0.0f )
+        {   
+            anim.SetBool("isRunning",true);
+            anim.SetBool("isWalking",false);  
         }
         else
         {
