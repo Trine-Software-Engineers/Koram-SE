@@ -16,6 +16,7 @@ public class Grounded : MonoBehaviour
     {
         
     }
+    //These functions see if the the sprite is in contact with an object tagged ground
     private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider.tag == "Ground")

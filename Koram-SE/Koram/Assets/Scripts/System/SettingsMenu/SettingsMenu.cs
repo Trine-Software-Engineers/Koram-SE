@@ -18,9 +18,7 @@ public class SettingsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
    {
-       Volume = VolumeBarUI.value;
-       Debug.Log(Volume);
-       
+       Volume = VolumeBarUI.value;       
        Audio.Volume("MenuTheme", Volume);
    }
 }

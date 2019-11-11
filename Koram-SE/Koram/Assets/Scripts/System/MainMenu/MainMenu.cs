@@ -17,9 +17,9 @@ public class MainMenu : MonoBehaviour
 
    public void PlayGame()
    {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       Audio.Stop("MenuTheme");
-       Audio.Play("Hero_Dance_Party");
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);   
+        Audio.Stop("MenuTheme");
+        Audio.Play("Hero_Dance_Party");
    }
 
    public void QuitGame()
