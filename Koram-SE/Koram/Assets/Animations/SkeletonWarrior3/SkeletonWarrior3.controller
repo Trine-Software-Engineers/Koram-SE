@@ -1,38 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1101 &-7114957888748333277
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsFollowing
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 4934332375581412688}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.8125
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1102 &-5083038075768930339
+--- !u!1102 &-8510569030126966249
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Hurt
+  m_Name: SkeletonWarrior3_Hurt
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,20 +20,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ca46518302463cc478365f455147da28, type: 2}
+  m_Motion: {fileID: 7400000, guid: 924e414f6508a084d8a9690ffaf59139, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-3332580367185030316
+--- !u!1102 &-5986382703851708566
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Slash
+  m_Name: SkeletonWarrior3_Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -71,13 +46,39 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 88d67142ba43a994da55876b4c149762, type: 2}
+  m_Motion: {fileID: 7400000, guid: 375bd6408abc43a4189229095d349e2a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1107 &-2051337228204405351
+--- !u!1102 &-4060273912944306687
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkeletonWarrior3_Defend
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: f1e1a1d2849a68843a6dcd0adc267781, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1107 &-3818417029450604880
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -87,44 +88,44 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 6009088411354967866}
-    m_Position: {x: 310, y: -20, z: 0}
+    m_State: {fileID: 8974185433264758955}
+    m_Position: {x: 343.5, y: 17, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 4934332375581412688}
-    m_Position: {x: 410, y: 120, z: 0}
+    m_State: {fileID: 2071996937123970484}
+    m_Position: {x: 375.5, y: 289, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -3332580367185030316}
-    m_Position: {x: 445, y: 185, z: 0}
+    m_State: {fileID: 3969058964730364549}
+    m_Position: {x: 176.5, y: 365, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 9109657293411652548}
-    m_Position: {x: 480, y: 250, z: 0}
+    m_State: {fileID: 3478131881427943088}
+    m_Position: {x: 502.5, y: 368, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5927496295604118390}
-    m_Position: {x: 515, y: 315, z: 0}
+    m_State: {fileID: 6975098975037896931}
+    m_Position: {x: 215.5, y: 277, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8719678750096405671}
-    m_Position: {x: 550, y: 380, z: 0}
+    m_State: {fileID: 6606202423017998393}
+    m_Position: {x: 746.5, y: 255, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7436483212059270112}
-    m_Position: {x: 585, y: 445, z: 0}
+    m_State: {fileID: -5986382703851708566}
+    m_Position: {x: 190.5, y: 445, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 3539633724330692762}
-    m_Position: {x: 620, y: 510, z: 0}
+    m_State: {fileID: 1791571711361848409}
+    m_Position: {x: 585.5, y: 442, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -5083038075768930339}
-    m_Position: {x: 655, y: 575, z: 0}
+    m_State: {fileID: -8510569030126966249}
+    m_Position: {x: 104.5, y: 340, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1589185966023794950}
-    m_Position: {x: 690, y: 640, z: 0}
+    m_State: {fileID: 8067890263264588}
+    m_Position: {x: 880.5, y: 384, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -553896432819029402}
-    m_Position: {x: 725, y: 705, z: 0}
+    m_State: {fileID: -1979569067201847729}
+    m_Position: {x: 536.5, y: 239, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 4169656156381028254}
-    m_Position: {x: 760, y: 770, z: 0}
+    m_State: {fileID: 5651642015506166819}
+    m_Position: {x: 80, y: 250, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8448425799689240569}
-    m_Position: {x: 795, y: 835, z: 0}
+    m_State: {fileID: -4060273912944306687}
+    m_Position: {x: 368.5, y: 196, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -134,15 +135,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 6009088411354967866}
---- !u!1102 &-1589185966023794950
+  m_DefaultState: {fileID: 8974185433264758955}
+--- !u!1102 &-1979569067201847729
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Idle
+  m_Name: SkeletonWarrior3_Die
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -155,33 +156,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 20f684e1d306b2941a06ae1537426aa6, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-553896432819029402
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Jump
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c485c9e5b14913f4aaa9b8dc44fb3abe, type: 2}
+  m_Motion: {fileID: 7400000, guid: d0e3f1fdec4edb241b28f2e009c2ce86, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -193,19 +168,13 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonWarrior1
+  m_Name: SkeletonWarrior3
   serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: IsFollowing
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+  m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: -2051337228204405351}
+    m_StateMachine: {fileID: -3818417029450604880}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -215,14 +184,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &3539633724330692762
+--- !u!1102 &8067890263264588
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Die_Slower
+  m_Name: SkeletonWarrior3_Die_Slower
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -235,20 +204,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b736e415ac17e1740954ff152f24b529, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0197f1abbfd17ee499a166411b5072df, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &4169656156381028254
+--- !u!1102 &1791571711361848409
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Throw
+  m_Name: SkeletonWarrior3_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -261,47 +230,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 79e0631fb82398243b97e0585caebf87, type: 2}
+  m_Motion: {fileID: 7400000, guid: a67280668cc7a74449706309834424de, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &4934332375581412688
+--- !u!1102 &2071996937123970484
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Run
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 9036363607900120758}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9c1d96be775270347b4bc5f49fabc5d8, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &5927496295604118390
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Defend
+  m_Name: SkeletonWarrior3_Two_Hand_Whack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -314,47 +256,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0306a6de9f3613b4a86e5b9a05dfd13b, type: 2}
+  m_Motion: {fileID: 7400000, guid: f66e5cabc5f470f4e82204e54cda018f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &6009088411354967866
+--- !u!1102 &3478131881427943088
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Walk
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -7114957888748333277}
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0dd95540fc90e544295789e5ab46275b, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &7436483212059270112
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Die
+  m_Name: SkeletonWarrior3_Stab
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -367,20 +282,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9aefa99d0c9dd5c4baac20015e5dff39, type: 2}
+  m_Motion: {fileID: 7400000, guid: e568fce1bcb199040af16e9141f45002, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &8448425799689240569
+--- !u!1102 &3969058964730364549
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Two_Hand_Whack
+  m_Name: SkeletonWarrior3_Throw
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -393,20 +308,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5208df66287076144b6a09a26306c479, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3e2caf287ff0dff498331418fd029bb2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &8719678750096405671
+--- !u!1102 &5651642015506166819
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Defend_with_Shield
+  m_Name: SkeletonWarrior3_Defend_with_Shield
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -419,45 +334,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 672d593c13b042b47ae7dd0a6c0f2b51, type: 2}
+  m_Motion: {fileID: 7400000, guid: cb4cb0d87876104428c3162e35c17df1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &9036363607900120758
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsFollowing
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 6009088411354967866}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.8125
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
---- !u!1102 &9109657293411652548
+--- !u!1102 &6606202423017998393
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyWarrior1_Stab
+  m_Name: SkeletonWarrior3_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -470,7 +360,59 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d6882f7cefd4f4e47849601d67d445e1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7cd2a633b2b3c5d43b2446dd94940b52, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &6975098975037896931
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkeletonWarrior3_Slash
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: ff57c516d30c8454f9105e82502629dc, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &8974185433264758955
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkeletonWarrior3_Walk
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 2b093b6a926009847a023e79a9024678, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
