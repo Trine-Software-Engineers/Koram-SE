@@ -49,6 +49,9 @@ public class EnemySkeletonWarrior1 : MonoBehaviour
             //gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
             IsAwake = true;
             }
+
+            //ShootBullet();
+            gameObject.GetComponent<Animator>().SetBool("IsFollowing", true);
             //ShootBullet();
             
             if(player.transform.position.x > gameObject.transform.position.x){
