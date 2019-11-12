@@ -50,12 +50,7 @@ public class EnemySkeletonWarrior1 : MonoBehaviour
             IsAwake = true;
             }
             //ShootBullet();
-<<<<<<< HEAD
-            gameObject.GetComponent<Animator>().SetBool("IsFollowing", true);
-
-=======
             
->>>>>>> master
             if(player.transform.position.x > gameObject.transform.position.x){
                 transform.Translate(Vector2.right * SpiderSpeed * Time.deltaTime);
             } else {
@@ -70,10 +65,6 @@ public class EnemySkeletonWarrior1 : MonoBehaviour
             }
             SpiderCurrentlyShooting = false;
             IsAwake = false;
-<<<<<<< HEAD
-            gameObject.GetComponent<Animator>().SetBool("IsFollowing", false);
-=======
->>>>>>> master
         }
 
     }
