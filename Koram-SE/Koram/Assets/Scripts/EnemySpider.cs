@@ -48,7 +48,7 @@ public class EnemySpider : MonoBehaviour
             gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
             IsAwake = true;
             }
-            //ShootBullet();
+            ShootBullet();
         }
         else 
         {
@@ -66,7 +66,7 @@ public class EnemySpider : MonoBehaviour
     {
         Transform firePoint = gameObject.transform;
 
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 180, 0));
         Debug.Log("fired Bullet");
     }
 
