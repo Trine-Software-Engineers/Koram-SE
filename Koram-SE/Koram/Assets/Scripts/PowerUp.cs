@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public GameObject pickupEffect;
-    public int multiplier = 1;
+    public int multiplier = 3;
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Player")){
@@ -16,8 +16,8 @@ public class PowerUp : MonoBehaviour
     void Pickup(Collider2D player){
         //Instantiate(pickupEffect, transform.position, transform.rotation);
 
-        player_hud hud = player.GetComponent<player_hud>();
-        hud.CurrentHealth += multiplier;
+        //player_hud hud = player.GetComponent<player_hud>();
+        player.transform.localScale *= multiplier;
 
         Destroy(gameObject);
 
