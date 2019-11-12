@@ -23,9 +23,6 @@ public class EnemySpider : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    private float timer = 0f;
-    private float waitTime = 1f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,16 +48,7 @@ public class EnemySpider : MonoBehaviour
             gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
             IsAwake = true;
             }
-
-
-            timer += Time.deltaTime;
-            if(timer > waitTime){
-                timer = 0f;
-                gameObject.GetComponent<Animator>().Play("Spider Shoot");
-                ShootBullet();
-                waitTime = 0.8f;
-            }
-            
+            ShootBullet();
         }
         else 
         {
@@ -70,8 +58,6 @@ public class EnemySpider : MonoBehaviour
             }
             SpiderCurrentlyShooting = false;
             IsAwake = false;
-            waitTime = 1f;
-            timer = 0f;
         }
 
     }
@@ -79,15 +65,10 @@ public class EnemySpider : MonoBehaviour
     void ShootBullet()
     {
         Transform firePoint = gameObject.transform;
-        if(FacingRight) Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, -168));
-        else Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, -12));
-        
 
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 180, 0));
         Debug.Log("fired Bullet");
     }
-
-
-    //Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, -35));
 
 
 
@@ -134,10 +115,7 @@ public class EnemySpider : MonoBehaviour
 
     void Pace()
     {
-        if(SpiderCurrentlyShooting) {
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0.0f, gameObject.GetComponent<Rigidbody2D>().velocity.y);    
-            return;
-        }
+        if(SpiderCurrentlyShooting) return;
         if (SpiderPace <= 0f)
         {
             SpiderSpeedMultiplier *= -1f;
@@ -151,7 +129,6 @@ public class EnemySpider : MonoBehaviour
     //flip sprite if changes direction
     void FlipSprite()
     {
-        if(SpiderCurrentlyShooting) return;
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0.0f && FacingRight == true) 
         {
             FacingRight = !FacingRight;

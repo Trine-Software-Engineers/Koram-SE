@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &1937538701325460049
 BoxCollider2D:
@@ -166,6 +166,3 @@ MonoBehaviour:
   SpiderSpeed: 1
   SpiderSightDistance: 10
   TargetObject: {fileID: 0}
-  bulletPrefab: {fileID: 6996300009058847167, guid: 58aabe9327e4d2847b4164867ecd9c3f,
-    type: 3}
-  firePoint: {fileID: 0}
