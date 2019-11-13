@@ -33,6 +33,9 @@ public class EnemySpider : MonoBehaviour
     private float SpiderTimeToDeath = .5f;
     private float DeathTimer = 0f;
 
+    private float timer = 0f;
+    private float waitTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +76,6 @@ public class EnemySpider : MonoBehaviour
             IsAwake = true;
             }
 
-            //shoot bullet and play shoot animation every "waitTime" seconds. 
             timer += Time.deltaTime;
             if(timer > waitTime){
                 timer = 0f;
@@ -96,7 +98,6 @@ public class EnemySpider : MonoBehaviour
             waitTime = 1f;
             timer = 0f;
         }
-
     }
 
 

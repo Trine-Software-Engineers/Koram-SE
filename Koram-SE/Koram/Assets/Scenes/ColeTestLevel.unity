@@ -14945,7 +14945,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 513061061}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bef5baec5bbdd2848a46a5bc16b9347d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -15792,7 +15792,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bef5baec5bbdd2848a46a5bc16b9347d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -16350,86 +16350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1432778213
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1937538701325460060, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyWalkingSpider
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.152
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460050, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937538701325460054, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: TargetObject
-      value: 
-      objectReference: {fileID: 198686638}
-    - target: {fileID: 1937538701325460054, guid: 473ab5e5937142841ad185590c3cbe99,
-        type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 6996300009058847167, guid: 58aabe9327e4d2847b4164867ecd9c3f,
-        type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 473ab5e5937142841ad185590c3cbe99, type: 3}
 --- !u!1 &1742832597
 GameObject:
   m_ObjectHideFlags: 0
