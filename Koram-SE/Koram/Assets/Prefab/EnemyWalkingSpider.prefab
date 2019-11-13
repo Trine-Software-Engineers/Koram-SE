@@ -168,7 +168,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6996300009058847167, guid: 58aabe9327e4d2847b4164867ecd9c3f,
     type: 3}
   firePoint: {fileID: 420010055133999288}
-  SpiderSightDistance: 10
+  SpiderSightDistance: 15
   TargetObject: {fileID: 0}
   SpiderDead: 0
 --- !u!1 &6476173317957808259
