@@ -6385,6 +6385,7 @@ GameObject:
   - component: {fileID: 6510356757758400394}
   - component: {fileID: 2111726633445916273}
   - component: {fileID: 8892631025294567951}
+  - component: {fileID: 1310684236657750207}
   m_Layer: 9
   m_Name: CharacterJustin
   m_TagString: Player
@@ -6805,7 +6806,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11944437, y: 5.9880586}
+  m_Offset: {x: -0.11944437, y: 2.86585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6816,7 +6817,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.3729844, y: 11.843438}
+  m_Size: {x: 3.3729844, y: 5.599021}
   m_EdgeRadius: 0
 --- !u!114 &8892631025294567951
 MonoBehaviour:
@@ -6836,6 +6837,32 @@ MonoBehaviour:
   HeartFull: {fileID: 0}
   HeartEmpty: {fileID: 0}
   TimeTakenUI: {fileID: 0}
+--- !u!61 &1310684236657750207
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358935559858402525}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.13477242, y: 8.53555}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.336045, y: 5.851801}
+  m_EdgeRadius: 0
 --- !u!1 &2464856742708665994
 GameObject:
   m_ObjectHideFlags: 0

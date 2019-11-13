@@ -26,13 +26,26 @@ public class player_controller : MonoBehaviour
 
     void PlayerMove(){
 
-        if (Input.GetButton("Walk")) //Shift while moving is used for walk
+        if (Input.GetButton("Walk") && !Input.GetButton("Crouch")) //Shift while moving is used for walk
         {
             PlayerSpeed = 2; //Player is walking        
+        }
+        else if (Input.GetButton("Crouch"))
+        {
+            PlayerSpeed = 0.1f;
         }
         else
         {
             PlayerSpeed = 10;  //Player is Running
+        }
+
+        if(Input.GetButton("Crouch"))
+        {
+            anim.SetBool("isCrouching",true);
+        }
+        else
+        {
+            anim.SetBool("isCrouching",false);
         }
 
 
