@@ -23,7 +23,6 @@ public class EnemySpider : MonoBehaviour
 
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
 
-
     private float timer = 0f;
     private float waitTime = 1f;
 
@@ -32,9 +31,6 @@ public class EnemySpider : MonoBehaviour
     private bool SpiderAnimationPlayed = false;
     private float SpiderTimeToDeath = .5f;
     private float DeathTimer = 0f;
-
-    private float timer = 0f;
-    private float waitTime = 1f;
 
     // Start is called before the first frame update
     void Start()

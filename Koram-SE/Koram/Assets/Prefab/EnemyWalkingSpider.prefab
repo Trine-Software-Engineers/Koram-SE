@@ -165,7 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PacingTime: 4
   SpiderSpeed: 1
-
   bulletPrefab: {fileID: 6996300009058847167, guid: 58aabe9327e4d2847b4164867ecd9c3f,
     type: 3}
   firePoint: {fileID: 420010055133999288}
@@ -202,4 +201,3 @@ Transform:
   m_Father: {fileID: 1937538701325460050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
