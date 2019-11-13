@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6996300009058847139}
   - component: {fileID: 6996300009058847164}
   - component: {fileID: 2913486056032153332}
-  m_Layer: 0
+  - component: {fileID: -5291577543723613814}
+  m_Layer: 8
   m_Name: SpiderBullet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6996300009058847167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.2, y: 10.219, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a425a0db0fd46439be58dd3678e685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -20
-  damage: 40
+  speed: -14
+  damage: 1
   rb: {fileID: 6996300009058847164}
 --- !u!50 &6996300009058847164
 Rigidbody2D:
@@ -138,3 +139,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &-5291577543723613814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996300009058847167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.69105005, y: -0.03217864}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.21, y: 1.2}
+    newSize: {x: 4.33, y: 1.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.159668, y: 0.6422329}
+  m_EdgeRadius: 0

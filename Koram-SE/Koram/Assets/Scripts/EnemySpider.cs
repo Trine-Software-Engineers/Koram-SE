@@ -30,7 +30,7 @@ public class EnemySpider : MonoBehaviour
     private bool aimForHead = false;
 
     private bool SpiderAnimationPlayed = false;
-    private float SpiderTimeToDeath = .5f;
+    private float SpiderTimeToDeath = .8f;
     private float DeathTimer = 0f;
 
     private float timer = 0f;
@@ -110,11 +110,22 @@ public class EnemySpider : MonoBehaviour
         if (aimForHead) direction.y += 1.75f; //default aims for head, if head is not visable, aims for feet.
         else direction.y += .5f;
         float angle = Vector3.Angle(direction, firePoint.right);
-        angle += 180f;
-       
+        
         //spawns bullet prefab
-        if(FacingRight) Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, -(angle - 180f)));
-        else Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+        if(FacingRight) 
+        {
+            angle = angle + 180f;
+            angle = -angle;
+            Debug.Log(angle);
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+        }
+        else
+        {
+            angle = angle + 180f;
+            Debug.Log(angle);
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+        }
+
     }
 
 
@@ -194,12 +205,14 @@ public class EnemySpider : MonoBehaviour
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0.0f && FacingRight == true) 
         {
             FacingRight = !FacingRight;
-            gameObject.transform.Rotate (0f, 180, 0f);
+            gameObject.transform.Rotate(0f, 180, 0f);
+            firePoint.transform.Rotate(0f, 180, 0f);
         }
         else if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0.0f && FacingRight == false) 
         {
             FacingRight = !FacingRight;
             gameObject.transform.Rotate (0f, 180, 0f);
+            firePoint.transform.Rotate(0f, 180, 0f);
         }
     }
 
