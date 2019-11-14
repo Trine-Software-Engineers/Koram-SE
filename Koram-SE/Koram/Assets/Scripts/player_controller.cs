@@ -42,11 +42,14 @@ public class player_controller : MonoBehaviour
         if(Input.GetButton("Crouch"))
         {
             anim.SetBool("isCrouching",true);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
             anim.SetBool("isCrouching",false);
+              gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
+        
 
 
         MoveX = Input.GetAxis("Horizontal");
