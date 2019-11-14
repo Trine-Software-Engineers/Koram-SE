@@ -14,11 +14,11 @@ public class Skeleton1 : MonoBehaviour
     public float SkeletonSightDistance = 12f;
     public GameObject TargetObject;
     private bool TargetInSights = false;
-    private bool IsAwake = false;
+
     private bool SkeletonCurrentlyAttacking = false;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
     private float timer = 0f;
-    private float waitTime = 1f;
+    private float waitTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,14 +107,22 @@ public class Skeleton1 : MonoBehaviour
 
     void SkeletonAttacking()
     {
+        //if target is in sights, spider stops walking, aims for head(or feet if head is not visable) then shoots repeatadly until target leaves sights.
         if(TargetInSights)
         {
+            gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", true);
             SkeletonCurrentlyAttacking = true;
-            if(!IsAwake) 
-            {
-            gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
-            gameObject.GetComponent<Animator>().Play("attack");
+            timer += Time.deltaTime;
+            if(timer > waitTime){
+                timer = 0f;
+                gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
+                waitTime = .2f;
             }
+        }
+        else
+        {
+            SkeletonCurrentlyAttacking = false;
+            gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", false);
         }
     }
 }
