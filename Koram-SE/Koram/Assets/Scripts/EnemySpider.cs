@@ -22,7 +22,7 @@ public class EnemySpider : MonoBehaviour
     private bool SpiderCurrentlyShooting = false;
 
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
-
+    
     private float ReactionTime = 0f; //change this in difficulty function
     private float SpiderReactionTime;  
     private float TimeBetweenShots = 1f; //change this in difficulty function
