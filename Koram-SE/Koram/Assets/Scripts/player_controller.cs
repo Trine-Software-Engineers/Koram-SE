@@ -11,11 +11,15 @@ public class player_controller : MonoBehaviour
     private float MoveX;
     private bool FacingRight = true, isAttacking = false; //determines which way the player sprite is looking 
     private Animator anim; //shortens the call on the animator window
+
+    [SerializeField] //show field in unity inspector
+    GameObject attackHitBox; //used to enable and disable the hitbox collider when attacking
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        attackHitBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class player_controller : MonoBehaviour
             //RNG to choose attack
             int index = UnityEngine.Random.Range(1,7);
             Debug.Log(index);
+            //each of the index numbers represent an attack animation that the character can do
             if(index == 1)
             {
                 anim.SetTrigger("isHitting");
@@ -79,12 +84,11 @@ public class player_controller : MonoBehaviour
             else if (index == 6)
             {
                 anim.SetTrigger("isHitting5");
-            }    
+            }  
+            StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
-        else
-        {
-            isAttacking = false;
-        }
+        
+        
 
 
         MoveX = Input.GetAxis("Horizontal");
@@ -151,7 +155,17 @@ public class player_controller : MonoBehaviour
             Die();
         }
     }
+    //This is what happens when a player dies 
     void Die(){
         Destroy(gameObject);
     }
+
+    //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
+    IEnumerator DoAttack()
+        {
+            attackHitBox.SetActive(true); //enables collider for damage
+            yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
+            attackHitBox.SetActive(false); //disables collider for damage
+            isAttacking = false;
+        }
 }

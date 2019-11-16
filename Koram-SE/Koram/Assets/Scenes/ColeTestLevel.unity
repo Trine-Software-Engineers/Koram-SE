@@ -12786,7 +12786,7 @@ Tilemap:
   - first: {x: -3, y: 5, z: 0}
     second:
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -12822,7 +12822,7 @@ Tilemap:
   - first: {x: 1, y: 5, z: 0}
     second:
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -14811,20 +14811,20 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 7b5b3cf7fcfa7de4aad5e8387d3ae648, type: 3}
   - m_RefCount: 1344
     m_Data: {fileID: 21300000, guid: 687242f71b0f9ce47bb4df7cb65d6e3c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: f581fca2814cad24989de2752d9d66a1, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 21300000, guid: bca28ee89edc786448e79d7148877b55, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: a51a2448d26e2e646a66362cdfb2966d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 29
     m_Data: {fileID: 21300000, guid: 7c0505a1d055cf24dbafc4d130d41d49, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: a51a2448d26e2e646a66362cdfb2966d, type: 3}
   - m_RefCount: 74
     m_Data: {fileID: 21300000, guid: 4c9e516ec1031374b95832ed86fba7de, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: f581fca2814cad24989de2752d9d66a1, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: ff1e095b463cfb44aba0b31ebff85f1b, type: 3}
   - m_RefCount: 2
@@ -15992,7 +15992,7 @@ PrefabInstance:
     - target: {fileID: 1143442830817625778, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.51
+      value: -32.15
       objectReference: {fileID: 0}
     - target: {fileID: 1143442830817625778, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
