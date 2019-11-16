@@ -24,10 +24,12 @@ public class player_hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerHealth != CurrentHealth) 
-        {
-            PlayerHealth = CurrentHealth;
-        }
+        //update damage taken
+        if(PlayerHealth != CurrentHealth) CurrentHealth = PlayerHealth;
+
+        //update inspector health change
+        if(PlayerHealth != CurrentHealth) PlayerHealth = CurrentHealth;
+
 
         if(PlayerHealth > MaxHealth) 
         {
@@ -54,6 +56,7 @@ public class player_hud : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
         if(gameObject != null)
         {
             //every second, count up and then update the UI.  
