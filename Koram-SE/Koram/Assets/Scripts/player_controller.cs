@@ -9,7 +9,7 @@ public class player_controller : MonoBehaviour
     public int PlayerJump = 10; //multiplier for the height player jumps- can be changed in unity scene
     public bool isGrounded = false; //determins if the player is able to jump
     private float MoveX;
-    private bool FacingRight = true; //determines which way the player sprite is looking 
+    private bool FacingRight = true, isAttacking = false; //determines which way the player sprite is looking 
     private Animator anim; //shortens the call on the animator window
     
     // Start is called before the first frame update
@@ -49,7 +49,42 @@ public class player_controller : MonoBehaviour
             anim.SetBool("isCrouching",false);
               gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
-        
+
+        if(Input.GetButtonDown("Fire1") && !isAttacking)
+        {
+            isAttacking = true;
+            //RNG to choose attack
+            int index = UnityEngine.Random.Range(1,7);
+            Debug.Log(index);
+            if(index == 1)
+            {
+                anim.SetTrigger("isHitting");
+            } 
+            else if(index == 2)
+            {
+                anim.SetTrigger("isHitting1");
+            }
+            else if(index == 3)
+            {
+                anim.SetTrigger("isHitting2");
+            } 
+            else if(index == 4)
+            {
+                anim.SetTrigger("isHitting3");
+            } 
+            else if(index == 5)
+            {
+                anim.SetTrigger("isHitting4");
+            } 
+            else if (index == 6)
+            {
+                anim.SetTrigger("isHitting5");
+            }    
+        }  
+        else
+        {
+            isAttacking = false;
+        }
 
 
         MoveX = Input.GetAxis("Horizontal");
