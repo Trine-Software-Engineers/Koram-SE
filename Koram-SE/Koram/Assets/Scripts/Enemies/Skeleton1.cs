@@ -65,7 +65,7 @@ public class Skeleton1 : MonoBehaviour
         }
     }
 
-    void PlayerDetect()
+        void PlayerDetect()
     {
         if ((HeadFound() && FeetFound()) || (HeadFound() || FeetFound()))
         {
@@ -114,9 +114,9 @@ public class Skeleton1 : MonoBehaviour
             SkeletonCurrentlyAttacking = true;
             timer += Time.deltaTime;
             if(timer > waitTime){
-                timer = 10f;
+                timer = 0f;
                 gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
-                waitTime = 0.0f;
+                waitTime = .2f;
             }
         }
         else
