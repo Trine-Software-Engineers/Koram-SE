@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class EnemySpider : MonoBehaviour
 {
+    public int Difficulty = 1; // 1 = normal, 2 = hard, 3 = insane
     public int PacingTime = 4;
     public float SpiderSpeed = 1;
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float SpiderSightDistance = 12f;
     public GameObject TargetObject;
     public bool SpiderDead = false;
-
 
     private bool FacingRight = false;
     private float SpiderPace;
     private float SpiderSpeedMultiplier = 1;
 
     private bool TargetInSights = false;
+    private float SpiderSightDistance = 12f;
     private bool IsAwake = false;
     private bool SpiderCurrentlyShooting = false;
 
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
 
-
-    private float timer = 0f;
-    private float waitTime = 1f;
+    private float ReactionTime = 0f; //change this in difficulty function
+    private float SpiderReactionTime;  
+    private float TimeBetweenShots = 1f; //change this in difficulty function
+    private float SpiderTimeBetweenShots;
+    private bool SpiderHasShotFirstShot = false; 
+    private float UnholsterTime = 0.5f; //never change, this is the time for unholster animation to play
+    private float SpiderAccuracy = 0.5f; //spiders accuracy range, +- this value
 
     private bool aimForHead = false;
 
@@ -33,34 +37,96 @@ public class EnemySpider : MonoBehaviour
     private float SpiderTimeToDeath = .8f;
     private float DeathTimer = 0f;
 
-    private float timer = 0f;
-    private float waitTime = 1f;
+    public bool TargetInMeleeDistance = false;
+    public float MeleeAnimationTime = 1f;
+    private float SpiderMeleeAnimationTime;
 
     // Start is called before the first frame update
     void Start()
     {
         SpiderPace = PacingTime;
+        SpiderReactionTime = ReactionTime;
+        SpiderTimeBetweenShots = TimeBetweenShots;
+        SpiderMeleeAnimationTime = MeleeAnimationTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        DifficultyCheck();
         FlipSprite();
         Pace();
-        PlayerDetect();
+        //TargetMeleeDetect();
+        //SpiderMelee();
+        TargetDetect();
         SpiderShooting();
         Die();
     }
 
+    void DifficultyCheck()
+    {
+        if(Difficulty > 3) Difficulty = 3;
+        if(Difficulty < 1) Difficulty = 1;
+
+        if(Difficulty == 1) //normal
+        {
+            SpiderSightDistance = 11f;
+            TimeBetweenShots = 0.85f;
+            ReactionTime = 0.25f;
+            SpiderAccuracy = 0.9f;
+        }
+        else if (Difficulty == 2) //hard
+        {
+            SpiderSightDistance = 14f;
+            TimeBetweenShots = 0.65f;
+            ReactionTime = 0.15f;
+            SpiderAccuracy = 0.6f;
+        }
+        else if (Difficulty == 3) //insane
+        {
+            SpiderSightDistance = 17f;
+            TimeBetweenShots = 0.45f;
+            ReactionTime = 0.0f;
+            SpiderAccuracy = 0.3f;
+        }
+        else Debug.Log("SPIDER DIFFICULTY ERROR");
+    }
+
+    void SpiderMelee()
+    {
+        if(SpiderDead || TargetObject == null) return;
+        
+        if(TargetInMeleeDistance)
+        {
+            gameObject.GetComponent<Animator>().SetBool("SpiderMeleeRange", true);
+            
+            SpiderMeleeAnimationTime -= Time.deltaTime;
+            if(SpiderMeleeAnimationTime <= 0.0f)
+            {
+                Debug.Log("melee");
+                Melee();
+                SpiderMeleeAnimationTime = MeleeAnimationTime;
+            }
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("SpiderMeleeRange", false);
+            SpiderMeleeAnimationTime = MeleeAnimationTime;
+        }
+
+    }
 
     void SpiderShooting()
     {
-        if(SpiderDead) return;
+        if(SpiderDead || TargetObject == null || TargetInMeleeDistance) return;
+        
 
         //if target is in sights, spider stops walking, aims for head(or feet if head is not visable) then shoots repeatadly until target leaves sights.
         if(TargetInSights)
         {
             SpiderCurrentlyShooting = true;
+
+
 
             //BLUE debug ray (shows where spider is going to shoot)
             Vector2 direction = TargetObject.transform.position - firePoint.position;
@@ -76,12 +142,29 @@ public class EnemySpider : MonoBehaviour
             IsAwake = true;
             }
 
-            timer += Time.deltaTime;
-            if(timer > waitTime){
-                timer = 0f;
-                gameObject.GetComponent<Animator>().Play("Spider Shoot");
-                ShootBullet();
-                waitTime = 0.8f;
+            //handles shooting
+            SpiderReactionTime -= Time.deltaTime;
+            if(SpiderReactionTime <= 0.0f){
+                if(!SpiderHasShotFirstShot) //if spider has not shot after being awoken, shoot
+                {
+                    UnholsterTime -= Time.deltaTime;
+                    if(UnholsterTime <= 0.0f)
+                    {
+                        ShootBullet();
+                        SpiderHasShotFirstShot = true;
+                    }
+                }
+                else //if spider has shot after being awoken, start shooting on timer (timebetweenshots)
+                {
+                    SpiderTimeBetweenShots -= Time.deltaTime;
+                    if(SpiderTimeBetweenShots <= 0.0f)
+                    { 
+                        ShootBullet();
+                        SpiderTimeBetweenShots = TimeBetweenShots;
+                    }
+                }
+
+                
             }
         }
         else 
@@ -95,42 +178,72 @@ public class EnemySpider : MonoBehaviour
             IsAwake = false;
 
             //after target leaves range, reset time until next bullet is shot.
-            waitTime = 1f;
-            timer = 0f;
+            SpiderTimeBetweenShots = TimeBetweenShots;
+            SpiderReactionTime = ReactionTime;
+            UnholsterTime = 0.5f;
+            SpiderHasShotFirstShot = false;
         }
     }
 
 
     void ShootBullet()
     {
-        if(SpiderDead) return;
+        if(SpiderDead || TargetObject == null) return;
 
-        //finds angle to shoot at, from spider firepoint, to player.
+        gameObject.GetComponent<Animator>().Play("Spider Shoot");
+        float sign = 1;
+        float offset = 0;
+
+        //default aims for head, if head is not visable, aims for feet.
         Vector2 direction = TargetObject.transform.position - firePoint.position;
-        if (aimForHead) direction.y += 1.75f; //default aims for head, if head is not visable, aims for feet.
+        if (aimForHead) direction.y += 1.75f; 
         else direction.y += .5f;
-        float angle = Vector3.Angle(direction, firePoint.right);
         
-        //spawns bullet prefab
-        if(FacingRight) 
-        {
-            angle = angle + 180f;
-            angle = -angle;
-            Debug.Log(angle);
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
-        }
-        else
-        {
-            angle = angle + 180f;
-            Debug.Log(angle);
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
-        }
+        //gives a random aim offset, so spider doesn't always shoot at the exact same place
+        
+        float AimRandomizer = UnityEngine.Random.Range(-SpiderAccuracy, SpiderAccuracy);
+        direction.y += AimRandomizer;
+        
+        //takes care of aiming offset for above and below the firepoint
+        if (direction.y >= 0) sign = -1;
+        else sign = 1;
+        if (sign >= 0) offset = 0;
+        else offset = 360;
+        float angle = Vector2.Angle(Vector2.left, direction) * sign + offset;
 
+        //fires bullet
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+    }
+
+    void Melee()
+    {
+        gameObject.GetComponent<Animator>().Play("Spider Melee");
+    }
+
+    void TargetMeleeDetect()
+    {
+        if(SpiderDead || TargetObject == null) return;
+
+        //looks for player
+        Vector2 direction = TargetObject.transform.position - transform.position;
+        direction.y += 1f; //offset vector so spider looks for chest
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, direction, 4.0f, layerMask);
+        
+        //if spider is facing target, and target is in range, and target's chest is visible, attack
+        if((hitInfo.collider != null && hitInfo.collider.tag == "Player")) //&& ((FacingRight && (direction.x > 0)) || (!FacingRight && (direction.x < 0))))
+        {
+            Debug.DrawRay(transform.position,direction,Color.cyan);
+            TargetInMeleeDistance = true;
+        }
+        else TargetInMeleeDistance = false;
+        
     }
 
 
-    void PlayerDetect()
+    void TargetDetect()
     {
+        if(SpiderDead || TargetObject == null || TargetInMeleeDistance) return;
+
         //if target head or feet are found, target is in sights
         if ((HeadFound() && FeetFound()) || (HeadFound() || FeetFound()))
         {
@@ -163,10 +276,10 @@ public class EnemySpider : MonoBehaviour
 
     bool FeetFound()
     {
-        //looks for feet
+        //looks for feet, slightly less spider sight distance than head
         Vector2 direction = TargetObject.transform.position - transform.position;
         direction.y += .25f; //offset vector so spider looks for feet
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance - 0.1f,layerMask);
         
         //if spider is facing target, and target is in range, and target's feet are visible, feet are found.
         if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
@@ -206,13 +319,11 @@ public class EnemySpider : MonoBehaviour
         {
             FacingRight = !FacingRight;
             gameObject.transform.Rotate(0f, 180, 0f);
-            firePoint.transform.Rotate(0f, 180, 0f);
         }
         else if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0.0f && FacingRight == false) 
         {
             FacingRight = !FacingRight;
             gameObject.transform.Rotate (0f, 180, 0f);
-            firePoint.transform.Rotate(0f, 180, 0f);
         }
     }
 
