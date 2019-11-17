@@ -24,6 +24,7 @@ public class player_controller : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
+        if (gameObject.transform.position.y < 0) Die();
     }
 
     void PlayerMove()
@@ -112,6 +113,6 @@ public class player_controller : MonoBehaviour
     void Die(){
         //play death animation
         anim.SetBool("died",true);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
