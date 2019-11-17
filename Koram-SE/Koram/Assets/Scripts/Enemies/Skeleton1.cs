@@ -13,6 +13,7 @@ public class Skeleton1 : MonoBehaviour
     public bool SkeletonDead = false;
     public Transform firePoint;
     public GameObject DamageFieldPrefab;
+    public static bool AttackComplete = false;
 
     public float SkeletonSightDistance = 12f;
     public GameObject TargetObject;
@@ -35,6 +36,7 @@ public class Skeleton1 : MonoBehaviour
         Pace();
         PlayerDetect();
         SkeletonAttacking();
+        //Slash();
     }
 
     void Pace()
@@ -132,7 +134,9 @@ public class Skeleton1 : MonoBehaviour
 
     void Slash(){
         if(SkeletonDead) return;
-
-        Instantiate(DamageFieldPrefab, firePoint.position, firePoint.rotation);
+        //if(AttackComplete){
+            Instantiate(DamageFieldPrefab, firePoint.position, firePoint.rotation);
+        //}
+        //AttackComplete = false;
     }
 }

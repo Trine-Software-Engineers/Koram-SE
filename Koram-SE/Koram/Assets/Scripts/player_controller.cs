@@ -111,6 +111,7 @@ public class player_controller : MonoBehaviour
 
     void Die(){
         //play death animation
-        Destroy(gameObject);
+        anim.SetBool("died",true);
+        //Destroy(gameObject);
     }
 }
