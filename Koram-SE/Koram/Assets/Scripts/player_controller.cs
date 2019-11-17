@@ -12,6 +12,7 @@ public class player_controller : MonoBehaviour
     private bool FacingRight = true; //determines which way the player sprite is looking 
     private Animator anim; //shortens the call on the animator window
     
+    private bool dead = false;
     public bool invincible = false;//makes player invincible for testing
 
     // Start is called before the first frame update
@@ -107,12 +108,16 @@ public class player_controller : MonoBehaviour
         }
 
         player_hud.PlayerHealth -= damage;
-        if (player_hud.PlayerHealth <=0) Die();
+        if (player_hud.PlayerHealth <=0) {
+            StartCoroutine(Die());
+            
+        }
     }
 
-    void Die(){
+    IEnumerator Die(){
         //play death animation
         anim.SetBool("died",true);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }
