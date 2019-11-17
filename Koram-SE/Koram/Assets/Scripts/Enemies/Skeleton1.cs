@@ -10,6 +10,9 @@ public class Skeleton1 : MonoBehaviour
     private float SkeletonPace;
     private float SkeletonSpeedMultiplier = 1;
 
+    public bool SkeletonDead = false;
+    public Transform firePoint;
+    public GameObject DamageFieldPrefab;
 
     public float SkeletonSightDistance = 12f;
     public GameObject TargetObject;
@@ -18,7 +21,7 @@ public class Skeleton1 : MonoBehaviour
     private bool SkeletonCurrentlyAttacking = false;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
     private float timer = 0f;
-    private float waitTime = 0f;
+    private float waitTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +73,7 @@ public class Skeleton1 : MonoBehaviour
         if ((HeadFound() && FeetFound()) || (HeadFound() || FeetFound()))
         {
             TargetInSights = true;
-            Debug.Log("Player compromised, skeleton in pursuit...");
+            //Debug.Log("Player compromised, skeleton in pursuit...");
             return;
         }
         TargetInSights = false;
@@ -116,7 +119,8 @@ public class Skeleton1 : MonoBehaviour
             if(timer > waitTime){
                 timer = 0f;
                 gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
-                waitTime = .2f;
+                Slash();
+                waitTime = 1f;
             }
         }
         else
@@ -124,5 +128,11 @@ public class Skeleton1 : MonoBehaviour
             SkeletonCurrentlyAttacking = false;
             gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", false);
         }
+    }
+
+    void Slash(){
+        if(SkeletonDead) return;
+
+        Instantiate(DamageFieldPrefab, firePoint.position, firePoint.rotation);
     }
 }
