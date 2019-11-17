@@ -15627,7 +15627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMin: -40
   xMax: 150
-  yMin: 15
+  yMin: 0
   yMax: 20
 --- !u!20 &519420031
 Camera:

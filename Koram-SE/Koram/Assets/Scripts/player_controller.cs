@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
@@ -119,5 +120,6 @@ public class player_controller : MonoBehaviour
         anim.SetBool("died",true);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+        SceneManager.LoadScene("Main");   
     }
 }
