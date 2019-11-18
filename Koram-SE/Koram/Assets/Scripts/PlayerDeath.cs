@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeath : StateMachineBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerDeath : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Destroy(player);
+        SceneManager.LoadScene("Main");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
