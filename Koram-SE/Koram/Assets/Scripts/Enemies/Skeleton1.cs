@@ -117,13 +117,10 @@ public class Skeleton1 : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", true);
             SkeletonCurrentlyAttacking = true;
-            timer += Time.deltaTime;
-            if(timer > waitTime){
-                timer = 0f;
+            //if(timer > waitTime){
                 gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
-                Slash();
-                waitTime = 1f;
-            }
+               //Slash();
+            //}
         }
         else
         {

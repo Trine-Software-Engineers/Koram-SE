@@ -15977,7 +15977,7 @@ PrefabInstance:
     - target: {fileID: 5373298166428052669, guid: 03263eaadf7b3ec4fbbe7022bd1be9d6,
         type: 3}
       propertyPath: SkeletonSightDistance
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5373298166428052669, guid: 03263eaadf7b3ec4fbbe7022bd1be9d6,
         type: 3}
