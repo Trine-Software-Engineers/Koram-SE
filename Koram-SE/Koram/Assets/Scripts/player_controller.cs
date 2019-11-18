@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class player_controller : MonoBehaviour
     [SerializeField] //show field in unity inspector
     GameObject attackHitBox; //used to enable and disable the hitbox collider when attacking
     
+    private bool dead = false;
+    public bool invincible = false;//makes player invincible for testing
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class player_controller : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
+        if (gameObject.transform.position.y < 0) Die();
     }
 
     void PlayerMove(){
@@ -115,10 +120,11 @@ public class player_controller : MonoBehaviour
         else if (MoveX > 0.0f && FacingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded == true){
+        if (Input.GetButton("Jump") && isGrounded == true){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
         }
+        
     }
     //Detects which way the sprite is currently facing and flips it if a movement is made in the opposite direction
     void FlipPlayer()
@@ -141,7 +147,8 @@ public class player_controller : MonoBehaviour
             }
         }         
     }
-    //how a player can complete/win a level
+    
+    //if player touches EndOfLevel, player wins
     void OnTriggerEnter2D(Collider2D trig) 
     {
         if (trig.gameObject.name == "EndOfLevel") 
@@ -149,15 +156,26 @@ public class player_controller : MonoBehaviour
             WinScreen.Win = true;
         }
     }
+
     public void TakeDamage ( int damage) {
+        if(invincible){
+            Debug.Log("player is invincible for testing");
+            return;
+        }
+
         player_hud.PlayerHealth -= damage;
-        if (player_hud.PlayerHealth <=0){
-            Die();
+        if (player_hud.PlayerHealth <=0) {
+            StartCoroutine(Die());
+            
         }
     }
-    //This is what happens when a player dies 
-    void Die(){
+
+    IEnumerator Die(){
+        //play death animation
+        anim.SetBool("died",true);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+        SceneManager.LoadScene("Main");   
     }
 
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
