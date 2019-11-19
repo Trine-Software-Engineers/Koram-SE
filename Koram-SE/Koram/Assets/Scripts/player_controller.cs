@@ -185,5 +185,7 @@ public class player_controller : MonoBehaviour
             yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
             attackHitBox.SetActive(false); //disables collider for damage
             isAttacking = false;
+            player_hud.MaxHealth += 1;
+            player_hud.PlayerHealth += 1;
         }
 }
