@@ -61,7 +61,7 @@ public class player_hud : MonoBehaviour
         {
             //every second, count up and then update the UI.  
             TimeTaken += Time.deltaTime;
-            if(TimeTakenUI != null) TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
+            TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
         }
         
     }

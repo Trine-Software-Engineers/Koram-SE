@@ -10,7 +10,7 @@ public class EnemySpider : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public GameObject TargetObject;
-    
+    public bool SpiderDead = false;
 
     private bool FacingRight = false;
     private float SpiderPace;
@@ -37,10 +37,6 @@ public class EnemySpider : MonoBehaviour
     private float SpiderTimeToDeath = .8f;
     private float DeathTimer = 0f;
 
-    [SerializeField]
-    private int SpiderHealth = 1;
-    private bool SpiderDead = false;
-
     public bool TargetInMeleeDistance = false;
     public float MeleeAnimationTime = 1f;
     private float SpiderMeleeAnimationTime;
@@ -52,12 +48,12 @@ public class EnemySpider : MonoBehaviour
         SpiderReactionTime = ReactionTime;
         SpiderTimeBetweenShots = TimeBetweenShots;
         SpiderMeleeAnimationTime = MeleeAnimationTime;
-        DifficultyCheck();
     }
 
     // Update is called once per frame
     void Update()
     {
+        DifficultyCheck();
         FlipSprite();
         Pace();
         //TargetMeleeDetect();
@@ -74,7 +70,6 @@ public class EnemySpider : MonoBehaviour
 
         if(Difficulty == 1) //normal
         {
-            SpiderHealth = 1;
             SpiderSightDistance = 11f;
             TimeBetweenShots = 0.85f;
             ReactionTime = 0.25f;
@@ -82,7 +77,6 @@ public class EnemySpider : MonoBehaviour
         }
         else if (Difficulty == 2) //hard
         {
-            SpiderHealth = 2;
             SpiderSightDistance = 14f;
             TimeBetweenShots = 0.65f;
             ReactionTime = 0.15f;
@@ -90,7 +84,6 @@ public class EnemySpider : MonoBehaviour
         }
         else if (Difficulty == 3) //insane
         {
-            SpiderHealth = 3;
             SpiderSightDistance = 17f;
             TimeBetweenShots = 0.45f;
             ReactionTime = 0.0f;
@@ -334,20 +327,10 @@ public class EnemySpider : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D trig) 
-    {
-        Debug.Log("Spider Collide");
-        if (trig.gameObject.tag == "Player") 
-        {
-            SpiderHealth -= 1;
-        }
-    }
-
 
     void Die()
     {
-        if(SpiderHealth > 0) return;
-        SpiderDead = true;
+        if(!SpiderDead) return;
 
         //Play death animation, then die.
         if(!SpiderAnimationPlayed)

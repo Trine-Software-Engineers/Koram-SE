@@ -18,15 +18,7 @@ public class Skeleton1 : MonoBehaviour
     private bool SkeletonCurrentlyAttacking = false;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
     private float timer = 0f;
-    private float waitTime = 1f;
-
-    [SerializeField]
-    private int SkeletonHealth = 2;
-
-    private bool SkeletonDeathAnimationPlayed = false;
-    private float SkeletonTimeToDeath = .5f;
-    private float DeathTimer = 0f;
-
+    private float waitTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +28,6 @@ public class Skeleton1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Die();
         FlipSprite();
         Pace();
         PlayerDetect();
@@ -79,6 +70,7 @@ public class Skeleton1 : MonoBehaviour
         if ((HeadFound() && FeetFound()) || (HeadFound() || FeetFound()))
         {
             TargetInSights = true;
+            Debug.Log("Player compromised, skeleton in pursuit...");
             return;
         }
         TargetInSights = false;
@@ -132,38 +124,5 @@ public class Skeleton1 : MonoBehaviour
             SkeletonCurrentlyAttacking = false;
             gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", false);
         }
-    }
-
-    void Slash(){
-        if(SkeletonDead) return;
-        //if(AttackComplete){
-         //   Instantiate(DamageFieldPrefab, firePoint.position, firePoint.rotation);
-        //}
-        //AttackComplete = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D trig) 
-    {
-        if (trig.gameObject.tag == "Player") 
-        {
-            SkeletonHealth -= 1;
-        }
-    }
-
-    void Die()
-    {
-        if(SkeletonHealth > 0) return;
-        SkeletonDead = true;
-
-        //Play death animation, then die.
-        if(!SkeletonDeathAnimationPlayed)
-        {
-            gameObject.GetComponent<Animator>().Play("die");
-            SkeletonDeathAnimationPlayed = true;
-        }
-        DeathTimer += Time.deltaTime;
-            if(DeathTimer > SkeletonTimeToDeath){
-                Destroy(gameObject);
-            }
     }
 }
