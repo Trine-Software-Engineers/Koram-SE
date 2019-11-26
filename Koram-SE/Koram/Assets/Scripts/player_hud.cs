@@ -24,8 +24,6 @@ public class player_hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         //update damage taken
         if(PlayerHealth != CurrentHealth) CurrentHealth = PlayerHealth;
 
@@ -65,6 +63,7 @@ public class player_hud : MonoBehaviour
             TimeTaken += Time.deltaTime;
             TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
         }
+        
     }
 
 }
