@@ -4,20 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 22e035cdb236f7947bb11061d0c1ccac
-  - enabled: 1
-    path: Assets/Scenes/level1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/ColeTestLevel.unity
-    guid: 21eb7fa346f00da4194338cb620e84f5
-  - enabled: 0
-    path: Assets/Scenes/JustinTest.unity
-    guid: 0ff256e41115c65488df61a75473ff2f
-  - enabled: 0
-    path: Assets/Scenes/Koram.unity
-    guid: 1bb99626ade0dce48b565b6d8713c860
-  m_configObjects: {}
+  m_Scenes: []
