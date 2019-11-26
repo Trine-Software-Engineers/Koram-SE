@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class player_controller : MonoBehaviour
 {
     //Movement
+    public AudioClip JumpClip;
+    public AudioSource JumpSource; 
     public float PlayerSpeed = 10; //multiplier for the height player speed- can be changed in unity scene
     public int PlayerJump = 10; //multiplier for the height player jumps- can be changed in unity scene
     public bool isGrounded = false; //determins if the player is able to jump
@@ -24,6 +26,7 @@ public class player_controller : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         attackHitBox.SetActive(false);
+        JumpSource.clip = JumpClip;
     }
 
     // Update is called once per frame
@@ -121,8 +124,10 @@ public class player_controller : MonoBehaviour
 
         //Jumping
         if (Input.GetButton("Jump") && isGrounded == true){
+            JumpSource.Play();
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
+            
         }
         
     }
@@ -185,7 +190,5 @@ public class player_controller : MonoBehaviour
             yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
             attackHitBox.SetActive(false); //disables collider for damage
             isAttacking = false;
-            player_hud.MaxHealth += 1;
-            player_hud.PlayerHealth += 1;
         }
 }
