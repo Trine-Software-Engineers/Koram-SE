@@ -34,6 +34,11 @@ public class player_controller : MonoBehaviour
     {
         PlayerMove();
         if (gameObject.transform.position.y < 0) Die();
+        if(player_hud.PlayerHealth < 1)
+        {
+            StartCoroutine(Die());
+        }
+        
     }
 
     void PlayerMove(){
