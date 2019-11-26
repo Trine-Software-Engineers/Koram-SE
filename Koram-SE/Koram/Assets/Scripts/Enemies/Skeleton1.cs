@@ -27,6 +27,7 @@ public class Skeleton1 : MonoBehaviour
     private float waitTime = 1f;
     private float SkeletonTimeBetweenHits;
     private float TimeBetweenHits = 1f;
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,7 +124,7 @@ public class Skeleton1 : MonoBehaviour
             SkeletonCurrentlyAttacking = true;
             gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
             SkeletonTimeBetweenHits -= Time.deltaTime;
-            if(SkeletonTimeBetweenHits <= 0.0f)
+            if(SkeletonTimeBetweenHits <= 0.42f)
             { 
                 StartCoroutine(Slash());
                 SkeletonTimeBetweenHits = TimeBetweenHits;
@@ -147,8 +148,17 @@ public class Skeleton1 : MonoBehaviour
     {
         if(trig.gameObject.tag == "Player")
         {
-            Debug.Log("Player hit by skeleton");
-            player_hud.PlayerHealth -= 1;
+            if(count > 0)
+            {
+                Debug.Log("Player hit by skeleton");
+                player_hud.PlayerHealth -= 1;
+                count = 0;
+            }
+            else
+            {
+                count++;
+            }
+            
         }
     }
 }

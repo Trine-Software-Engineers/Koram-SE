@@ -160,7 +160,7 @@ MonoBehaviour:
   DamageFieldPrefab: {fileID: 0}
   SkeletonSightDistance: 12
   TargetObject: {fileID: 0}
-  SkeletonHitBox: {fileID: 0}
+  SkeletonHitBox: {fileID: 6886508044405428741}
 --- !u!1 &6886508044405428741
 GameObject:
   m_ObjectHideFlags: 0
