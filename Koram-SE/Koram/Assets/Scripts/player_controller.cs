@@ -7,7 +7,7 @@ public class player_controller : MonoBehaviour
 {
     //Movement
     public AudioClip JumpClip;
-    public AudioSource JumpSource;
+    public AudioSource JumpSource; 
     public float PlayerSpeed = 10; //multiplier for the height player speed- can be changed in unity scene
     public int PlayerJump = 10; //multiplier for the height player jumps- can be changed in unity scene
     public bool isGrounded = false; //determins if the player is able to jump
@@ -124,9 +124,10 @@ public class player_controller : MonoBehaviour
 
         //Jumping
         if (Input.GetButton("Jump") && isGrounded == true){
+            JumpSource.Play();
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
-            JumpSource.Play();
+            
         }
         
     }
