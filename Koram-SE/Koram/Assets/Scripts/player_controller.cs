@@ -11,7 +11,11 @@ public class player_controller : MonoBehaviour
     private float MoveX;
     private bool FacingRight = true; //determines which way the player sprite is looking 
     private Animator anim; //shortens the call on the animator window
-    
+
+    [SerializeField] //show field in unity inspector
+    GameObject attackHitBox; //used to enable and disable the hitbox collider when attacking
+
+    private bool dead = false;
     public bool invincible = false;//makes player invincible for testing
 
     // Start is called before the first frame update
@@ -36,6 +40,54 @@ public class player_controller : MonoBehaviour
         {
             PlayerSpeed = 10;  //Player is Running
         }
+
+        if(Input.GetButton("Crouch"))
+        {
+            anim.SetBool("isCrouching",true);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        else
+        {
+            anim.SetBool("isCrouching",false);
+              gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+        if(Input.GetButton("Fire1") && !isAttacking)
+        {
+            isAttacking = true;
+            //RNG to choose attack
+            //int index = UnityEngine.Random.Range(1,7);
+            int index = 1;
+            //Debug.Log(index);
+            //each of the index numbers represent an attack animation that the character can do
+            if(index == 1)
+            {
+                anim.SetTrigger("isHitting");
+            } 
+            else if(index == 2)
+            {
+                anim.SetTrigger("isHitting1");
+            }
+            else if(index == 3)
+            {
+                anim.SetTrigger("isHitting2");
+            } 
+            else if(index == 4)
+            {
+                anim.SetTrigger("isHitting3");
+            } 
+            else if(index == 5)
+            {
+                anim.SetTrigger("isHitting4");
+            } 
+            else if (index == 6)
+            {
+                anim.SetTrigger("isHitting5");
+            }  
+            StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
+        }  
+        
+        
 
 
         MoveX = Input.GetAxis("Horizontal");
@@ -113,4 +165,13 @@ public class player_controller : MonoBehaviour
         //play death animation
         Destroy(gameObject);
     }
+
+    //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
+    IEnumerator DoAttack()
+        {
+            yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
+            isAttacking = false;
+            player_hud.MaxHealth += 1;
+            player_hud.PlayerHealth += 1;
+        }
 }
