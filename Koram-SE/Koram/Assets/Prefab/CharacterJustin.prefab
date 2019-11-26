@@ -10733,7 +10733,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpClip: {fileID: 8300000, guid: bdb592d2937a88141ac907924a6ae68c, type: 3}
-  JumpSource: {fileID: 0}
+  JumpSource: {fileID: 8611425794808745008, guid: d49921da85a9b5841ad1d8da5fa6154a,
+    type: 3}
   PlayerSpeed: 10
   PlayerJump: 25
   isGrounded: 0
