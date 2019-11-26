@@ -17,16 +17,21 @@ public class Skeleton1 : MonoBehaviour
 
     public float SkeletonSightDistance = 12f;
     public GameObject TargetObject;
+    [SerializeField] //show field in unity inspector
+    public GameObject SkeletonHitBox;
     private bool TargetInSights = false;
 
     private bool SkeletonCurrentlyAttacking = false;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
     private float timer = 0f;
     private float waitTime = 1f;
+    private float SkeletonTimeBetweenHits;
+    private float TimeBetweenHits = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+         SkeletonHitBox.SetActive(false);
+         SkeletonTimeBetweenHits = TimeBetweenHits;
     }
 
     // Update is called once per frame
@@ -36,7 +41,6 @@ public class Skeleton1 : MonoBehaviour
         Pace();
         PlayerDetect();
         SkeletonAttacking();
-        //Slash();
     }
 
     void Pace()
@@ -117,10 +121,13 @@ public class Skeleton1 : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().SetBool("SkeletonCurrentlyAttacking", true);
             SkeletonCurrentlyAttacking = true;
-            //if(timer > waitTime){
-                gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
-               //Slash();
-            //}
+            gameObject.GetComponent<Animator>().SetTrigger("SkeletonAttack");
+            SkeletonTimeBetweenHits -= Time.deltaTime;
+            if(SkeletonTimeBetweenHits <= 0.0f)
+            { 
+                StartCoroutine(Slash());
+                SkeletonTimeBetweenHits = TimeBetweenHits;
+            }
         }
         else
         {
@@ -129,11 +136,19 @@ public class Skeleton1 : MonoBehaviour
         }
     }
 
-    void Slash(){
-        if(SkeletonDead) return;
-        //if(AttackComplete){
-            Instantiate(DamageFieldPrefab, firePoint.position, firePoint.rotation);
-        //}
-        //AttackComplete = false;
+    IEnumerator Slash()
+    {
+        SkeletonHitBox.SetActive(true); //enables collider for damage
+        yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
+        SkeletonHitBox.SetActive(false); //disables collider for damage
+    }
+
+    void OnTriggerEnter2D(Collider2D trig) 
+    {
+        if(trig.gameObject.tag == "Player")
+        {
+            Debug.Log("Player hit by skeleton");
+            player_hud.PlayerHealth -= 1;
+        }
     }
 }
