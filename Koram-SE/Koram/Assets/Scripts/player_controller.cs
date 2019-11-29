@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
-    //Movement
-    public float PlayerSpeed = 10; //multiplier for the height player speed- can be changed in unity scene
-    public int PlayerJump = 10; //multiplier for the height player jumps- can be changed in unity scene
+    public int playerDamage = 1;
+    public float playerSpeed = 10; //multiplier for the height player speed- can be changed in unity scene
+    public int playerJump = 20; //multiplier for the height player jumps- can be changed in unity scene
     public bool isGrounded = false; //determins if the player is able to jump
-    private float MoveX;
-    private bool FacingRight = true, isAttacking = false; //determines which way the player sprite is looking 
-    private Animator anim; //shortens the call on the animator window
+    private float moveX;
+    private bool facingRight = true; //determines which way the player sprite is looking 
+    private bool isAttacking = false; 
 
-    [SerializeField] //show field in unity inspector
-    GameObject attackHitBox; //used to enable and disable the hitbox collider when attacking
+    private Animator anim; //shortens the call on the animator window
     
     private bool dead = false;
     public bool invincible = false;//makes player invincible for testing
@@ -23,7 +22,6 @@ public class player_controller : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        attackHitBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,41 +33,40 @@ public class player_controller : MonoBehaviour
         {
             StartCoroutine(Die());
         }
-        
     }
 
     void PlayerMove(){
-
+        if(dead) return;
+        
         if (Input.GetButton("Walk") && !Input.GetButton("Crouch")) //Shift while moving is used for walk
         {
-            PlayerSpeed = 2; //Player is walking        
+            playerSpeed = 2; //Player is walking        
         }
         else if (Input.GetButton("Crouch"))
         {
-            PlayerSpeed = 0.1f;
+            playerSpeed = 0.1f;
         }
         else
         {
-            PlayerSpeed = 10;  //Player is Running
+            playerSpeed = 10;  //Player is Running
         }
 
         if(Input.GetButton("Crouch"))
         {
             anim.SetBool("isCrouching",true);
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
         {
             anim.SetBool("isCrouching",false);
-              gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
 
-        if(Input.GetButtonDown("Fire1") && !isAttacking)
+        if(Input.GetButton("Fire1") && !isAttacking)
         {
             isAttacking = true;
             //RNG to choose attack
             int index = UnityEngine.Random.Range(1,7);
-            Debug.Log(index);
+            //Debug.Log(index);
+
             //each of the index numbers represent an attack animation that the character can do
             if(index == 1)
             {
@@ -97,20 +94,17 @@ public class player_controller : MonoBehaviour
             }  
             StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
-        
-        
 
-
-        MoveX = Input.GetAxis("Horizontal");
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (MoveX * PlayerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        moveX = Input.GetAxis("Horizontal");
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
-        if (MoveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
+        if (moveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
         {
             anim.SetBool("isRunning",false);
             anim.SetBool("isWalking",true);
         }
-        else if (MoveX != 0.0f ) //default sprint for this game 
+        else if (moveX != 0.0f ) //default sprint for this game 
         {   
             anim.SetBool("isRunning",true);
         }
@@ -121,12 +115,12 @@ public class player_controller : MonoBehaviour
         }
 
         //Flip Sprite
-        if (MoveX < 0.0f && FacingRight == true) FlipPlayer();
-        else if (MoveX > 0.0f && FacingRight == false) FlipPlayer();
+        if (moveX < 0.0f && facingRight == true) FlipPlayer();
+        else if (moveX > 0.0f && facingRight == false) FlipPlayer();
 
         //Jumping
         if (Input.GetButton("Jump") && isGrounded == true){
-            GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, PlayerJump);
+            GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
         }
         
@@ -134,7 +128,7 @@ public class player_controller : MonoBehaviour
     //Detects which way the sprite is currently facing and flips it if a movement is made in the opposite direction
     void FlipPlayer()
     {
-        FacingRight = !FacingRight;
+        facingRight = !facingRight;
         gameObject.transform.Rotate (0f, 180, 0f);
     }
     //function to detect when the character comes in contact with object tagged enemy    
@@ -153,30 +147,36 @@ public class player_controller : MonoBehaviour
         }         
     }
     
-    //if player touches EndOfLevel, player wins
+    
     void OnTriggerEnter2D(Collider2D trig) 
     {
-        if (trig.gameObject.name == "EndOfLevel") 
-        {
-            WinScreen.Win = true;
-        }
+        //if player touches EndOfLevel, player wins
+        if (trig.gameObject.name == "EndOfLevel") WinScreen.Win = true;
+    
+        //deal damage to skeleton
+        EnemySkeleton skeleton = trig.GetComponent<EnemySkeleton>();
+        if (skeleton != null) skeleton.TakeDamage(playerDamage);
+
+        //deal damage to spider
+        EnemySpider spider = trig.GetComponent<EnemySpider>();
+        if (spider != null) spider.TakeDamage(playerDamage);
     }
 
-    public void TakeDamage ( int damage) {
-        if(invincible){
+    public void TakeDamage ( int damage) 
+    {
+        if(invincible)
+        {
             Debug.Log("player is invincible for testing");
             return;
         }
 
         player_hud.PlayerHealth -= damage;
-        if (player_hud.PlayerHealth <=0) {
-            StartCoroutine(Die());
-            
-        }
+        if (player_hud.PlayerHealth <=0) StartCoroutine(Die());
     }
 
     IEnumerator Die(){
         //play death animation
+        dead = true;
         anim.SetBool("died",true);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
@@ -186,11 +186,7 @@ public class player_controller : MonoBehaviour
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
     IEnumerator DoAttack()
         {
-            attackHitBox.SetActive(true); //enables collider for damage
             yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
-            attackHitBox.SetActive(false); //disables collider for damage
             isAttacking = false;
-            player_hud.MaxHealth += 1;
-            player_hud.PlayerHealth += 1;
         }
 }
