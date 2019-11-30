@@ -40,7 +40,7 @@ public class player_controller : MonoBehaviour
         
         if (Input.GetButton("Walk") && !Input.GetButton("Crouch")) //Shift while moving is used for walk
         {
-            playerSpeed = 2; //Player is walking        
+            playerSpeed = 2; //Player is walking       
         }
         else if (Input.GetButton("Crouch"))
         {
@@ -122,6 +122,7 @@ public class player_controller : MonoBehaviour
         if (Input.GetButton("Jump") && isGrounded == true){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
+            FindObjectOfType<AudioManager>().Play("jump");
         }
         
     }

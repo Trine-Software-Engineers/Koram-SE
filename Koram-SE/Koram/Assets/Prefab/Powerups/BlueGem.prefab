@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8904700037217845660}
   - component: {fileID: 8904700037217845661}
   - component: {fileID: 8904700037217845650}
+  - component: {fileID: 469772491167593709}
   m_Layer: 0
   m_Name: BlueGem
   m_TagString: Untagged
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0017522871, y: 0.0017517358}
+  m_Offset: {x: -0.0065926835, y: 0.0017517358}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -125,5 +126,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4054063, y: 0.29329428}
+  m_Size: {x: 0.25518674, y: 0.29329428}
   m_EdgeRadius: 0
+--- !u!114 &469772491167593709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904700037217845662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86676a9b0c562c6478a465b9cae36dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupEffect: {fileID: 100000, guid: d667c498c736d054fbe9373c25331986, type: 3}
