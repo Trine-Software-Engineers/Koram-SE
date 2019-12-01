@@ -15853,7 +15853,7 @@ PrefabInstance:
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: playerJump
-      value: 30
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
