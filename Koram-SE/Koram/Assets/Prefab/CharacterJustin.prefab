@@ -10730,8 +10730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cd6547f38e87c49aedc240eec6ae61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDamage: 1
   playerSpeed: 10
-  playerJump: 100
+  playerJump: 26
   isGrounded: 0
   invincible: 0
 --- !u!50 &2858023898930018436
