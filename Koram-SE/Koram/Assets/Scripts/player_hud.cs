@@ -15,10 +15,33 @@ public class player_hud : MonoBehaviour
     public Sprite HeartFull;
     public Sprite HeartEmpty;
     public GameObject TimeTakenUI;
+    public GameObject BlueGem;
+    public GameObject GreenGem;
+    public GameObject RedGem;
+    public GameObject BlackGem;
+    public GameObject PurpleGem;
+    public GameObject OrangeGem;
+    private GameObject BlackGemPrefab;
+    private GameObject BlueGemPrefab;
+    private GameObject GreenGemPrefab;
+    private GameObject RedGemPrefab;
+    private GameObject OrangeGemPrefab;
+    private GameObject PurpleGemPrefab;
 
     void Start()
     {
-
+        BlueGem = GameObject.Find("GemBlue");
+        BlackGem = GameObject.Find("GemBlack");
+        GreenGem = GameObject.Find("GemGreen");
+        RedGem = GameObject.Find("GemRed");
+        OrangeGem = GameObject.Find("GemOrange");
+        PurpleGem = GameObject.Find("GemPurple");
+        BlackGemPrefab = GameObject.Find("BlackGem");
+        BlueGemPrefab = GameObject.Find("BlueGem");
+        GreenGemPrefab = GameObject.Find("GreenGem");
+        RedGemPrefab = GameObject.Find("RedGem");
+        OrangeGemPrefab = GameObject.Find("OrangeGem");
+        PurpleGemPrefab = GameObject.Find("PurpleGem");
     }
 
     // Update is called once per frame
@@ -65,6 +88,75 @@ public class player_hud : MonoBehaviour
             TimeTaken += Time.deltaTime;
             if(TimeTakenUI != null) TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
         }
+
+        GemCheck();
+        
+    }
+    void GemCheck()
+    {
+        if (BlueGemPrefab == null)
+        {
+            BlueGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            BlueGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        }
+
+
+        if (BlackGemPrefab == null)
+        {
+            BlackGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            BlackGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        } 
+
+
+        
+        if (GreenGemPrefab == null)
+        {
+            GreenGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            GreenGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        } 
+
+
+        
+        if (RedGemPrefab == null)
+        {
+            RedGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            RedGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        } 
+
+
+        
+        if (OrangeGemPrefab == null)
+        {
+            OrangeGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            OrangeGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        } 
+
+
+        
+        if (PurpleGemPrefab == null)
+        {
+            PurpleGem.GetComponent<Image>().color = new Color32(255,255,225,255);
+        }
+        else 
+        {
+            PurpleGem.GetComponent<Image>().color = new Color32(255,255,225,50);
+        } 
+        
     }
 
 }
