@@ -28,11 +28,10 @@ public class WinScreen : MonoBehaviour
         HudUI.SetActive(false);
     }
 
-    public void NextLevel()
-    {
-        Debug.Log("Go to next Level...");
-        //Time.timeScale = 1f;
-    }
+      public void NextLevel()
+   {
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+   }
 
     public void LoadMenu()
     {
