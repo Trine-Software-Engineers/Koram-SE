@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinMenuUI: {fileID: 9194526100422435999}
   ScoreText: {fileID: 9194526102170064646}
-  HudUI: {fileID: 0}
+  HudUI: {fileID: 5562251658631673029, guid: 2c87f9e2bb8fc3e40a067da688b94a7b, type: 3}
 --- !u!114 &-7267211427745892498
 MonoBehaviour:
   m_ObjectHideFlags: 0

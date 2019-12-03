@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  smoothing: 0.5
+  - {fileID: 1464949176542170719, guid: 8ccd12e6a7dffad499e089e9c0d15dd9, type: 3}
+  - {fileID: 7918703882035388790, guid: a681035d795bd9f40b20e529615279e8, type: 3}
+  - {fileID: 5425844349089861837, guid: 59ee72ad7af13374ebd0c3e3bb281483, type: 3}
+  - {fileID: 5375635237618843259, guid: 0ad7aead1ae54984bbf78f0b0a555303, type: 3}
+  - {fileID: 991438254522051716, guid: 87216d7ac44f1a04b86f13e539fefc2f, type: 3}
+  - {fileID: 3844308189983147654, guid: 74717fd329553004cba73192b2c51a87, type: 3}
+  smoothing: 1
