@@ -226,11 +226,11 @@ public class EnemySpider : MonoBehaviour
         //if spider is facing target, and target is in range, and target's head is visible, head is found.
         if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((facingRight && (direction.x > 0)) || (!facingRight && (direction.x < 0))))
         {
-            Debug.DrawRay(transform.position,direction,Color.green);
+            //Debug.DrawRay(transform.position,direction,Color.green);
             aimForHead = true;
             return true;
         }
-        else Debug.DrawRay(transform.position,direction,Color.red);
+        //else Debug.DrawRay(transform.position,direction,Color.red);
         aimForHead = false;
         return false;
     }
@@ -246,10 +246,10 @@ public class EnemySpider : MonoBehaviour
         //if spider is facing target, and target is in range, and target's feet are visible, feet are found.
         if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((facingRight && direction.x > 0) || (!facingRight && direction.x < 0)))
         {
-            Debug.DrawRay(transform.position,direction,Color.green);
+            //Debug.DrawRay(transform.position,direction,Color.green);
             return true;
         }
-        else Debug.DrawRay(transform.position,direction,Color.red);
+        //else Debug.DrawRay(transform.position,direction,Color.red);
         return false;
     }
 

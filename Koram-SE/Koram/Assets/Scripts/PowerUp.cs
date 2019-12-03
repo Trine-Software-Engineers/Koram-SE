@@ -5,55 +5,32 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public GameObject pickupEffect;
-    public int multiplier = 3;
+    private GameObject Heart;
+    bool picked = false;
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
-            Pickup(other);
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player") && picked ==false)
+        {
+            picked = true;
+            StartCoroutine(Pickup(other));
         }
     }
 
-    void Pickup(Collider2D player){
-        //Instantiate(pickupEffect, transform.position, transform.rotation);
+    IEnumerator Pickup(Collider2D player)
+    {
+        //Spawn extra heart effect
+        var hearteffect = Instantiate(pickupEffect, transform.position, transform.rotation);
 
-        //player_hud hud = player.GetComponent<player_hud>();
-        player.transform.localScale *= multiplier;
+        //apply extra hearts
+        FindObjectOfType<AudioManager>().Play("oneup");
+        player_hud.MaxHealth += 1;
+        player_hud.PlayerHealth += 1;
 
+        yield return new WaitForSeconds(1f);
+        //remove powerup sprite
         Destroy(gameObject);
-
+        Destroy(hearteffect);
+        picked = false;
     }
 }
-
-
-/*
-==========If it's a temporary effect==========
-
-public class PowerUp : MonoBehaviour
-{
-    public GameObject pickupEffect;
-    public int multiplier = 1;
-    public float duration = 4f;
-
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
-            StartCoroutine Pickup(other);
-        }
-    }
-
-    IEnumerator Pickup(Collider2D player){
-        Instantiate(pickupEffect, transform.position, transform.rotation);
-
-        player_hud hud = player.GetComponent<player_hud>();
-        hud.CurrentHealth += multiplier;
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collder2D>().enabled = false;
-        
-        yield return new WaitForSeconds(duration);
-        hud.CurrentHealth -= multiplier;
-
-        Destroy(gameObject);
-
-    }
-}
-*/
