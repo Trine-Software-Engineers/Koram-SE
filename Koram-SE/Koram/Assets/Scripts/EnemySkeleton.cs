@@ -74,11 +74,29 @@ public class EnemySkeleton : MonoBehaviour
     void Update()
     {
         Pace();
+        CheckForWalls();
         TargetDetect();
         SkeletonHunting();
         SkeletonAttacking();
         Die();
         CheckBehind();
+    }
+
+    void CheckForWalls()
+    {
+        if(skeletonDead) return;
+        //if skeleton reaches wall, flip
+        Vector2 SkeletonPosition = transform.position;
+        SkeletonPosition.y -= 1f; //offset vector 
+        RaycastHit2D hitInfo = Physics2D.Raycast(SkeletonPosition, -gameObject.transform.right, 1.5f, groundLayerMask);
+        //Debug.DrawRay(SkeletonPosition,-gameObject.transform.right * 1.5,Color.green);
+        if(hitInfo.collider != null && hitInfo.collider.tag == "Ground")
+        {
+            facingRight = !facingRight;
+            gameObject.transform.Rotate (0f, 180, 0f);
+            skeletonSpeedMultiplier *= -1f;
+            skeletonPace = pacingTime;
+        }
     }
 
     void CheckBehind()
@@ -299,15 +317,7 @@ public class EnemySkeleton : MonoBehaviour
 
         if(skeletonIsHunting || skeletonCurrentlyAttacking || !skeletonReadyToWalkAgain) return;
 
-        //if skeleton reaches wall, flip
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, -gameObject.transform.right, 1f, groundLayerMask);
-        if(hitInfo.collider != null && hitInfo.collider.tag == "Ground")
-        {
-            facingRight = !facingRight;
-            gameObject.transform.Rotate (0f, 180, 0f);
-            skeletonSpeedMultiplier *= -1f;
-            skeletonPace = pacingTime;
-        }
+
 
         //when timer reaches "SpiderPace", multiply skeleton movement speed by -1, moving him in the opposite direction.
         if (skeletonPace <= 0f)
