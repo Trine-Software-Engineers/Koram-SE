@@ -1139,6 +1139,8 @@ GameObject:
   - component: {fileID: 9194526102241139177}
   - component: {fileID: 9194526102241139178}
   - component: {fileID: 9194526102241139190}
+  - component: {fileID: -7267211427745892498}
+  - component: {fileID: -4502130748860588627}
   m_Layer: 5
   m_Name: WinScreen
   m_TagString: Untagged
@@ -1240,3 +1242,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinMenuUI: {fileID: 9194526100422435999}
   ScoreText: {fileID: 9194526102170064646}
+  HudUI: {fileID: 5562251658631673029, guid: 2c87f9e2bb8fc3e40a067da688b94a7b, type: 3}
+--- !u!114 &-7267211427745892498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194526102241139179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &-4502130748860588627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194526102241139179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
