@@ -78,7 +78,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: jump
     clip: {fileID: 8300000, guid: 7a747d6b28016ed4281014b22528e213, type: 3}
-    volume: 1
+    volume: 0.2
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: oneup
     clip: {fileID: 8300000, guid: 2c3e026e62754df4fa01e55b0cbb4a5d, type: 3}
-    volume: 1
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: gem
     clip: {fileID: 8300000, guid: 8360d21b54f6cf5438f094904fcf592a, type: 3}
-    volume: 1
+    volume: 0.3
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -115,6 +115,105 @@ MonoBehaviour:
   - name: punch2
     clip: {fileID: 8300000, guid: 276dfa08936ee04419ac3006e437483e, type: 3}
     volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: e1defdf01dbf011499ebd80961093801, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Hero_Dance_Party
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level2
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level3
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level4
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level5
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level6
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level7
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level8
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level9
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Level10
+    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
