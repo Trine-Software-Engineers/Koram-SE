@@ -6212,7 +6212,7 @@ Tilemap:
   - m_RefCount: 561
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5613208, b: 0.97116727, a: 1}
   m_Origin: {x: -50, y: -12, z: 0}
   m_Size: {x: 290, y: 43, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -12433,7 +12433,7 @@ Tilemap:
   - m_RefCount: 615
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9618403, g: 0.54013884, b: 0.9622642, a: 1}
   m_Origin: {x: -46, y: -12, z: 0}
   m_Size: {x: 274, y: 48, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -22036,7 +22036,7 @@ Tilemap:
   - m_RefCount: 700
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.48584908, b: 0.94928735, a: 1}
   m_Origin: {x: -49, y: -12, z: 0}
   m_Size: {x: 276, y: 43, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
