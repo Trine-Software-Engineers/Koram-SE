@@ -4650,9 +4650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c631c990a862f49950064308f2b404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: 10
-  xMax: 283
-  yMin: 8
+  xMin: 13
+  xMax: 281
+  yMin: 9
   yMax: 25
 --- !u!20 &519420031
 Camera:
