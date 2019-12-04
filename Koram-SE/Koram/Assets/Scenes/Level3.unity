@@ -34746,9 +34746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c631c990a862f49950064308f2b404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: 8.5
-  xMax: 300
-  yMin: 6
+  xMin: 13
+  xMax: 281
+  yMin: 9
   yMax: 28
 --- !u!20 &519420031
 Camera:
@@ -35967,12 +35967,12 @@ PrefabInstance:
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.46
+      value: 4.45
       objectReference: {fileID: 0}
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.58
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
@@ -35993,6 +35993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerJump
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
+        type: 3}
+      propertyPath: invincible
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5383427972245311861, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
