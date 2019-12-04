@@ -131,24 +131,7 @@ public class player_controller : MonoBehaviour
     {
         facingRight = !facingRight;
         gameObject.transform.Rotate (0f, 180, 0f);
-    }
-    //function to detect when the character comes in contact with object tagged enemy    
-    void OnCollisionEnter2D(Collision2D collision){
-        GameObject myEnemy = GameObject.FindGameObjectWithTag("Enemy");
-        enemyFollower script = gameObject.GetComponent<enemyFollower>();
-        if (script != null)
-        {
-            enemyFollower enemyScript = myEnemy.GetComponent<enemyFollower>();
-
-            if (collision.collider.tag == "Enemy")
-            {
-                player_hud.PlayerHealth -= enemyScript.damage; 
-                Debug.Log(player_hud.PlayerHealth);
-            }
-        }         
-    }
-    
-    
+    }  
     void OnTriggerEnter2D(Collider2D trig) 
     {
         //if player touches EndOfLevel, player wins
