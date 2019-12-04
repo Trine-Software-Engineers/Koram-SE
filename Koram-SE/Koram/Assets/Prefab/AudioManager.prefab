@@ -130,93 +130,93 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Hero_Dance_Party
+  - name: Level1
     clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level2
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: b7af49ca0805038429ba5dd8e9544f8e, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level3
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: 62ac0a41ec73e2a478340edeba078499, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level4
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: 9c0d474eb9f72a1408e3abecfbb50247, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level5
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: ae8cb5c6ab4076744a7afdf0a180d597, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level6
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: 63ac94e93249db84687f0375204d9de4, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level7
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: d0bc52ad87d49d640bf112b436d5d304, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level8
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: 35b92d820e4d6bb4fa607b18c8ac108c, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level9
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: 4e34826e122b46744af6fdb7b4f23fe6, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Level10
-    clip: {fileID: 8300000, guid: fd658f10e5936374fb324c37541de14d, type: 3}
+    clip: {fileID: 8300000, guid: f0f042fb188514e4d912928ed8136c63, type: 3}
     volume: 0.108
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
