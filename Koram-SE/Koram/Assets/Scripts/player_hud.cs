@@ -18,7 +18,31 @@ public class player_hud : MonoBehaviour
 
     void Start()
     {
+        BlueGem = GameObject.Find("GemBlue");
+        BlackGem = GameObject.Find("GemBlack");
+        GreenGem = GameObject.Find("GemGreen");
+        RedGem = GameObject.Find("GemRed");
+        OrangeGem = GameObject.Find("GemOrange");
+        PurpleGem = GameObject.Find("GemPurple");
+        BlackGemPrefab = GameObject.Find("BlackGem");
+        BlueGemPrefab = GameObject.Find("BlueGem");
+        GreenGemPrefab = GameObject.Find("GreenGem");
+        RedGemPrefab = GameObject.Find("RedGem");
+        OrangeGemPrefab = GameObject.Find("OrangeGem");
+        PurpleGemPrefab = GameObject.Find("PurpleGem");
 
+        hearts[0] = GameObject.Find("Heart").GetComponent<Image>(); 
+        hearts[1] = GameObject.Find("Heart (1)").GetComponent<Image>(); 
+        hearts[2] = GameObject.Find("Heart (2)").GetComponent<Image>(); 
+        hearts[3] = GameObject.Find("Heart (3)").GetComponent<Image>(); 
+        hearts[4] = GameObject.Find("Heart (4)").GetComponent<Image>(); 
+        hearts[5] = GameObject.Find("Heart (5)").GetComponent<Image>(); 
+        hearts[6] = GameObject.Find("Heart (6)").GetComponent<Image>(); 
+        hearts[7] = GameObject.Find("Heart (7)").GetComponent<Image>(); 
+        hearts[8] = GameObject.Find("Heart (8)").GetComponent<Image>(); 
+        hearts[9] = GameObject.Find("Heart (9)").GetComponent<Image>(); 
+
+        TimeTakenUI = GameObject.Find("TimeTaken");
     }
 
     // Update is called once per frame

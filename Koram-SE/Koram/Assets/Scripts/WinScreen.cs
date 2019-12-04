@@ -25,19 +25,33 @@ public class WinScreen : MonoBehaviour
         if (score < 0) score = 0;
         string finalscore = score.ToString();
         ScoreText.text = ("Score: " + finalscore);
+        
         HudUI.SetActive(false);
     }
 
     public void NextLevel()
     {
-        Debug.Log("Go to next Level...");
-        //Time.timeScale = 1f;
+        Win = false;
+        WinMenuUI.SetActive(false);
+        HudUI.SetActive(true);
+
+        player_hud.TimeTaken = 0;
+
+        Audio.Stop(SceneManager.GetActiveScene().name);
+        Audio.Play("Level" + (SceneManager.GetActiveScene().buildIndex + 1).ToString());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        Audio.Stop(SceneManager.GetActiveScene().name);
+        Win = false;
+        WinMenuUI.SetActive(false);
+
         SceneManager.LoadScene("Main");
+
     }
 
     public void QuitGame()

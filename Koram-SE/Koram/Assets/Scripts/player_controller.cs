@@ -111,6 +111,16 @@ public class player_controller : MonoBehaviour
 
     void Die(){
         //play death animation
+        dead = true;
+        anim.SetBool("died",true);
+
+        Audio.Stop(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+        SceneManager.LoadScene("Main");  
+
+        player_hud.PlayerHealth = 3;
+        player_hud.MaxHealth = 3; 
+        player_hud.TimeTaken = 0;
     }
 }
