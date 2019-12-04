@@ -131,20 +131,20 @@ public class EnemySkeleton : MonoBehaviour
         if(difficulty == 1) //normal
         {
             skeletonHealth = 1;
-            skeletonSightDistance = 11f;
-            timeBetweenAttacks = 1.2f;
-            reactionTime = 0.4f;
-            skeletonWillCheckBehind = false;
-            skeletonHuntingSpeedMultiplier = 3f;
+            skeletonSightDistance = 17f;
+            timeBetweenAttacks = 0.9f;
+            reactionTime = 0.0f;
+            skeletonWillCheckBehind = true;
+            skeletonHuntingSpeedMultiplier = 6f;
         }
         else if (difficulty == 2) //hard
         {
             skeletonHealth = 2;
-            skeletonSightDistance = 14f;
-            timeBetweenAttacks = 1.05f;
-            reactionTime = 0.2f;
+            skeletonSightDistance = 17f;
+            timeBetweenAttacks = 0.9f;
+            reactionTime = 0.0f;
             skeletonWillCheckBehind = true;
-            skeletonHuntingSpeedMultiplier = 4.5f;
+            skeletonHuntingSpeedMultiplier = 6f;
         }
         else if (difficulty == 3) //insane
         {
