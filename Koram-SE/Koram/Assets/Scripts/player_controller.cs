@@ -162,11 +162,15 @@ public class player_controller : MonoBehaviour
         //play death animation
         dead = true;
         anim.SetBool("died",true);
+
+        Audio.Stop(SceneManager.GetActiveScene().name);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        player_hud.PlayerHealth = 3; 
-        player_hud.MaxHealth = 3;
+        SceneManager.LoadScene("Main");  
+
+        player_hud.PlayerHealth = 3;
+        player_hud.MaxHealth = 3; 
+        player_hud.TimeTaken = 0;
     }
 
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
