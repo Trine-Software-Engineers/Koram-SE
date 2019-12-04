@@ -265,11 +265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7918703882035388776, guid: a681035d795bd9f40b20e529615279e8,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 7918703882035388790, guid: a681035d795bd9f40b20e529615279e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -329,6 +324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918703882035388776, guid: a681035d795bd9f40b20e529615279e8,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7918703882035388791, guid: a681035d795bd9f40b20e529615279e8,
         type: 3}
@@ -708,11 +708,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1464949176542170689, guid: 8ccd12e6a7dffad499e089e9c0d15dd9,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2
-      objectReference: {fileID: 0}
     - target: {fileID: 1464949176542170719, guid: 8ccd12e6a7dffad499e089e9c0d15dd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -772,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464949176542170689, guid: 8ccd12e6a7dffad499e089e9c0d15dd9,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2
       objectReference: {fileID: 0}
     - target: {fileID: 1464949176542170688, guid: 8ccd12e6a7dffad499e089e9c0d15dd9,
         type: 3}
@@ -1086,11 +1086,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5425844349089861839, guid: 59ee72ad7af13374ebd0c3e3bb281483,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5425844349089861837, guid: 59ee72ad7af13374ebd0c3e3bb281483,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1150,6 +1145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425844349089861839, guid: 59ee72ad7af13374ebd0c3e3bb281483,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5425844349089861838, guid: 59ee72ad7af13374ebd0c3e3bb281483,
         type: 3}
@@ -31584,6 +31584,11 @@ PrefabInstance:
       propertyPath: invincible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383427972245311861, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
+        type: 3}
+      propertyPath: hearts.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea43fd3049abe249a4c8179ed3e7a8b, type: 3}
 --- !u!1001 &610320270
@@ -31844,11 +31849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3844308189983147652, guid: 74717fd329553004cba73192b2c51a87,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 3844308189983147654, guid: 74717fd329553004cba73192b2c51a87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31908,6 +31908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844308189983147652, guid: 74717fd329553004cba73192b2c51a87,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2 (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3844308189983147655, guid: 74717fd329553004cba73192b2c51a87,
         type: 3}
@@ -32691,11 +32696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 991438254522051718, guid: 87216d7ac44f1a04b86f13e539fefc2f,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 991438254522051716, guid: 87216d7ac44f1a04b86f13e539fefc2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32755,6 +32755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 991438254522051718, guid: 87216d7ac44f1a04b86f13e539fefc2f,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2 (4)
       objectReference: {fileID: 0}
     - target: {fileID: 991438254522051719, guid: 87216d7ac44f1a04b86f13e539fefc2f,
         type: 3}
@@ -33504,11 +33509,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5375635237618843257, guid: 0ad7aead1ae54984bbf78f0b0a555303,
-        type: 3}
-      propertyPath: m_Name
-      value: trees2 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5375635237618843259, guid: 0ad7aead1ae54984bbf78f0b0a555303,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33568,6 +33568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375635237618843257, guid: 0ad7aead1ae54984bbf78f0b0a555303,
+        type: 3}
+      propertyPath: m_Name
+      value: trees2 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5375635237618843258, guid: 0ad7aead1ae54984bbf78f0b0a555303,
         type: 3}
