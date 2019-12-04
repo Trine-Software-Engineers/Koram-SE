@@ -44,7 +44,11 @@ public class player_controller : MonoBehaviour
         }
         else if (Input.GetButton("Crouch"))
         {
-            playerSpeed = 0.1f;
+            playerSpeed = 2f;
+/*        }
+        else if (Input.GetButton("Sprint"))
+        {*/
+            playerSpeed = 4f;
         }
         else
         {
@@ -164,7 +168,9 @@ public class player_controller : MonoBehaviour
         anim.SetBool("died",true);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
-        SceneManager.LoadScene("Main");   
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        player_hud.PlayerHealth = 3; 
+        player_hud.MaxHealth = 3;
     }
 
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
