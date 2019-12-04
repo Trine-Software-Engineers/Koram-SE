@@ -4,60 +4,73 @@ using UnityEngine;
 
 public class EnemySpider : MonoBehaviour
 {
-    public int Difficulty = 1; // 1 = normal, 2 = hard, 3 = insane
-    public int PacingTime = 4;
-    public float SpiderSpeed = 1;
+    [Header("Spider Settings:")]
+    [Tooltip("1 = normal, 2 = hard, 3 = insane")]
+    public int difficulty = 1;
+
+    [Tooltip("Time in seconds for spider to pace.")]
+    public int pacingTime = 4;
+
+    [Tooltip("Spider movement speed")]
+    public float spiderSpeed = 1;
+
+
+    [Header("Spider Debug:")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public GameObject TargetObject;
-    public bool SpiderDead = false;
 
-    private bool FacingRight = false;
-    private float SpiderPace;
-    private float SpiderSpeedMultiplier = 1;
+    [Tooltip("Assigns Automatically")]
+    public GameObject targetObject;
 
-    private bool TargetInSights = false;
-    private float SpiderSightDistance = 12f;
-    private bool IsAwake = false;
-    private bool SpiderCurrentlyShooting = false;
+    public bool spiderDead = false;
 
-    int layerMask = ~(1 << 8); //raycast ignores all but player layer
-    
-    private float ReactionTime = 0f; //change this in difficulty function
-    private float SpiderReactionTime;  
-    private float TimeBetweenShots = 1f; //change this in difficulty function
-    private float SpiderTimeBetweenShots;
-    private bool SpiderHasShotFirstShot = false; 
-    private float UnholsterTime = 0.5f; //never change, this is the time for unholster animation to play
-    private float SpiderAccuracy = 0.5f; //spiders accuracy range, +- this value
+    [SerializeField]
+    private int spiderHealth = 1;
 
+    //movement
+    private bool facingRight = false;
+    private float spiderPace;
+    private float spiderSpeedMultiplier = 1;
+
+    //target detection
+    private bool targetInSights = false;
     private bool aimForHead = false;
+    private float spiderSightDistance = 12f;
+    int layerMask = ~(1 << 8); //raycast ignores all but player layer
+    int groundLayerMask = (1 << 11); //raycast ignores all but ground layer
 
-    private bool SpiderAnimationPlayed = false;
-    private float SpiderTimeToDeath = .8f;
-    private float DeathTimer = 0f;
+    //animations
+    private bool isAwake = false;
+    private bool spiderCurrentlyShooting = false;
+    private bool spiderHasShotFirstShot = false; 
+    private bool spiderAnimationPlayed = false;
+    private float spiderTimeToDeath = .8f;
+    private float deathTimer = 0f;
 
-    public bool TargetInMeleeDistance = false;
-    public float MeleeAnimationTime = 1f;
-    private float SpiderMeleeAnimationTime;
+    //difficulty
+    private float reactionTime = 0f; 
+    private float spiderReactionTime;  
+    private float timeBetweenShots = 1f; 
+    private float spiderTimeBetweenShots;
+    private float unholsterTime = 0.5f; //never change, this is the time for unholster animation to play
+    private float spiderAccuracy = 0.5f; //spiders accuracy range, +- this value
+    private int spiderDamage = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpiderPace = PacingTime;
-        SpiderReactionTime = ReactionTime;
-        SpiderTimeBetweenShots = TimeBetweenShots;
-        SpiderMeleeAnimationTime = MeleeAnimationTime;
+        targetObject = GameObject.Find("CharacterJustin");
+        spiderPace = pacingTime;
+        spiderReactionTime = reactionTime;
+        spiderTimeBetweenShots = timeBetweenShots;
+        DifficultyCheck();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DifficultyCheck();
         FlipSprite();
         Pace();
-        //TargetMeleeDetect();
-        //SpiderMelee();
         TargetDetect();
         SpiderShooting();
         Die();
@@ -65,143 +78,117 @@ public class EnemySpider : MonoBehaviour
 
     void DifficultyCheck()
     {
-        if(Difficulty > 3) Difficulty = 3;
-        if(Difficulty < 1) Difficulty = 1;
+        if(difficulty > 3) difficulty = 3;
+        if(difficulty < 1) difficulty = 1;
 
-        if(Difficulty == 1) //normal
+        if(difficulty == 1) //normal
         {
-            SpiderSightDistance = 11f;
-            TimeBetweenShots = 0.85f;
-            ReactionTime = 0.25f;
-            SpiderAccuracy = 0.9f;
+            spiderHealth = 1;
+            spiderSightDistance = 11f;
+            timeBetweenShots = 0.85f;
+            reactionTime = 0.25f;
+            spiderAccuracy = 0.9f;
         }
-        else if (Difficulty == 2) //hard
+        else if (difficulty == 2) //hard
         {
-            SpiderSightDistance = 14f;
-            TimeBetweenShots = 0.65f;
-            ReactionTime = 0.15f;
-            SpiderAccuracy = 0.6f;
+            spiderHealth = 2;
+            spiderSightDistance = 14f;
+            timeBetweenShots = 0.65f;
+            reactionTime = 0.15f;
+            spiderAccuracy = 0.6f;
         }
-        else if (Difficulty == 3) //insane
+        else if (difficulty == 3) //insane
         {
-            SpiderSightDistance = 17f;
-            TimeBetweenShots = 0.45f;
-            ReactionTime = 0.0f;
-            SpiderAccuracy = 0.3f;
+            spiderHealth = 3;
+            spiderSightDistance = 17f;
+            timeBetweenShots = 0.45f;
+            reactionTime = 0.0f;
+            spiderAccuracy = 0.3f;
         }
         else Debug.Log("SPIDER DIFFICULTY ERROR");
     }
 
-    void SpiderMelee()
-    {
-        if(SpiderDead || TargetObject == null) return;
-        
-        if(TargetInMeleeDistance)
-        {
-            gameObject.GetComponent<Animator>().SetBool("SpiderMeleeRange", true);
-            
-            SpiderMeleeAnimationTime -= Time.deltaTime;
-            if(SpiderMeleeAnimationTime <= 0.0f)
-            {
-                Debug.Log("melee");
-                Melee();
-                SpiderMeleeAnimationTime = MeleeAnimationTime;
-            }
-        }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetBool("SpiderMeleeRange", false);
-            SpiderMeleeAnimationTime = MeleeAnimationTime;
-        }
-
-    }
 
     void SpiderShooting()
     {
-        if(SpiderDead || TargetObject == null || TargetInMeleeDistance) return;
-        
+        if(spiderDead || targetObject == null) return;
 
         //if target is in sights, spider stops walking, aims for head(or feet if head is not visable) then shoots repeatadly until target leaves sights.
-        if(TargetInSights)
+        if(targetInSights)
         {
-            SpiderCurrentlyShooting = true;
-
-
+            spiderCurrentlyShooting = true;
 
             //BLUE debug ray (shows where spider is going to shoot)
-            Vector2 direction = TargetObject.transform.position - firePoint.position;
+            Vector2 direction = targetObject.transform.position - firePoint.position;
             if (aimForHead) direction.y += 1.75f; //offset to aim for chest or feet
             else direction.y += .5f;
-            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
+            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,spiderSightDistance,layerMask);
             Debug.DrawRay(firePoint.position,direction,Color.blue);
 
             //If spider is not ready to shoot, get him ready to shoot
-            if(!IsAwake) 
+            if(!isAwake) 
             {
             gameObject.GetComponent<Animator>().SetTrigger("SpiderAwake");
-            IsAwake = true;
+            isAwake = true;
             }
 
             //handles shooting
-            SpiderReactionTime -= Time.deltaTime;
-            if(SpiderReactionTime <= 0.0f){
-                if(!SpiderHasShotFirstShot) //if spider has not shot after being awoken, shoot
+            spiderReactionTime -= Time.deltaTime;
+            if(spiderReactionTime <= 0.0f){
+                if(!spiderHasShotFirstShot) //if spider has not shot after being awoken, shoot
                 {
-                    UnholsterTime -= Time.deltaTime;
-                    if(UnholsterTime <= 0.0f)
+                    unholsterTime -= Time.deltaTime;
+                    if(unholsterTime <= 0.0f)
                     {
                         ShootBullet();
-                        SpiderHasShotFirstShot = true;
+                        spiderHasShotFirstShot = true;
                     }
                 }
                 else //if spider has shot after being awoken, start shooting on timer (timebetweenshots)
                 {
-                    SpiderTimeBetweenShots -= Time.deltaTime;
-                    if(SpiderTimeBetweenShots <= 0.0f)
+                    spiderTimeBetweenShots -= Time.deltaTime;
+                    if(spiderTimeBetweenShots <= 0.0f)
                     { 
                         ShootBullet();
-                        SpiderTimeBetweenShots = TimeBetweenShots;
+                        spiderTimeBetweenShots = timeBetweenShots;
                     }
                 }
-
-                
             }
         }
         else 
         {
             //after target leaves range, spider holsters then returns to walking.
-            if(SpiderCurrentlyShooting)
+            if(spiderCurrentlyShooting)
             {
                 gameObject.GetComponent<Animator>().SetTrigger("HolsterThenWalk");
             }
-            SpiderCurrentlyShooting = false;
-            IsAwake = false;
+            spiderCurrentlyShooting = false;
+            isAwake = false;
 
             //after target leaves range, reset time until next bullet is shot.
-            SpiderTimeBetweenShots = TimeBetweenShots;
-            SpiderReactionTime = ReactionTime;
-            UnholsterTime = 0.5f;
-            SpiderHasShotFirstShot = false;
+            spiderTimeBetweenShots = timeBetweenShots;
+            spiderReactionTime = reactionTime;
+            unholsterTime = 0.5f;
+            spiderHasShotFirstShot = false;
         }
     }
 
 
     void ShootBullet()
     {
-        if(SpiderDead || TargetObject == null) return;
+        if(spiderDead || targetObject == null) return;
 
         gameObject.GetComponent<Animator>().Play("Spider Shoot");
         float sign = 1;
         float offset = 0;
 
         //default aims for head, if head is not visable, aims for feet.
-        Vector2 direction = TargetObject.transform.position - firePoint.position;
+        Vector2 direction = targetObject.transform.position - firePoint.position;
         if (aimForHead) direction.y += 1.75f; 
         else direction.y += .5f;
         
         //gives a random aim offset, so spider doesn't always shoot at the exact same place
-        
-        float AimRandomizer = UnityEngine.Random.Range(-SpiderAccuracy, SpiderAccuracy);
+        float AimRandomizer = UnityEngine.Random.Range(-spiderAccuracy, spiderAccuracy);
         direction.y += AimRandomizer;
         
         //takes care of aiming offset for above and below the firepoint
@@ -215,60 +202,35 @@ public class EnemySpider : MonoBehaviour
         Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
     }
 
-    void Melee()
-    {
-        gameObject.GetComponent<Animator>().Play("Spider Melee");
-    }
-
-    void TargetMeleeDetect()
-    {
-        if(SpiderDead || TargetObject == null) return;
-
-        //looks for player
-        Vector2 direction = TargetObject.transform.position - transform.position;
-        direction.y += 1f; //offset vector so spider looks for chest
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, direction, 4.0f, layerMask);
-        
-        //if spider is facing target, and target is in range, and target's chest is visible, attack
-        if((hitInfo.collider != null && hitInfo.collider.tag == "Player")) //&& ((FacingRight && (direction.x > 0)) || (!FacingRight && (direction.x < 0))))
-        {
-            Debug.DrawRay(transform.position,direction,Color.cyan);
-            TargetInMeleeDistance = true;
-        }
-        else TargetInMeleeDistance = false;
-        
-    }
-
-
     void TargetDetect()
     {
-        if(SpiderDead || TargetObject == null || TargetInMeleeDistance) return;
+        if(spiderDead || targetObject == null) return;
 
         //if target head or feet are found, target is in sights
         if ((HeadFound() && FeetFound()) || (HeadFound() || FeetFound()))
         {
-            TargetInSights = true;
+            targetInSights = true;
             return;
         }
-        TargetInSights = false;
+        targetInSights = false;
     }
 
 
     bool HeadFound()
     {
         //looks for head
-        Vector2 direction = TargetObject.transform.position - transform.position;
+        Vector2 direction = targetObject.transform.position - transform.position;
         direction.y += 2f; //offset vector so spider looks for head
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance,layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,spiderSightDistance,layerMask);
         
         //if spider is facing target, and target is in range, and target's head is visible, head is found.
-        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && (direction.x > 0)) || (!FacingRight && (direction.x < 0))))
+        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((facingRight && (direction.x > 0)) || (!facingRight && (direction.x < 0))))
         {
-            Debug.DrawRay(transform.position,direction,Color.green);
+            //Debug.DrawRay(transform.position,direction,Color.green);
             aimForHead = true;
             return true;
         }
-        else Debug.DrawRay(transform.position,direction,Color.red);
+        //else Debug.DrawRay(transform.position,direction,Color.red);
         aimForHead = false;
         return false;
     }
@@ -277,17 +239,17 @@ public class EnemySpider : MonoBehaviour
     bool FeetFound()
     {
         //looks for feet, slightly less spider sight distance than head
-        Vector2 direction = TargetObject.transform.position - transform.position;
+        Vector2 direction = targetObject.transform.position - transform.position;
         direction.y += .25f; //offset vector so spider looks for feet
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,SpiderSightDistance - 0.1f,layerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position,direction,spiderSightDistance - 0.1f,layerMask);
         
         //if spider is facing target, and target is in range, and target's feet are visible, feet are found.
-        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((FacingRight && direction.x > 0) || (!FacingRight && direction.x < 0)))
+        if((hitInfo.collider != null && hitInfo.collider.tag == "Player") && ((facingRight && direction.x > 0) || (!facingRight && direction.x < 0)))
         {
-            Debug.DrawRay(transform.position,direction,Color.green);
+            //Debug.DrawRay(transform.position,direction,Color.green);
             return true;
         }
-        else Debug.DrawRay(transform.position,direction,Color.red);
+        //else Debug.DrawRay(transform.position,direction,Color.red);
         return false;
     }
 
@@ -295,51 +257,72 @@ public class EnemySpider : MonoBehaviour
     void Pace()
     {
         //if spider is shooting or dead, stop movement.
-        if(SpiderCurrentlyShooting || SpiderDead) {
+        if(spiderCurrentlyShooting || spiderDead) {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0.0f, gameObject.GetComponent<Rigidbody2D>().velocity.y);    
             return;
         }
 
         //when timer reaches "SpiderPace", multiply spider movement speed by -1, moving him in the opposite direction.
-        if (SpiderPace <= 0f)
+        if (spiderPace <= 0f)
         {
-            SpiderSpeedMultiplier *= -1f;
-            SpiderPace = PacingTime;
+            spiderSpeedMultiplier *= -1f;
+            spiderPace = pacingTime;
         }
-        SpiderPace -= Time.deltaTime;
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (SpiderSpeedMultiplier * SpiderSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
-        
+        spiderPace -= Time.deltaTime;
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (spiderSpeedMultiplier * spiderSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
 
     //flip sprite if spider changes direction
     void FlipSprite()
     {
-        if(SpiderCurrentlyShooting || SpiderDead) return;
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0.0f && FacingRight == true) 
+        if(spiderCurrentlyShooting || spiderDead) return;
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0.0f && facingRight == true) 
         {
-            FacingRight = !FacingRight;
+            facingRight = !facingRight;
             gameObject.transform.Rotate(0f, 180, 0f);
         }
-        else if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0.0f && FacingRight == false) 
+        else if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0.0f && facingRight == false) 
         {
-            FacingRight = !FacingRight;
+            facingRight = !facingRight;
             gameObject.transform.Rotate (0f, 180, 0f);
+        }
+
+        //if spider reaches wall, flip
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, -gameObject.transform.right, 3f, groundLayerMask);
+        if(hitInfo.collider != null && hitInfo.collider.tag == "Ground")
+        {
+            facingRight = !facingRight;
+            gameObject.transform.Rotate (0f, 180, 0f);
+            spiderSpeedMultiplier *= -1f;
+            spiderPace = pacingTime;
         }
     }
 
 
+    void OnTriggerEnter2D(Collider2D trig) 
+    {
+        player_controller player = trig.GetComponent<player_controller>();
+        if (player != null) player.TakeDamage(spiderDamage);  
+    }
+
+    public void TakeDamage ( int damage) 
+    {
+        spiderHealth -= damage;
+    }
+
     void Die()
     {
-        if(!SpiderDead) return;
-
+        if(spiderHealth > 0) return;
+        spiderDead = true;
+        
         //Play death animation, then die.
-        if(!SpiderAnimationPlayed)
+        if(!spiderAnimationPlayed)
         {
             gameObject.GetComponent<Animator>().Play("Spider Die");
-            SpiderAnimationPlayed = true;
+            spiderAnimationPlayed = true;
         }
-        DeathTimer += Time.deltaTime;
-            if(DeathTimer > SpiderTimeToDeath){
+        deathTimer += Time.deltaTime;
+            if(deathTimer > spiderTimeToDeath){
                 Destroy(gameObject);
             }
     }
