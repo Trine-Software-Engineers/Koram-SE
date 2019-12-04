@@ -45,10 +45,6 @@ public class player_controller : MonoBehaviour
         else if (Input.GetButton("Crouch"))
         {
             playerSpeed = 2f;
-/*        }
-        else if (Input.GetButton("Sprint"))
-        {*/
-            playerSpeed = 4f;
         }
         else
         {
