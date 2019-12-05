@@ -94,12 +94,12 @@ public class EnemySpider : MonoBehaviour
             spiderHealth = 2;
             spiderSightDistance = 14f;
             timeBetweenShots = 0.65f;
-            reactionTime = 0.15f;
+            reactionTime = 0.15f; 
             spiderAccuracy = 0.6f;
         }
         else if (difficulty == 3) //insane
         {
-            spiderHealth = 3;
+            spiderHealth = 1;
             spiderSightDistance = 17f;
             timeBetweenShots = 0.45f;
             reactionTime = 0.0f;

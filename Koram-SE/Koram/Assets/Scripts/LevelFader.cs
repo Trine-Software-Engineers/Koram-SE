@@ -17,6 +17,7 @@ public class LevelFader : MonoBehaviour {
 	public void FadeTo (string scene)
 	{
 		StartCoroutine(FadeOut(scene));
+		
 	}
 
 
