@@ -33,6 +33,7 @@ public class WinScreen : MonoBehaviour
         
         HudUI.SetActive(false);
     }
+    
     void ShowFinal()
     {
         
