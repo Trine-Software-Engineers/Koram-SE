@@ -10,6 +10,7 @@ public class WinScreen : MonoBehaviour
     public GameObject WinMenuUI;
     public GameObject FinalMenuUI;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI FinalScoreText;
     public GameObject HudUI;
     public static bool Final = false;
 
@@ -41,7 +42,7 @@ public class WinScreen : MonoBehaviour
         int score = (int)(100 - player_hud.TimeTaken);
         if (score < 0) score = 0;
         string finalscore = score.ToString();
-        ScoreText.text = ("Final Score: " + finalscore);
+        FinalScoreText.text = ("Final Score: " + finalscore);
         
         HudUI.SetActive(false);
     }

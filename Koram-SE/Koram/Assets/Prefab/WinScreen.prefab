@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 2673107391398269401}
   - component: {fileID: 8498179616160819051}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: FinalScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,6 +1952,7 @@ MonoBehaviour:
   WinMenuUI: {fileID: 9194526100422435999}
   FinalMenuUI: {fileID: 6196061672836282246}
   ScoreText: {fileID: 9194526102170064646}
+  FinalScoreText: {fileID: 8498179616160819051}
   HudUI: {fileID: 5562251658631673029, guid: 2c87f9e2bb8fc3e40a067da688b94a7b, type: 3}
 --- !u!114 &-7267211427745892498
 MonoBehaviour:
