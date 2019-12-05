@@ -64,7 +64,7 @@ public class player_controller : MonoBehaviour
         {
             isAttacking = true;
             //RNG to choose attack
-            int index = UnityEngine.Random.Range(1,7);
+            int index = UnityEngine.Random.Range(1,4);
             //Debug.Log(index);
 
             //each of the index numbers represent an attack animation that the character can do
