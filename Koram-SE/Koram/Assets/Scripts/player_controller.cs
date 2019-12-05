@@ -135,7 +135,17 @@ public class player_controller : MonoBehaviour
     void OnTriggerEnter2D(Collider2D trig) 
     {
         //if player touches EndOfLevel, player wins
-        if (trig.gameObject.name == "EndOfLevel") WinScreen.Win = true;
+        if (trig.gameObject.name == "EndOfLevel") 
+        {
+            if (SceneManager.GetActiveScene().name == "Level10")
+            {
+                WinScreen.Final = true;
+            }
+            else
+            {
+                WinScreen.Win = true;
+            }
+        }
     
         //deal damage to skeleton
         EnemySkeleton skeleton = trig.GetComponent<EnemySkeleton>();
