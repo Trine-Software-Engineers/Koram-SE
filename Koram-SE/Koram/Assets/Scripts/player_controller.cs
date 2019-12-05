@@ -174,9 +174,13 @@ public class player_controller : MonoBehaviour
         anim.SetBool("died",true);
 
         Audio.Stop(SceneManager.GetActiveScene().name);
+        
+        
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
-        SceneManager.LoadScene("Main");  
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Audio.Play(SceneManager.GetActiveScene().name);
 
         player_hud.PlayerHealth = 3;
         player_hud.MaxHealth = 3; 
