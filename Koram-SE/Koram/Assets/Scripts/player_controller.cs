@@ -173,7 +173,7 @@ public class player_controller : MonoBehaviour
         dead = true;
         anim.SetBool("died",true);
 
-        Audio.Stop(SceneManager.GetActiveScene().name);
+        Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
         
         
         yield return new WaitForSeconds(1f);

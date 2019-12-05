@@ -50,7 +50,7 @@ public class PauseScreen : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        Audio.Stop(SceneManager.GetActiveScene().name);
+        Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
         SceneManager.LoadScene("Main");
     }
 

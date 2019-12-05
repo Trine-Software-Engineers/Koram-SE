@@ -55,8 +55,7 @@ public class WinScreen : MonoBehaviour
         HudUI.SetActive(true);
 
         player_hud.TimeTaken = 0;
-
-        Audio.Stop(SceneManager.GetActiveScene().name);
+        Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
         Audio.Play("Level" + (SceneManager.GetActiveScene().buildIndex + 1).ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;
@@ -65,7 +64,7 @@ public class WinScreen : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        Audio.Stop(SceneManager.GetActiveScene().name);
+        Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
         Win = false;
         WinMenuUI.SetActive(false);
 
