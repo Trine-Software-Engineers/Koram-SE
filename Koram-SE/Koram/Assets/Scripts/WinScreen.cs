@@ -8,12 +8,16 @@ public class WinScreen : MonoBehaviour
 {
     public static bool Win = false;
     public GameObject WinMenuUI;
+    public GameObject FinalMenuUI;
     public TextMeshProUGUI ScoreText;
     public GameObject HudUI;
+    public static bool Final = false;
 
     void Update()
     {
         if (Win) ShowScore();
+        if (Final) ShowFinal();
+        
     }
 
     void ShowScore()
@@ -25,6 +29,19 @@ public class WinScreen : MonoBehaviour
         if (score < 0) score = 0;
         string finalscore = score.ToString();
         ScoreText.text = ("Score: " + finalscore);
+        
+        HudUI.SetActive(false);
+    }
+    void ShowFinal()
+    {
+        
+        Time.timeScale = 0f;
+        FinalMenuUI.SetActive(true);
+
+        int score = (int)(100 - player_hud.TimeTaken);
+        if (score < 0) score = 0;
+        string finalscore = score.ToString();
+        ScoreText.text = ("Final Score: " + finalscore);
         
         HudUI.SetActive(false);
     }
