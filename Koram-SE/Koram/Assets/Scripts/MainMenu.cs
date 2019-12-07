@@ -7,21 +7,22 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
-   // Start is called before the first frame update
+   //Starts the main menu music when the game is loaded
    void Start()
    {
        Audio.Play("MenuTheme");
        Audio.Volume("MenuTheme", 0.1f);
    }
 
+   //Music is controlled from level to level with this function
    public void PlayGame()
-   {
-        
+   {    
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  
         Audio.Stop("MenuTheme");
         Audio.Play("Level" + (SceneManager.GetActiveScene().buildIndex + 1).ToString());
    }
 
+    //for quitting the application
    public void QuitGame()
    {
        Debug.Log("Quit");

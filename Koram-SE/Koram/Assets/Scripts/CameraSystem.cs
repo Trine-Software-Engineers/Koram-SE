@@ -10,13 +10,14 @@ public class CameraSystem : MonoBehaviour
     public float yMin;
     public float yMax;
 
-    // Start is called before the first frame update
+    // The player is found within the scene to focus on
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");    
     }
 
-    // Update is called once per frame
+    // This sets up the adjustable size of the camera when it is focused on the player
+    // It also can lock a max or min height or length that the camera can travel in a level
     void Update()
     {
         if(player != null)

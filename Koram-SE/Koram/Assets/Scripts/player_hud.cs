@@ -57,7 +57,7 @@ public class player_hud : MonoBehaviour
         TimeTakenUI = GameObject.Find("TimeTaken");
     }
 
-    // Update is called once per frame
+    //Checks players health every frame
     void Update()
     {
 
@@ -105,9 +105,12 @@ public class player_hud : MonoBehaviour
         GemCheck();
         
     }
+
+    //This checks if the gem is still in the level or if it is collected by the player yet
+    //The greyed out version in the HUD means that the gem is not collected
     void GemCheck()
     {
-        if (BlueGemPrefab == null)
+        if (BlueGemPrefab == null)//blue gem check
         {
             BlueGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }
@@ -116,8 +119,7 @@ public class player_hud : MonoBehaviour
             BlueGem.GetComponent<Image>().color = new Color32(255,255,225,50);
         }
 
-
-        if (BlackGemPrefab == null)
+        if (BlackGemPrefab == null)//black gem check
         {
             BlackGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }
@@ -125,10 +127,8 @@ public class player_hud : MonoBehaviour
         {
             BlackGem.GetComponent<Image>().color = new Color32(255,255,225,50);
         } 
-
-
         
-        if (GreenGemPrefab == null)
+        if (GreenGemPrefab == null)//green gem check
         {
             GreenGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }
@@ -136,10 +136,8 @@ public class player_hud : MonoBehaviour
         {
             GreenGem.GetComponent<Image>().color = new Color32(255,255,225,50);
         } 
-
-
         
-        if (RedGemPrefab == null)
+        if (RedGemPrefab == null)//red gem check
         {
             RedGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }
@@ -147,10 +145,8 @@ public class player_hud : MonoBehaviour
         {
             RedGem.GetComponent<Image>().color = new Color32(255,255,225,50);
         } 
-
-
         
-        if (OrangeGemPrefab == null)
+        if (OrangeGemPrefab == null)//orange gem check
         {
             OrangeGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }
@@ -158,10 +154,8 @@ public class player_hud : MonoBehaviour
         {
             OrangeGem.GetComponent<Image>().color = new Color32(255,255,225,50);
         } 
-
-
         
-        if (PurpleGemPrefab == null)
+        if (PurpleGemPrefab == null)//purple gem check
         {
             PurpleGem.GetComponent<Image>().color = new Color32(255,255,225,255);
         }

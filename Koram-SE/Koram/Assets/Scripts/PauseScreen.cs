@@ -10,13 +10,7 @@ public class PauseScreen : MonoBehaviour
 
     public GameObject PauseMenuUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    //Activates the pause menu when the escape key is pressed
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -32,7 +26,7 @@ public class PauseScreen : MonoBehaviour
         }
     }
 
-
+    //Goes back to the game if the escape key is pressed a second time
     public void Resume()
     {
         PauseMenuUI.SetActive(false);

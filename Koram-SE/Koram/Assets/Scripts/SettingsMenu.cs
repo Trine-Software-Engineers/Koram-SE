@@ -9,13 +9,7 @@ public class SettingsMenu : MonoBehaviour
     public float Volume = 0.1f;
     public Slider VolumeBarUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    //This connects the volume in the settings menu to the actual volume of the sounds 
     void Update()
    {
        Volume = VolumeBarUI.value;       

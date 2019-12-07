@@ -9,7 +9,6 @@ public class LevelFader : MonoBehaviour {
 	public AnimationCurve curve;
 
 	void Start ()
-
 	{
 		StartCoroutine(FadeIn());
 	}
@@ -20,8 +19,8 @@ public class LevelFader : MonoBehaviour {
 		
 	}
 
-
-
+	//This is used for a screen transition by changing the alpha values(opacity) on an image that is specified in the inspector
+	//It is a transition from a scene to the image before transitioning to the next scene
 	IEnumerator FadeIn ()
 	{
 		float t = 1f;
@@ -34,8 +33,7 @@ public class LevelFader : MonoBehaviour {
 		}
 	}
 
-
-
+	//This is the same as the functiuon above only it is going from the image to the scene that is loaded
 	IEnumerator FadeOut(string scene)
 	{
 		float t = 0f;
