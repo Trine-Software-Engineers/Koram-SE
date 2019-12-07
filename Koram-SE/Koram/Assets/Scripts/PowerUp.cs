@@ -8,6 +8,8 @@ public class PowerUp : MonoBehaviour
     private GameObject Heart;
     bool picked = false;
 
+    //This is a trigger or collider that is set off by becoming in contact with an object tagged player
+    //Can not be set off by an enemy and will remain until player touches it
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player") && picked ==false)

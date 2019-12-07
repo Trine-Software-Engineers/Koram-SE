@@ -7,7 +7,7 @@ public class gems : MonoBehaviour
     public GameObject pickupEffect;
     private GameObject gem;
     bool pick = false;
-
+//This creates an event that happens when an object tagged player collides with the gems
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player")&& pick == false)

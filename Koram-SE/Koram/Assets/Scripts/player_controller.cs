@@ -14,17 +14,16 @@ public class player_controller : MonoBehaviour
     private bool isAttacking = false; 
 
     private Animator anim; //shortens the call on the animator window
-    
     private bool dead = false;
     public bool invincible = false;//makes player invincible for testing
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //Every frame the player is checked for falling off the level or for having no hearts
+    //Starts the die sequence if either of these perameters are met
     void FixedUpdate()
     {
         PlayerMove();
@@ -38,6 +37,7 @@ public class player_controller : MonoBehaviour
     void PlayerMove(){
         if(dead) return;
         
+        //changes player speed according to if they are walking running or crouching
         if (Input.GetButton("Walk") && !Input.GetButton("Crouch")) //Shift while moving is used for walk
         {
             playerSpeed = 2; //Player is walking       
@@ -51,6 +51,7 @@ public class player_controller : MonoBehaviour
             playerSpeed = 10;  //Player is Running
         }
 
+        //crouching function and check
         if(Input.GetButton("Crouch"))
         {
             anim.SetBool("isCrouching",true);
@@ -60,6 +61,7 @@ public class player_controller : MonoBehaviour
             anim.SetBool("isCrouching",false);
         }
 
+        //allows player to attack
         if(Input.GetButton("Fire1") && !isAttacking)
         {
             isAttacking = true;
@@ -126,12 +128,15 @@ public class player_controller : MonoBehaviour
         }
         
     }
+
     //Detects which way the sprite is currently facing and flips it if a movement is made in the opposite direction
     void FlipPlayer()
     {
         facingRight = !facingRight;
         gameObject.transform.Rotate (0f, 180, 0f);
     }  
+
+    //collider for the end win screen when the final level is completed
     void OnTriggerEnter2D(Collider2D trig) 
     {
         //if player touches EndOfLevel, player wins
@@ -156,6 +161,7 @@ public class player_controller : MonoBehaviour
         if (spider != null) spider.TakeDamage(playerDamage);
     }
 
+    //this is for testing purposes mainly to make sure all of level is playable without worrking about being hit by enemies
     public void TakeDamage ( int damage) 
     {
         if(invincible)
@@ -163,18 +169,17 @@ public class player_controller : MonoBehaviour
             Debug.Log("player is invincible for testing");
             return;
         }
-
         player_hud.PlayerHealth -= damage;
         if (player_hud.PlayerHealth <=0) StartCoroutine(Die());
     }
 
+    //Sequence of timed events that happen when the player dies
     IEnumerator Die(){
         //play death animation
         dead = true;
         anim.SetBool("died",true);
 
         Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
-        
         
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
