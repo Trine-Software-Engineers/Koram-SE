@@ -14,13 +14,14 @@ public class WinScreen : MonoBehaviour
     public GameObject HudUI;
     public static bool Final = false;
 
+    //chooses which screen to show when a level is completed
     void Update()
     {
         if (Win) ShowScore();
-        if (Final) ShowFinal();
-        
+        if (Final) ShowFinal();    
     }
 
+    //display to user the user score that they got in the completed level for all levels except for 10
     void ShowScore()
     {
         Time.timeScale = 0f;
@@ -34,6 +35,7 @@ public class WinScreen : MonoBehaviour
         HudUI.SetActive(false);
     }
     
+    //Final score and screen on level 10
     void ShowFinal()
     {
         
@@ -69,9 +71,9 @@ public class WinScreen : MonoBehaviour
         WinMenuUI.SetActive(false);
 
         SceneManager.LoadScene("Main");
-
     }
 
+    //quits the game 
     public void QuitGame()
     {
         Debug.Log("Quit Game... works outside of editor");

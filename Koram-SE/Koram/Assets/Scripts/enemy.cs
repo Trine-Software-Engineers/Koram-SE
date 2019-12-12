@@ -6,15 +6,9 @@ public class enemy : MonoBehaviour
 {
 
     public float speed;
-
-    
-
-    public int damage;
-    
+    public int damage;  
     public bool movingRight = true;
-
     public Transform groundDetection;
-
     public int health;
 
     public void TakeDamage ( int damage) {

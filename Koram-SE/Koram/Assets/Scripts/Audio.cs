@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//this is so bad
-//this only exists to tidy up code
+//this script sets up the play, stop and volume controls for the music and sound effects
 public class Audio : MonoBehaviour
 {
     public static void Play(string name)
