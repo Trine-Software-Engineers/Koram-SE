@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraSystem : MonoBehaviour
 {
+    //Clamping to Level and Following Player
     private GameObject player;
     public float xMin;
     public float xMax;
@@ -13,7 +14,7 @@ public class CameraSystem : MonoBehaviour
     // The player is found within the scene to focus on
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");    
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // This sets up the adjustable size of the camera when it is focused on the player
@@ -26,6 +27,5 @@ public class CameraSystem : MonoBehaviour
             float y = Mathf.Clamp (player.transform.position.y, yMin, yMax);
             gameObject.transform.position = new Vector3 (x, y, gameObject.transform.position.z);
         }
-        
     }
 }
