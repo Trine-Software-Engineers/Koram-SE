@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: playerJump
-      value: 21
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea43fd3049abe249a4c8179ed3e7a8b, type: 3}
@@ -36569,7 +36569,7 @@ PrefabInstance:
     - target: {fileID: 6241069454646624278, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: xMin
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6241069454646624278, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
