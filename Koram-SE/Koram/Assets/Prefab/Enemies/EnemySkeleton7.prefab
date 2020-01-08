@@ -157,7 +157,7 @@ MonoBehaviour:
   pacingTime: 4
   skeletonSpeed: 1
   skeletonDead: 0
-  skeletonHealth: 3
+  skeletonHealth: 1
   targetObject: {fileID: 0}
 --- !u!1 &7672755131295663259
 GameObject:

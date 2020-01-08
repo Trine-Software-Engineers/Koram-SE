@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b11c8315b23fb42b576e110dc9ccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 3
+  difficulty: 1
   pacingTime: 4
   spiderSpeed: 2
   bulletPrefab: {fileID: 6996300009058847167, guid: 58aabe9327e4d2847b4164867ecd9c3f,

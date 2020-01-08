@@ -123,7 +123,7 @@ public class player_controller : MonoBehaviour
         else if (moveX > 0.0f && facingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded == true){
+        if (Input.GetButton("Jump") && isGrounded == true){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
             FindObjectOfType<AudioManager>().Play("jump");

@@ -277,13 +277,16 @@ public class EnemySpider : MonoBehaviour
         }
 
         //if spider reaches wall, flip
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, -gameObject.transform.right, 3f, groundLayerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, -gameObject.transform.right, 1.1f, groundLayerMask);
+        Debug.DrawRay(transform.position, -gameObject.transform.right * 1.1f,Color.green);
         if(hitInfo.collider != null && hitInfo.collider.tag == "Ground")
         {
+            //Debug.Log(hitInfo.collider.tag);
             facingRight = !facingRight;
             gameObject.transform.Rotate (0f, 180, 0f);
             spiderSpeedMultiplier *= -1f;
             spiderPace = pacingTime;
+            //Debug.Log("SpiderHitWall");
         }
     }
 
