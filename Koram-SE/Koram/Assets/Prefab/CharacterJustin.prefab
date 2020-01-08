@@ -11025,7 +11025,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDamage: 1
   playerSpeed: 10
-  playerJump: 26
+  playerJump: 20
+  fallMultiplier: 0.5
+  lowJumpMultiplier: 6
   isGrounded: 0
   invincible: 0
 --- !u!50 &2858023898930018436
@@ -11043,7 +11045,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
