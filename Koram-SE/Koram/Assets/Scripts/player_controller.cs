@@ -8,6 +8,8 @@ public class player_controller : MonoBehaviour
     public int playerDamage = 1;
     public float playerSpeed = 10; //multiplier for the height player speed- can be changed in unity scene
     public int playerJump = 20; //multiplier for the height player jumps- can be changed in unity scene
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
     public bool isGrounded = false; //determins if the player is able to jump
     private float moveX;
     private bool facingRight = true; //determines which way the player sprite is looking 
@@ -44,7 +46,7 @@ public class player_controller : MonoBehaviour
         }
         else if (Input.GetButton("Crouch"))
         {
-            playerSpeed = 2f;
+            playerSpeed = .2f;
         }
         else
         {
@@ -121,11 +123,20 @@ public class player_controller : MonoBehaviour
         else if (moveX > 0.0f && facingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButton("Jump") && isGrounded == true){
+        if (Input.GetButtonDown("Jump") && isGrounded == true){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
             FindObjectOfType<AudioManager>().Play("jump");
         }
+
+        if (GetComponent<Rigidbody2D>().velocity.y < 0)
+                {
+                GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                }   
+        else if (GetComponent<Rigidbody2D>().velocity.y > 0 && !Input.GetButton ("Jump")) 
+                {
+                GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+                }
         
     }
 

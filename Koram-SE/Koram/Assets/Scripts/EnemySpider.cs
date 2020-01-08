@@ -7,38 +7,28 @@ public class EnemySpider : MonoBehaviour
     [Header("Spider Settings:")]
     [Tooltip("1 = normal, 2 = hard, 3 = insane")]
     public int difficulty = 1;
-
     [Tooltip("Time in seconds for spider to pace.")]
     public int pacingTime = 4;
-
     [Tooltip("Spider movement speed")]
     public float spiderSpeed = 1;
-
-
     [Header("Spider Debug:")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-
     [Tooltip("Assigns Automatically")]
     public GameObject targetObject;
-
     public bool spiderDead = false;
-
     [SerializeField]
     private int spiderHealth = 1;
-
     //movement
     private bool facingRight = false;
     private float spiderPace;
     private float spiderSpeedMultiplier = 1;
-
     //target detection
     private bool targetInSights = false;
     private bool aimForHead = false;
     private float spiderSightDistance = 12f;
     int layerMask = ~(1 << 8); //raycast ignores all but player layer
     int groundLayerMask = (1 << 11); //raycast ignores all but ground layer
-
     //animations
     private bool isAwake = false;
     private bool spiderCurrentlyShooting = false;
@@ -46,7 +36,6 @@ public class EnemySpider : MonoBehaviour
     private bool spiderAnimationPlayed = false;
     private float spiderTimeToDeath = .8f;
     private float deathTimer = 0f;
-
     //difficulty
     private float reactionTime = 0f; 
     private float spiderReactionTime;  
