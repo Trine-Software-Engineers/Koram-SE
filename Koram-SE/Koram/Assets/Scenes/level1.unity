@@ -35403,11 +35403,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6196061672836282246, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9194526102241139191, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35518,6 +35513,11 @@ PrefabInstance:
       propertyPath: HudUI
       value: 
       objectReference: {fileID: 1457140472}
+    - target: {fileID: 6196061672836282246, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d1fed5ce7cba444a8e02ff1af27f83f, type: 3}
 --- !u!1001 &769516310
