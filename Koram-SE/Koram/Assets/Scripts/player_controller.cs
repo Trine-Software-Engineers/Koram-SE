@@ -199,7 +199,6 @@ public class player_controller : MonoBehaviour
         Audio.Play(SceneManager.GetActiveScene().name);
 
         player_hud.PlayerHealth = 3;
-        player_hud.MaxHealth = 3; 
         player_hud.TimeTaken = 0;
     }
 
