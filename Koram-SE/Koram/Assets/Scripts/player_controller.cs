@@ -29,7 +29,7 @@ public class player_controller : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
-        if (gameObject.transform.position.y < 0) StartCoroutine(Die());
+        if (gameObject.transform.position.y < -5f) StartCoroutine(Die());
         if(player_hud.PlayerHealth < 1)
         {
             StartCoroutine(Die());
@@ -199,7 +199,6 @@ public class player_controller : MonoBehaviour
         Audio.Play(SceneManager.GetActiveScene().name);
 
         player_hud.PlayerHealth = 3;
-        player_hud.MaxHealth = 3; 
         player_hud.TimeTaken = 0;
     }
 

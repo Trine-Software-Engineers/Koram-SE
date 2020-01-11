@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class player_hud : MonoBehaviour
 {
     public int CurrentHealth = 3; // only used in inspector DO NOT USE IN CODE
-    public static int MaxHealth = 3;  // supports up to 10 hearts
+    //public static int MaxHealth = 3;  // supports up to 10 hearts
     public static float TimeTaken = 0;
 
     public static int PlayerHealth = 3; // actual player health
@@ -69,23 +69,15 @@ public class player_hud : MonoBehaviour
         if(PlayerHealth != CurrentHealth) PlayerHealth = CurrentHealth;
 
 
-        if(PlayerHealth > MaxHealth) 
-        {
-            PlayerHealth = MaxHealth;
-        }
-
         for (int i = 0; i < hearts.Length; i++)
         {
             if(i < PlayerHealth)
             {
                 hearts[i].sprite = HeartFull;
             } 
-            else 
-            {
-                hearts[i].sprite = HeartEmpty;
-            }
 
-            if(i < MaxHealth)
+
+            if(i < PlayerHealth)
             {
                 hearts[i].enabled = true;
             } 
