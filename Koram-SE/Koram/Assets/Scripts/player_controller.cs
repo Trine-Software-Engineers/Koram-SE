@@ -19,6 +19,8 @@ public class player_controller : MonoBehaviour
     private bool dead = false;
     public bool invincible = false;//makes player invincible for testing
 
+    public bool shieldBlock = false;//
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -29,7 +31,7 @@ public class player_controller : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
-        if (gameObject.transform.position.y < 0) StartCoroutine(Die());
+        if (gameObject.transform.position.y < -5f) StartCoroutine(Die());
         if(player_hud.PlayerHealth < 1)
         {
             StartCoroutine(Die());
@@ -48,6 +50,10 @@ public class player_controller : MonoBehaviour
         {
             playerSpeed = .2f;
         }
+        else if(Input.GetButton("block"))
+        {
+            playerSpeed = 0.05f;
+        }
         else
         {
             playerSpeed = 10;  //Player is Running
@@ -61,6 +67,18 @@ public class player_controller : MonoBehaviour
         else
         {
             anim.SetBool("isCrouching",false);
+        }
+
+        //Blocking with sheild
+         if(Input.GetButton("block"))
+        {
+            anim.SetBool("isBlocking",true);
+            shieldBlock = true;
+        }
+        else
+        {
+            anim.SetBool("isBlocking",false);
+            shieldBlock = false;
         }
 
         //allows player to attack
@@ -180,6 +198,10 @@ public class player_controller : MonoBehaviour
             Debug.Log("player is invincible for testing");
             return;
         }
+        if(shieldBlock == true)
+        {
+            return;
+        }
         player_hud.PlayerHealth -= damage;
         if (player_hud.PlayerHealth <=0) StartCoroutine(Die());
     }
@@ -199,7 +221,6 @@ public class player_controller : MonoBehaviour
         Audio.Play(SceneManager.GetActiveScene().name);
 
         player_hud.PlayerHealth = 3;
-        player_hud.MaxHealth = 3; 
         player_hud.TimeTaken = 0;
     }
 

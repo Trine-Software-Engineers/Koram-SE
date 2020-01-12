@@ -26,7 +26,6 @@ public class PowerUp : MonoBehaviour
 
         //apply extra hearts
         FindObjectOfType<AudioManager>().Play("oneup");
-        player_hud.MaxHealth += 1;
         player_hud.PlayerHealth += 1;
 
         yield return new WaitForSeconds(1f);
