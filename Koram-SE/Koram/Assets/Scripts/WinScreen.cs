@@ -7,12 +7,14 @@ using TMPro;
 public class WinScreen : MonoBehaviour
 {
     public static bool Win = false;
+    public static int score;
     public GameObject WinMenuUI;
     public GameObject FinalMenuUI;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI FinalScoreText;
     public GameObject HudUI;
     public static bool Final = false;
+    public int count = 0;
 
     //chooses which screen to show when a level is completed
     void Update()
@@ -26,8 +28,13 @@ public class WinScreen : MonoBehaviour
     {
         Time.timeScale = 0f;
         WinMenuUI.SetActive(true);
-
-        int score = (int)(100 - player_hud.TimeTaken);
+        if (count < 1)
+        {
+            // gem = 200, heart = 100, kill = 20
+            score += (int)(1000 - player_hud.TimeTaken);
+            score += (player_hud.PlayerHealth) * 100;
+            count = 1;
+        }
         if (score < 0) score = 0;
         string finalscore = score.ToString();
         ScoreText.text = ("Score: " + finalscore);
