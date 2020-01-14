@@ -31,7 +31,7 @@ public class player_controller : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
-        if (gameObject.transform.position.y < -5f) StartCoroutine(Die());
+        if (gameObject.transform.position.y < -60) StartCoroutine(Die());
         if(player_hud.PlayerHealth < 1)
         {
             StartCoroutine(Die());
