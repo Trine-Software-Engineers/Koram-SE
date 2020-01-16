@@ -24,6 +24,7 @@ public class gems : MonoBehaviour
 
         //apply extra gem
         FindObjectOfType<AudioManager>().Play("gem");
+        WinScreen.score += 200;
         
 
         yield return new WaitForSeconds(1f);
