@@ -8,6 +8,7 @@ public class WinScreen : MonoBehaviour
 {
     public static bool Win = false;
     public static int score;
+    private int timescore;
     public GameObject WinMenuUI;
     public GameObject FinalMenuUI;
     public TextMeshProUGUI ScoreText;
@@ -30,8 +31,10 @@ public class WinScreen : MonoBehaviour
         WinMenuUI.SetActive(true);
         if (count < 1)
         {
-            // gem = 200, heart = 100, kill = 20
-            score += (int)(1000 - player_hud.TimeTaken);
+            timescore += (int)(1000 - player_hud.TimeTaken);
+            // gem = 200, heart = 100, kill = 50
+            if(timescore > 0) score += timescore;
+
             score += (player_hud.PlayerHealth) * 100;
             count = 1;
         }

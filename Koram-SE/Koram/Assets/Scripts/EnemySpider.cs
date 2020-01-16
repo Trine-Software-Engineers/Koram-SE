@@ -307,6 +307,8 @@ public class EnemySpider : MonoBehaviour
         if(spiderHealth > 0) return;
         spiderDead = true;
         
+        WinScreen.score += 50;
+
         //Play death animation, then die.
         if(!spiderAnimationPlayed)
         {
