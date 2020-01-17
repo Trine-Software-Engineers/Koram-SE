@@ -358,6 +358,8 @@ public class EnemySkeleton : MonoBehaviour
         if(skeletonHealth > 0) return;
         skeletonDead = true;
         
+        WinScreen.score += 50;
+
         //Play death animation, then die.
         if(!skeletonDeathAnimationPlayed)
         {
