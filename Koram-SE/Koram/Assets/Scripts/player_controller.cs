@@ -203,6 +203,7 @@ public class player_controller : MonoBehaviour
             return;
         }
         player_hud.PlayerHealth -= damage;
+        FindObjectOfType<AudioManager>().Play("hurt");
         if (player_hud.PlayerHealth <=0) StartCoroutine(Die());
     }
 
@@ -210,6 +211,7 @@ public class player_controller : MonoBehaviour
     IEnumerator Die(){
         //play death animation
         dead = true;
+        FindObjectOfType<AudioManager>().Play("Die");
         anim.SetBool("died",true);
 
         Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());

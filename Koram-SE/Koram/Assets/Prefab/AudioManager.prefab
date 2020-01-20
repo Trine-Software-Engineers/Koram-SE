@@ -220,3 +220,21 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Die
+    clip: {fileID: 8300000, guid: e71046af451fe434d8270b0198019dc0, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: hurt
+    clip: {fileID: 8300000, guid: ccbb30706c6bd3f45b9fa452c2b5d01e, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
