@@ -168,6 +168,7 @@ public class EnemySpider : MonoBehaviour
         if(spiderDead || targetObject == null) return;
 
         gameObject.GetComponent<Animator>().Play("Spider Shoot");
+        FindObjectOfType<AudioManager>().Play("shoot");
         float sign = 1;
         float offset = 0;
 
@@ -306,6 +307,7 @@ public class EnemySpider : MonoBehaviour
     {
         if(spiderHealth > 0) return;
         spiderDead = true;
+        FindObjectOfType<AudioManager>().Play("spider die");
         
         WinScreen.score += 50;
 
