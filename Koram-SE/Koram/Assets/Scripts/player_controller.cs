@@ -93,27 +93,19 @@ public class player_controller : MonoBehaviour
             if(index == 1)
             {
                 anim.SetTrigger("isHitting");
+                FindObjectOfType<AudioManager>().Play("sword1");
             } 
             else if(index == 2)
             {
                 anim.SetTrigger("isHitting1");
+                FindObjectOfType<AudioManager>().Play("sword2");
             }
             else if(index == 3)
             {
                 anim.SetTrigger("isHitting2");
+                FindObjectOfType<AudioManager>().Play("sword3");
             } 
-            else if(index == 4)
-            {
-                anim.SetTrigger("isHitting3");
-            } 
-            else if(index == 5)
-            {
-                anim.SetTrigger("isHitting4");
-            } 
-            else if (index == 6)
-            {
-                anim.SetTrigger("isHitting5");
-            }  
+            
             StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
 
