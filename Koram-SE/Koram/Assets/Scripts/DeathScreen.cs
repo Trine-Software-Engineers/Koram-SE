@@ -3,46 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseScreen : MonoBehaviour
+public class DeathScreen : MonoBehaviour
 {
 
-    public static bool GameIsPaused = false;
+    public static bool GameIsDead = false;
 
-    public GameObject PauseMenuUI;
+    public GameObject DeathMenuUI;
 
-    //Activates the pause menu when the escape key is pressed
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (GameIsDead)
         {
-            if (GameIsPaused)
+            Pause();
+        }
+        else
+        {
+            if (PauseScreen.GameIsPaused == false)
             {
                 Resume();
-            }
-            else
-            {
-                Pause();
             }
         }
     }
 
-    //Goes back to the game if the escape key is pressed a second time
     public void Resume()
     {
-        PauseMenuUI.SetActive(false);
+        DeathMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        GameIsDead = false;
     }
 
     public void Pause()
     {
-        PauseMenuUI.SetActive(true);
+        DeathMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        GameIsDead = true;
     }
 
     public void LoadMenu()
     {
+        GameIsDead = false;
+        DeathMenuUI.SetActive(false);
         Time.timeScale = 1f;
         Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
         SceneManager.LoadScene("Main");

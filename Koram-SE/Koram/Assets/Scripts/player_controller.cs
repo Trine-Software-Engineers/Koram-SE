@@ -222,6 +222,9 @@ public class player_controller : MonoBehaviour
 
         player_hud.PlayerHealth = 3;
         player_hud.TimeTaken = 0;
+
+        // bool for death screen
+        DeathScreen.GameIsDead = true;
     }
 
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
