@@ -17,9 +17,15 @@ public class MainMenu : MonoBehaviour
    //Music is controlled from level to level with this function
    public void PlayGame()
    {    
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(SaveManager.GetLevelsCompleted() + 1 > 19) SceneManager.LoadScene(20);
+        else SceneManager.LoadScene(SaveManager.GetLevelsCompleted() + 1);  
+        
         Audio.Stop("MenuTheme");
-        Audio.Play("Level" + (SceneManager.GetActiveScene().buildIndex + 1).ToString());
+
+        
+        if(SaveManager.GetLevelsCompleted() + 1 > 19) Audio.Play("Level20");
+        else Audio.Play("Level" + (SaveManager.GetLevelsCompleted() + 1));
    }
 
     //for quitting the application

@@ -17,6 +17,12 @@ public class WinScreen : MonoBehaviour
     public static bool Final = false;
     public int count = 0;
 
+
+    void Awake()
+    {
+        
+    }
+
     //chooses which screen to show when a level is completed
     void Update()
     {
@@ -43,6 +49,15 @@ public class WinScreen : MonoBehaviour
         ScoreText.text = ("Score: " + finalscore);
         
         HudUI.SetActive(false);
+
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(SceneManager.GetActiveScene().buildIndex >= SaveManager.GetLevelsCompleted())
+        {
+            SaveManager.Write(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("wrote " + SceneManager.GetActiveScene().buildIndex + " to levels completed");
+        }
+        else Debug.Log("Save manager thinks you just beat replayed a level.");
+        
     }
     
     //Final score and screen on level 10
@@ -58,6 +73,14 @@ public class WinScreen : MonoBehaviour
         FinalScoreText.text = ("Final Score: " + finalscore);
         
         HudUI.SetActive(false);
+
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(SceneManager.GetActiveScene().buildIndex >= SaveManager.GetLevelsCompleted())
+        {
+            SaveManager.Write(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("wrote " + SceneManager.GetActiveScene().buildIndex + " to levels completed");
+        }
+        else Debug.Log("Save manager thinks you just beat replayed a level.");
     }
 
     public void NextLevel()
