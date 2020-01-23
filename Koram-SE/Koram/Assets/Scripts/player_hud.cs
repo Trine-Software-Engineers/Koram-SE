@@ -30,6 +30,8 @@ public class player_hud : MonoBehaviour
 
     void Start()
     {
+        hearts = new Image[10];
+
         BlueGem = GameObject.Find("GemBlue");
         BlackGem = GameObject.Find("GemBlack");
         GreenGem = GameObject.Find("GemGreen");
