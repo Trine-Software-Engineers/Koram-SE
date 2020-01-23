@@ -87,7 +87,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: oneup
     clip: {fileID: 8300000, guid: 2c3e026e62754df4fa01e55b0cbb4a5d, type: 3}
-    volume: 0.5
+    volume: 0.161
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -96,25 +96,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: gem
     clip: {fileID: 8300000, guid: 8360d21b54f6cf5438f094904fcf592a, type: 3}
-    volume: 0.3
+    volume: 0.164
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: punch1
-    clip: {fileID: 8300000, guid: a84b3432e4c58d64a9fea1f305cf16d9, type: 3}
-    volume: 1
+  - name: sword3
+    clip: {fileID: 8300000, guid: 6501498a572de5648ada6d2d1188e5c3, type: 3}
+    volume: 0.213
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: punch2
-    clip: {fileID: 8300000, guid: 276dfa08936ee04419ac3006e437483e, type: 3}
-    volume: 1
+  - name: skelesword
+    clip: {fileID: 8300000, guid: 1c2ea6ffc9cf9a643aa2e07ad34ecdde, type: 3}
+    volume: 0.287
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Die
     clip: {fileID: 8300000, guid: e71046af451fe434d8270b0198019dc0, type: 3}
-    volume: 0.108
+    volume: 0.149
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -231,7 +231,70 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: hurt
     clip: {fileID: 8300000, guid: ccbb30706c6bd3f45b9fa452c2b5d01e, type: 3}
+    volume: 0.071
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: sword1
+    clip: {fileID: 8300000, guid: 1fee02869b242474491f384d603d144e, type: 3}
+    volume: 0.037
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: sword2
+    clip: {fileID: 8300000, guid: 22433523d43037f42a4659e60539144f, type: 3}
     volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: bones
+    clip: {fileID: 8300000, guid: 99b9147f4494a4c43a4de256ade482fc, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: spike
+    clip: {fileID: 8300000, guid: ccbb30706c6bd3f45b9fa452c2b5d01e, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: skelesword2
+    clip: {fileID: 8300000, guid: 1b6be7f089ec1914c900c8431b4e9a4c, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: spider die
+    clip: {fileID: 8300000, guid: db5b8947683358d4ab029761fc4eb36a, type: 3}
+    volume: 0.108
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: shoot
+    clip: {fileID: 8300000, guid: 4e90a6d20b1903d4b92d051901a1f7de, type: 3}
+    volume: 0.056
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

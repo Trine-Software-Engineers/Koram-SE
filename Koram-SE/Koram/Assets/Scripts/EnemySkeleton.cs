@@ -210,14 +210,17 @@ public class EnemySkeleton : MonoBehaviour
         if(attackNumber == 1)
         {
             gameObject.GetComponent<Animator>().Play("Slash");
+            FindObjectOfType<AudioManager>().Play("skelesword");
         } 
         else if(attackNumber == 2)
         {
             gameObject.GetComponent<Animator>().Play("Stab");
+            FindObjectOfType<AudioManager>().Play("skelesword2");
         }
         else if(attackNumber == 3)
         {
             gameObject.GetComponent<Animator>().Play("Whack");
+            FindObjectOfType<AudioManager>().Play("skelesword");
         } 
 
         skeletonReadyToWalkAgain = false;
@@ -357,7 +360,7 @@ public class EnemySkeleton : MonoBehaviour
     {
         if(skeletonHealth > 0) return;
         skeletonDead = true;
-        
+        FindObjectOfType<AudioManager>().Play("bones");
         WinScreen.score += 50;
 
         //Play death animation, then die.

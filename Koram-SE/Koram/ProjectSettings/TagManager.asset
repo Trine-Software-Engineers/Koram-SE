@@ -8,6 +8,7 @@ TagManager:
   - deathZone
   - Enemy1
   - Ground
+  - Water
   layers:
   - Default
   - TransparentFX
