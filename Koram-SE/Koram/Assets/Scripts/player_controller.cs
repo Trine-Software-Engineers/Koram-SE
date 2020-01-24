@@ -200,7 +200,8 @@ public class player_controller : MonoBehaviour
     }
 
     //Sequence of timed events that happen when the player dies
-    IEnumerator Die(){
+    IEnumerator Die()
+    {
         //play death animation
         dead = true;
         FindObjectOfType<AudioManager>().Play("Die");
@@ -214,6 +215,12 @@ public class player_controller : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Audio.Play(SceneManager.GetActiveScene().name);
 
+
+        //delete current score upon death
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        SaveManager.ClearCurrentScore(SceneManager.GetActiveScene().buildIndex);
+
+
         player_hud.PlayerHealth = 3;
         player_hud.TimeTaken = 0;
 
@@ -223,8 +230,8 @@ public class player_controller : MonoBehaviour
 
     //This IEnumerator is a sequence of events that is called upon by the player move script when the sprite is attacking
     IEnumerator DoAttack()
-        {
-            yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
-            isAttacking = false;
-        }
+    {
+        yield return new WaitForSeconds(.4f); //waits 0.4 secoonds 
+        isAttacking = false;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PowerUp : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class PowerUp : MonoBehaviour
         //apply extra hearts
         FindObjectOfType<AudioManager>().Play("oneup");
         player_hud.PlayerHealth += 1;
+
+        //player gets 100 points for picking up heart
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        SaveManager.UpdateCurrentScore(SceneManager.GetActiveScene().buildIndex, 100);
 
         yield return new WaitForSeconds(1f);
         //remove powerup sprite
