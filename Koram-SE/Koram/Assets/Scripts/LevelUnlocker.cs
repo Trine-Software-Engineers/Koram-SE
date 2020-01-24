@@ -21,7 +21,6 @@ public class LevelUnlocker : MonoBehaviour
         SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
         for(int x = 0; x < buttons.Length; x++)
         {
-            Debug.Log(x);
             if (SaveManager.GetLevelsCompleted() + 1 > x)
             {
                 buttons[x].interactable = true;

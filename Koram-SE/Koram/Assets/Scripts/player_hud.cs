@@ -15,6 +15,7 @@ public class player_hud : MonoBehaviour
     public Sprite HeartFull;
     public Sprite HeartEmpty;
     public GameObject TimeTakenUI;
+    public GameObject currentScoreUI;
     public GameObject BlueGem;
     public GameObject GreenGem;
     public GameObject RedGem;
@@ -57,6 +58,7 @@ public class player_hud : MonoBehaviour
         hearts[9] = GameObject.Find("Heart (9)").GetComponent<Image>(); 
 
         TimeTakenUI = GameObject.Find("TimeTaken");
+        currentScoreUI = GameObject.Find("CurrentScore");
     }
 
     //Checks players health every frame
@@ -94,6 +96,9 @@ public class player_hud : MonoBehaviour
             //every second, count up and then update the UI.  
             TimeTaken += Time.deltaTime;
             if(TimeTakenUI != null) TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
+
+            SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+            if(currentScoreUI != null) currentScoreUI.gameObject.GetComponent<Text>().text = ("Score: " + (SaveManager.GetCurrentScore(SceneManager.GetActiveScene().buildIndex).ToString()));
         }
 
         GemCheck();

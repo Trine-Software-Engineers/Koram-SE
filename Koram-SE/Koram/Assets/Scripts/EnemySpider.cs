@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpider : MonoBehaviour
 {
@@ -309,13 +310,15 @@ public class EnemySpider : MonoBehaviour
         spiderDead = true;
         FindObjectOfType<AudioManager>().Play("spider die");
         
-        WinScreen.score += 50;
-
         //Play death animation, then die.
         if(!spiderAnimationPlayed)
         {
             gameObject.GetComponent<Animator>().Play("Spider Die");
             spiderAnimationPlayed = true;
+
+            //player gets 50 points for each spider kill
+            SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+            SaveManager.UpdateCurrentScore(SceneManager.GetActiveScene().buildIndex, 50);
         }
         deathTimer += Time.deltaTime;
             if(deathTimer > spiderTimeToDeath){
