@@ -14,7 +14,7 @@ public class CameraSystem : MonoBehaviour
     // The player is found within the scene to focus on
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindWithTag("Player");
     }
 
     // This sets up the adjustable size of the camera when it is focused on the player
@@ -26,6 +26,11 @@ public class CameraSystem : MonoBehaviour
             float x = Mathf.Clamp (player.transform.position.x, xMin, xMax);
             float y = Mathf.Clamp (player.transform.position.y, yMin, yMax);
             gameObject.transform.position = new Vector3 (x, y, gameObject.transform.position.z);
+        }
+        else
+        {
+            Debug.Log("Camera sucks");
+            player = GameObject.FindWithTag("Player");
         }
     }
 }

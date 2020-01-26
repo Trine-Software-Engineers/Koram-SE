@@ -64,7 +64,7 @@ public class EnemySkeleton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetObject = GameObject.Find("CharacterJustin");
+        targetObject = GameObject.FindWithTag("Player");
         skeletonPace = pacingTime;
         skeletonReactionTime = reactionTime;
         skeletonTimeBetweenAttacks = 0f;
@@ -74,6 +74,10 @@ public class EnemySkeleton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (targetObject == null)
+        {
+            targetObject = GameObject.FindWithTag("Player");
+        }
         Pace();
         CheckForWalls();
         TargetDetect();
@@ -149,7 +153,7 @@ public class EnemySkeleton : MonoBehaviour
         }
         else if (difficulty == 3) //insane
         {
-            skeletonHealth = 2;
+            skeletonHealth = 1;
             skeletonSightDistance = 18f;
             timeBetweenAttacks = 0.7f;
             reactionTime = 0.0f;
