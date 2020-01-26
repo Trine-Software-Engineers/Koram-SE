@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySkeleton : MonoBehaviour
 {
@@ -365,13 +366,16 @@ public class EnemySkeleton : MonoBehaviour
         if(skeletonHealth > 0) return;
         skeletonDead = true;
         FindObjectOfType<AudioManager>().Play("bones");
-        WinScreen.score += 50;
 
         //Play death animation, then die.
         if(!skeletonDeathAnimationPlayed)
         {
             gameObject.GetComponent<Animator>().Play("Die_Slower");
             skeletonDeathAnimationPlayed = true;
+
+            //player gets 50 points for each skeleton kill
+            SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+            SaveManager.UpdateCurrentScore(SceneManager.GetActiveScene().buildIndex, 50);
         }
         deathTimer += Time.deltaTime;
         if(deathTimer > skeletonTimeToDeath) Destroy(gameObject);
