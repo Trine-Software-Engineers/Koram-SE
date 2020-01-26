@@ -64,7 +64,7 @@ public class EnemySkeleton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetObject = GameObject.Find("CharacterJustin");
+        targetObject = GameObject.FindWithTag("Player");
         skeletonPace = pacingTime;
         skeletonReactionTime = reactionTime;
         skeletonTimeBetweenAttacks = 0f;
@@ -74,6 +74,10 @@ public class EnemySkeleton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (targetObject == null)
+        {
+            targetObject = GameObject.FindWithTag("Player");
+        }
         Pace();
         CheckForWalls();
         TargetDetect();
