@@ -14801,7 +14801,7 @@ Transform:
   m_GameObject: {fileID: 6722831945722076115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0}
   m_Children:
   - {fileID: 4488774342773903035}
   - {fileID: 8558032676448672408}
@@ -15211,7 +15211,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 3
-  hearts: []
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HeartFull: {fileID: 21300000, guid: 99de8e531a466464bacc517b2e211614, type: 3}
   HeartEmpty: {fileID: 21300000, guid: 0da0a187eab0be846b0f908b81ac9e46, type: 3}
   TimeTakenUI: {fileID: 0}
