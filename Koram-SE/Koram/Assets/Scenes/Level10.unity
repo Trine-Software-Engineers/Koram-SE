@@ -25612,7 +25612,7 @@ Transform:
   - {fileID: 513061062}
   - {fileID: 1932579537}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &645506986
 PrefabInstance:
@@ -25872,17 +25872,17 @@ PrefabInstance:
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 253.8
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8227654718585186748, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
@@ -25907,7 +25907,7 @@ PrefabInstance:
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: invincible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
@@ -27319,7 +27319,7 @@ PrefabInstance:
     - target: {fileID: 9162137877367731158, guid: b6faab41a55964d47a4bddcbfbe39056,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9162137877367731158, guid: b6faab41a55964d47a4bddcbfbe39056,
         type: 3}
@@ -28444,12 +28444,12 @@ PrefabInstance:
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: xMin
-      value: -47
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: xMax
-      value: 332
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}

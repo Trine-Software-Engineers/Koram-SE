@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
       propertyPath: invincible
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7069225786141518981, guid: 3ea43fd3049abe249a4c8179ed3e7a8b,
         type: 3}
@@ -21754,7 +21754,7 @@ Transform:
   m_Children:
   - {fileID: 513061062}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &690978124 stripped
 GameObject:
@@ -21823,7 +21823,7 @@ PrefabInstance:
     - target: {fileID: 9194526102241139191, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9194526102241139191, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
         type: 3}
@@ -22038,7 +22038,7 @@ PrefabInstance:
     - target: {fileID: 183741716291332397, guid: 4057f0afae350034d9383811ef3fc7a5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 183741716291332397, guid: 4057f0afae350034d9383811ef3fc7a5,
         type: 3}
@@ -22380,7 +22380,7 @@ PrefabInstance:
     - target: {fileID: 5562251658631673049, guid: 2c87f9e2bb8fc3e40a067da688b94a7b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5562251658631673049, guid: 2c87f9e2bb8fc3e40a067da688b94a7b,
         type: 3}
@@ -22769,17 +22769,22 @@ PrefabInstance:
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: yMin
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: xMax
-      value: 184
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
       propertyPath: yMax
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301762955080200434, guid: 8d03775d2027458489cf9f7e088ae030,
+        type: 3}
+      propertyPath: xMin
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6241069454646624274, guid: 8d03775d2027458489cf9f7e088ae030,
         type: 3}
@@ -23411,7 +23416,7 @@ PrefabInstance:
     - target: {fileID: 8711948031596074087, guid: af7b263f401ec4f448948cd8cc2b2d58,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8711948031596074087, guid: af7b263f401ec4f448948cd8cc2b2d58,
         type: 3}
