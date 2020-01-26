@@ -93,7 +93,7 @@ public class EnemySpider : MonoBehaviour
         }
         else if (difficulty == 3) //insane
         {
-            spiderHealth = 2;
+            spiderHealth = 1;
             spiderSightDistance = 17f;
             timeBetweenShots = 0.45f;
             reactionTime = 0.0f;
