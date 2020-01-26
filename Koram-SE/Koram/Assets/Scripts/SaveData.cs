@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class SaveData : MonoBehaviour
 {
-    //interactable variables
-    private int[] currentScore;
+    
+    public int[] currentScore;
     public int[] bestScore;
-    private int finalcurrent;
-    public int finalOverallScore;
-    private int timescore;
-    public int levelsCompleted = 0;
 
-    //stored variables for best score
-    private int b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20; 
+    public int finalcurrent;
+    public int finalmax;
+    
+    public int timescore;
 
     public static SaveData instance;
+    public int levelsCompleted = 0;
 
     void Awake()
     {
@@ -37,7 +36,7 @@ public class SaveData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Load();
+
     }
 
     // Update is called once per frame
@@ -48,22 +47,17 @@ public class SaveData : MonoBehaviour
 
     public void Save()
     {
-        for(int x = 1; x < 21; x++)
-        {
-            PlayerPrefs.SetInt("b" + x + "Save", bestScore[x]);
-        }
         PlayerPrefs.SetInt("LevelsCompletedSave", levelsCompleted);
-        PlayerPrefs.SetInt("finalOverallScoreSave", finalOverallScore);
     }
 
     public void Load()
     {
-       for(int x = 1; x < 21; x++)
+        if (PlayerPrefs.HasKey("LevelsCompletedSave"))
         {
-            bestScore[x] = PlayerPrefs.GetInt("b" + x + "Save", 0);
+            //if there is a save, load it. Default is 0 levels completed
+            levelsCompleted = PlayerPrefs.GetInt("LevelsCompletedSave", 0);
         }
-        levelsCompleted = PlayerPrefs.GetInt("LevelsCompletedSave", 0);
-        finalOverallScore = PlayerPrefs.GetInt("finalOverallScoreSave", 0);
+        else Debug.Log("No save available.");
     }
 
     public void Delete()
@@ -89,22 +83,7 @@ public class SaveData : MonoBehaviour
         return bestScore[level];
     }
 
-    public int GetFinalOverallScore()
-    {
-        CalculateFinalOverallScore();
-        return finalOverallScore;
-    }
-
-    private void CalculateFinalOverallScore()
-    {
-        finalOverallScore = 0;
-        for(int x = 1; x < 21; x++)
-        {
-            finalOverallScore += bestScore[x];
-        }
-    }
-
-    private void CheckForNewBestScore(int level)
+    public void CheckForNewBestScore(int level)
     {
         if(currentScore[level] > bestScore[level]) bestScore[level] = currentScore[level];
     }

@@ -19,10 +19,16 @@ public class WinScreen : MonoBehaviour
     public static bool Final = false;
     public int count = 0;
 
-    private bool showedScore = false;
-    private bool showedFinalScore = false;
+    public bool showedScore = false;
 
     
+
+
+    void Awake()
+    {
+        
+    }
+
     //chooses which screen to show when a level is completed
     void Update()
     {
@@ -49,53 +55,7 @@ public class WinScreen : MonoBehaviour
         }
         else Debug.Log("Save manager thinks you just beat replayed a level.");
 
-        SaveManager.Save();
-        showedScore = true;
-    }
-
-    
-    //Final score and screen on level 20
-    void ShowFinal()
-    {
-        if(showedFinalScore) return;
-
-        Time.timeScale = 0f;
-        FinalMenuUI.SetActive(true);
-
-        StartCoroutine(ShowFinalScoreAnimated());
-
-        HudUI.SetActive(false);
-
-        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
-        if(SceneManager.GetActiveScene().buildIndex >= SaveManager.GetLevelsCompleted())
-        {
-            SaveManager.Write(SceneManager.GetActiveScene().buildIndex);
-        }
-        else Debug.Log("Save manager thinks you just beat replayed a level.");
-
-        Debug.Log("Ran through showfinal()");
-
-        SaveManager.Save();
-        showedFinalScore = true;
-    }
-
-
-    IEnumerator ShowFinalScoreAnimated()
-    {
-        Debug.Log("display final score");
-        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
-        int trash = (SaveManager.GetFinalScoreForLevel(SceneManager.GetActiveScene().buildIndex));
-        int targetScore = (SaveManager.GetFinalOverallScore());
-        float tempScore = 0;
-
-        while (tempScore < targetScore)
-        {           
-            tempScore += Time.unscaledDeltaTime * 2000f; 
-            tempScore = Mathf.Clamp(tempScore, 0f, targetScore);
-            FinalScoreText.text = ("Final Score: " + ((int)tempScore).ToString());
-            yield return null;
-        }
-        SaveManager.ClearCurrentScore(SceneManager.GetActiveScene().buildIndex);
+       showedScore = true;
     }
 
     IEnumerator ShowScoreAnimated()
@@ -106,6 +66,7 @@ public class WinScreen : MonoBehaviour
 
         while (tempScore < targetScore)
         {           
+            
             tempScore += Time.unscaledDeltaTime * 2000f; 
             tempScore = Mathf.Clamp(tempScore, 0f, targetScore);
             ScoreText.text = ("Score: " + ((int)tempScore).ToString());
@@ -113,6 +74,30 @@ public class WinScreen : MonoBehaviour
         }
         BestScoreText.text = ("Best Score: " + (SaveManager.GetBestScore(SceneManager.GetActiveScene().buildIndex).ToString()));
         SaveManager.ClearCurrentScore(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    //Final score and screen on level 10
+    void ShowFinal()
+    {
+        
+        Time.timeScale = 0f;
+        FinalMenuUI.SetActive(true);
+
+        int score = (int)(100 - player_hud.TimeTaken);
+        if (score < 0) score = 0;
+        string finalscore = score.ToString();
+        FinalScoreText.text = ("Final Score: " + finalscore);
+        
+        HudUI.SetActive(false);
+
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(SceneManager.GetActiveScene().buildIndex >= SaveManager.GetLevelsCompleted())
+        {
+            SaveManager.Write(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("wrote " + SceneManager.GetActiveScene().buildIndex + " to levels completed");
+        }
+        else Debug.Log("Save manager thinks you just beat replayed a level.");
     }
 
     public void NextLevel()
