@@ -11,7 +11,9 @@ public class MainMenu : MonoBehaviour
    void Start()
    {
        Audio.Play("MenuTheme");
-       Audio.Volume("MenuTheme", 0.1f);
+
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        Audio.Volume("MenuTheme", SaveManager.GetVolume());
    }
 
    //Music is controlled from level to level with this function

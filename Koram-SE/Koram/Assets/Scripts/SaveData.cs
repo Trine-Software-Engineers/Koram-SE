@@ -12,6 +12,7 @@ public class SaveData : MonoBehaviour
     public int finalOverallScore;
     private int timescore;
     public int levelsCompleted = 0;
+    private float volume;
 
     //stored variables for best score
     private int b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20; 
@@ -38,6 +39,7 @@ public class SaveData : MonoBehaviour
     void Start()
     {
         Load();
+        Audio.Volume("MenuTheme", volume);
     }
 
     // Update is called once per frame
@@ -54,6 +56,7 @@ public class SaveData : MonoBehaviour
         }
         PlayerPrefs.SetInt("LevelsCompletedSave", levelsCompleted);
         PlayerPrefs.SetInt("finalOverallScoreSave", finalOverallScore);
+        PlayerPrefs.SetFloat("volumeSave", volume);
     }
 
     public void Load()
@@ -64,13 +67,30 @@ public class SaveData : MonoBehaviour
         }
         levelsCompleted = PlayerPrefs.GetInt("LevelsCompletedSave", 0);
         finalOverallScore = PlayerPrefs.GetInt("finalOverallScoreSave", 0);
+        volume = PlayerPrefs.GetFloat("volumeSave", .1f);
+    }
+
+    public float GetVolume()
+    {
+        return volume;
+    }
+
+    public void SetVolume(float volumeincoming)
+    {
+        volume = volumeincoming;
     }
 
     public void Delete()
     {
-        PlayerPrefs.DeleteAll();
-        Write(0);
-        Debug.Log("Levels Completed Save Deleted");
+        levelsCompleted = 0;
+        for (int x = 1; x < 21; x++)
+        {
+            bestScore[x] = 0;
+            timescore = 0;
+            finalOverallScore = 0;
+        }
+        Save();
+        Load();
     }
 
     public void Write(int updatedLevelsCompleted)
