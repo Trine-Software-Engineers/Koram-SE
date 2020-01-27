@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2990436016005755007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf51b9264878d24e9399b702d96fae7, type: 3}
+  m_Script: {fileID: 11500000, guid: 703358b121bd52343abe5c5302c766e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Characters:
@@ -48,5 +48,4 @@ MonoBehaviour:
   - {fileID: 6722831945722076115, guid: 5084064ead2b93c46bc62789de542c17, type: 3}
   - {fileID: 6722831945722076115, guid: fd27ea7f234741b4f98ad9b427c670ca, type: 3}
   - {fileID: 6722831945722076115, guid: dc13df54883c2f64b8df867776462cb5, type: 3}
-  PlayerSpawnPoint: {fileID: 7228887710530151592, guid: 62b0712ef0c694940ad47a7fb6ecedff,
-    type: 3}
+  PlayerSpawnPoint: {fileID: 0}
