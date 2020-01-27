@@ -6,13 +6,21 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public float Volume = 0.1f;
+
     public Slider VolumeBarUI;
+
+    void Awake()
+    {
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        VolumeBarUI.value = SaveManager.GetVolume();
+    }
 
     //This connects the volume in the settings menu to the actual volume of the sounds 
     void Update()
    {
-       Volume = VolumeBarUI.value;       
-       Audio.Volume("MenuTheme", Volume);
+       SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+       SaveManager.SetVolume(VolumeBarUI.value);  
+
+       Audio.Volume("MenuTheme", SaveManager.GetVolume());
    }
 }
