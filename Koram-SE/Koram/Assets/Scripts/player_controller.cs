@@ -163,7 +163,7 @@ public class player_controller : MonoBehaviour
         //if player touches EndOfLevel, player wins
         if (trig.gameObject.name == "EndOfLevel") 
         {
-            if (SceneManager.GetActiveScene().name == "Level20")
+            if (SceneManager.GetActiveScene().name == "Level10")
             {
                 WinScreen.Final = true;
             }

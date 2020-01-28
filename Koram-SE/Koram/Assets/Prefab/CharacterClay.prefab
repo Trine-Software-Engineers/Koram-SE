@@ -11154,6 +11154,7 @@ MonoBehaviour:
   HeartFull: {fileID: 21300000, guid: 99de8e531a466464bacc517b2e211614, type: 3}
   HeartEmpty: {fileID: 21300000, guid: 0da0a187eab0be846b0f908b81ac9e46, type: 3}
   TimeTakenUI: {fileID: 0}
+  currentScoreUI: {fileID: 0}
   BlueGem: {fileID: 0}
   GreenGem: {fileID: 0}
   RedGem: {fileID: 0}
