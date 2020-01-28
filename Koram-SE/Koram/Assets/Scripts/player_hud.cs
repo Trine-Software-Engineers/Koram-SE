@@ -31,6 +31,8 @@ public class player_hud : MonoBehaviour
 
     void Start()
     {
+        hearts = new Image[10];
+
         BlueGem = GameObject.Find("GemBlue");
         BlackGem = GameObject.Find("GemBlack");
         GreenGem = GameObject.Find("GemGreen");
@@ -43,8 +45,6 @@ public class player_hud : MonoBehaviour
         RedGemPrefab = GameObject.Find("RedGem");
         OrangeGemPrefab = GameObject.Find("OrangeGem");
         PurpleGemPrefab = GameObject.Find("PurpleGem");
-
-        hearts = new Image[10];
 
         hearts[0] = GameObject.Find("Heart").GetComponent<Image>(); 
         hearts[1] = GameObject.Find("Heart (1)").GetComponent<Image>(); 
