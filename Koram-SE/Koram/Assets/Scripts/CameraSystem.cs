@@ -29,7 +29,6 @@ public class CameraSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Camera sucks");
             player = GameObject.FindWithTag("Player");
         }
     }

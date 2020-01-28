@@ -12,6 +12,7 @@ public class player_controller : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public bool isGrounded = false; //determins if the player is able to jump
     private float moveX;
+    private float joyX;
     private bool facingRight = true; //determines which way the player sprite is looking 
     private bool isAttacking = false; 
 
@@ -21,8 +22,11 @@ public class player_controller : MonoBehaviour
 
     public bool shieldBlock = false;//
 
+    protected Joystick joystick;
+
     void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         anim = GetComponent<Animator>();
     }
 
@@ -109,8 +113,9 @@ public class player_controller : MonoBehaviour
             StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
 
+        joyX = joystick.Horizontal;
         moveX = Input.GetAxis("Horizontal");
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 ((moveX + joyX) * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
         if (moveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
@@ -133,7 +138,7 @@ public class player_controller : MonoBehaviour
         else if (moveX > 0.0f && facingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButton("Jump") && isGrounded == true){
+        if ((Input.GetButton("Jump") || (TouchControls.backwardpressed)) && isGrounded == true){
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
             FindObjectOfType<AudioManager>().Play("jump");
@@ -143,7 +148,7 @@ public class player_controller : MonoBehaviour
                 {
                 GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
                 }   
-        else if (GetComponent<Rigidbody2D>().velocity.y > 0 && !Input.GetButton ("Jump")) 
+        else if (GetComponent<Rigidbody2D>().velocity.y > 0 && (!Input.GetButton ("Jump") || (!TouchControls.backwardpressed))) 
                 {
                 GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
@@ -163,7 +168,7 @@ public class player_controller : MonoBehaviour
         //if player touches EndOfLevel, player wins
         if (trig.gameObject.name == "EndOfLevel") 
         {
-            if (SceneManager.GetActiveScene().name == "Level10")
+            if (SceneManager.GetActiveScene().name == "Level20")
             {
                 WinScreen.Final = true;
             }
