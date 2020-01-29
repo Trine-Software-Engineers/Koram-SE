@@ -69,7 +69,10 @@ public class EnemySkeleton : MonoBehaviour
         skeletonReactionTime = reactionTime;
         skeletonTimeBetweenAttacks = 0f;
         DifficultyCheck();
+        InvokeRepeating("CheckForWalls", 0f, 0.08f); //raycast every 5 frames roughly
         InvokeRepeating("TargetDetect", 0f, 0.08f); //raycast every 5 frames roughly
+        InvokeRepeating("SkeletonHunting", 0f, 0.08f); //raycast every 5 frames roughly
+        InvokeRepeating("CheckBehind", 0f, 0.08f); //raycast every 5 frames roughly
     }
 
     // Update is called once per frame
@@ -80,12 +83,12 @@ public class EnemySkeleton : MonoBehaviour
             targetObject = GameObject.FindWithTag("Player");
         }
         Pace();
-        CheckForWalls();
+        //CheckForWalls();
         //TargetDetect();
-        SkeletonHunting();
         SkeletonAttacking();
+        //SkeletonHunting();
         Die();
-        CheckBehind();
+        //CheckBehind();
     }
 
     void CheckForWalls()

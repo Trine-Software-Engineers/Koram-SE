@@ -15,8 +15,11 @@ public class LevelFader : MonoBehaviour {
 
 	public void FadeTo (string scene)
 	{
+		Debug.Log("started");
+		
 		StartCoroutine(FadeOut(scene));
 		
+		Debug.Log("done");
 	}
 
 	//This is used for a screen transition by changing the alpha values(opacity) on an image that is specified in the inspector
