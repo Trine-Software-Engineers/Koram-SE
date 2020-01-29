@@ -22,11 +22,8 @@ public class player_controller : MonoBehaviour
 
     public bool shieldBlock = false;//
 
-    protected Joystick joystick;
-
     void Start()
     {
-        joystick = FindObjectOfType<Joystick>();
         anim = GetComponent<Animator>();
     }
 
@@ -116,10 +113,9 @@ public class player_controller : MonoBehaviour
 
         if(SaveManager.GetTouchScreenMode())
         {
-            joyX = joystick.Horizontal;
-            float tempMoveX = Input.GetAxis("Horizontal") + joyX;
-            if(tempMoveX > 1f) moveX = 1f;
-            else moveX = tempMoveX;
+            if(TouchLeft.leftPressed) moveX = -1f;
+            else if(TouchRight.rightPressed) moveX = 1f;
+            else moveX = 0f;
         }
         else moveX = Input.GetAxis("Horizontal");
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
