@@ -18,13 +18,4 @@ public void OnPointerUp(PointerEventData eventData){
 }
 
 
-
-void Update()
-{
-
 }
-
-
-}
-
-

@@ -74,7 +74,7 @@ public class player_controller : MonoBehaviour
         }
 
         //Blocking with sheild
-         if(Input.GetButton("block") || (TouchShield.shieldPressed))
+        if(Input.GetButton("block") || (TouchShield.shieldPressed))
         {
             anim.SetBool("isBlocking",true);
             shieldBlock = true;
@@ -122,9 +122,7 @@ public class player_controller : MonoBehaviour
             else moveX = tempMoveX;
         }
         else moveX = Input.GetAxis("Horizontal");
-
-
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
         if (moveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
