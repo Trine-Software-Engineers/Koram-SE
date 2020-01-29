@@ -54,6 +54,7 @@ public class EnemySpider : MonoBehaviour
         spiderReactionTime = reactionTime;
         spiderTimeBetweenShots = timeBetweenShots;
         DifficultyCheck();
+        InvokeRepeating("TargetDetect", 0f, 0.08f); //raycast every 5 frames roughly
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class EnemySpider : MonoBehaviour
         }
         FlipSprite();
         Pace();
-        TargetDetect();
+        //TargetDetect();
         SpiderShooting();
         Die();
     }
