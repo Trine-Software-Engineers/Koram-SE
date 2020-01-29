@@ -69,6 +69,7 @@ public class EnemySkeleton : MonoBehaviour
         skeletonReactionTime = reactionTime;
         skeletonTimeBetweenAttacks = 0f;
         DifficultyCheck();
+        InvokeRepeating("TargetDetect", 0f, 0.08f); //raycast every 5 frames roughly
     }
 
     // Update is called once per frame
@@ -80,7 +81,7 @@ public class EnemySkeleton : MonoBehaviour
         }
         Pace();
         CheckForWalls();
-        TargetDetect();
+        //TargetDetect();
         SkeletonHunting();
         SkeletonAttacking();
         Die();
