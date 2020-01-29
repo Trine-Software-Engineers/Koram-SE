@@ -32,8 +32,15 @@ public class WinScreen : MonoBehaviour
     //chooses which screen to show when a level is completed
     void Update()
     {
-        if (Win) ShowScore();
-        if (Final) ShowFinal();    
+        if (Win)
+        {
+            PauseScreen.GameIsPaused = false;
+            ShowScore();
+        } 
+        if (Final)
+        {
+            ShowFinal();  
+        }   
     }
 
     //display to user the user score that they got in the completed level for all levels except for 10
@@ -105,6 +112,7 @@ public class WinScreen : MonoBehaviour
         Win = false;
         WinMenuUI.SetActive(false);
         HudUI.SetActive(true);
+        PauseScreen.GameIsPaused = true;
 
         player_hud.TimeTaken = 0;
         Audio.Stop("Level" + (SceneManager.GetActiveScene().buildIndex).ToString());
@@ -123,7 +131,6 @@ public class WinScreen : MonoBehaviour
         WinMenuUI.SetActive(false);
 
         SceneManager.LoadScene("Main");
-
         showedScore = false;
     }
 
