@@ -14,6 +14,8 @@ public class SaveData : MonoBehaviour
     public int levelsCompleted = 0;
     private float volume;
 
+    public bool TouchScreenMode;
+
     //stored variables for best score
     private int b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20; 
 
@@ -57,6 +59,11 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetInt("LevelsCompletedSave", levelsCompleted);
         PlayerPrefs.SetInt("finalOverallScoreSave", finalOverallScore);
         PlayerPrefs.SetFloat("volumeSave", volume);
+
+        int temp;
+        if(TouchScreenMode) temp = 1;
+        else temp = 0; 
+        PlayerPrefs.SetInt("TouchScreenModeSave", temp);
     }
 
     public void Load()
@@ -68,6 +75,20 @@ public class SaveData : MonoBehaviour
         levelsCompleted = PlayerPrefs.GetInt("LevelsCompletedSave", 0);
         finalOverallScore = PlayerPrefs.GetInt("finalOverallScoreSave", 0);
         volume = PlayerPrefs.GetFloat("volumeSave", .1f);
+
+        int temp = PlayerPrefs.GetInt("TouchScreenModeSave", 1);
+        if(temp == 1) TouchScreenMode = true;
+        else TouchScreenMode = false;
+    }
+
+    public bool GetTouchScreenMode()
+    {
+        return TouchScreenMode;
+    }
+
+    public void SetTouchScreenMode(bool touchScreenUpdated)
+    {
+        TouchScreenMode = touchScreenUpdated;
     }
 
     public float GetVolume()

@@ -24,6 +24,7 @@ public class PauseScreen : MonoBehaviour
                 Pause();
             }
         }
+        if (TouchMenu.menuPressed) Pause();
     }
 
     //Goes back to the game if the escape key is pressed a second time

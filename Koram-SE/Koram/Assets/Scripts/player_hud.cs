@@ -28,6 +28,7 @@ public class player_hud : MonoBehaviour
     private GameObject RedGemPrefab;
     private GameObject OrangeGemPrefab;
     private GameObject PurpleGemPrefab;
+    private GameObject TouchScreenHud;
 
     void Start()
     {
@@ -59,12 +60,16 @@ public class player_hud : MonoBehaviour
 
         TimeTakenUI = GameObject.Find("TimeTaken");
         currentScoreUI = GameObject.Find("CurrentScore");
+
+        TouchScreenHud = GameObject.Find("TouchScreenControls");
     }
 
     //Checks players health every frame
     void Update()
     {
-
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(SaveManager.GetTouchScreenMode()) TouchScreenHud.SetActive(true);
+        else TouchScreenHud.SetActive(false);
 
         //update damage taken
         if(PlayerHealth != CurrentHealth) CurrentHealth = PlayerHealth;
@@ -97,7 +102,6 @@ public class player_hud : MonoBehaviour
             TimeTaken += Time.deltaTime;
             if(TimeTakenUI != null) TimeTakenUI.gameObject.GetComponent<Text>().text = ("" + (int)TimeTaken);
 
-            SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
             if(currentScoreUI != null) currentScoreUI.gameObject.GetComponent<Text>().text = ("Score: " + (SaveManager.GetCurrentScore(SceneManager.GetActiveScene().buildIndex).ToString()));
         }
 

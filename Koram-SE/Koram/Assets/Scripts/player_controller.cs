@@ -12,6 +12,7 @@ public class player_controller : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public bool isGrounded = false; //determins if the player is able to jump
     private float moveX;
+    private float joyX;
     private bool facingRight = true; //determines which way the player sprite is looking 
     private bool isAttacking = false; 
 
@@ -21,8 +22,11 @@ public class player_controller : MonoBehaviour
 
     public bool shieldBlock = false;//
 
+    protected Joystick joystick;
+
     void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         anim = GetComponent<Animator>();
     }
 
@@ -50,7 +54,7 @@ public class player_controller : MonoBehaviour
         {
             playerSpeed = .2f;
         }
-        else if(Input.GetButton("block"))
+        else if(Input.GetButton("block") || (TouchShield.shieldPressed))
         {
             playerSpeed = 0.05f;
         }
@@ -70,7 +74,7 @@ public class player_controller : MonoBehaviour
         }
 
         //Blocking with sheild
-         if(Input.GetButton("block"))
+         if(Input.GetButton("block") || (TouchShield.shieldPressed))
         {
             anim.SetBool("isBlocking",true);
             shieldBlock = true;
@@ -82,7 +86,8 @@ public class player_controller : MonoBehaviour
         }
 
         //allows player to attack
-        if(Input.GetButton("Fire1") && !isAttacking)
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        if(((Input.GetMouseButton(0) && (!SaveManager.GetTouchScreenMode()) || (TouchAttack.attackPressed)) && !isAttacking))
         {
             isAttacking = true;
             //RNG to choose attack
@@ -109,8 +114,17 @@ public class player_controller : MonoBehaviour
             StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
 
-        moveX = Input.GetAxis("Horizontal");
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        if(SaveManager.GetTouchScreenMode())
+        {
+            joyX = joystick.Horizontal;
+            float tempMoveX = Input.GetAxis("Horizontal") + joyX;
+            if(tempMoveX > 1f) moveX = 1f;
+            else moveX = tempMoveX;
+        }
+        else moveX = Input.GetAxis("Horizontal");
+
+
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
         if (moveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking
@@ -133,7 +147,7 @@ public class player_controller : MonoBehaviour
         else if (moveX > 0.0f && facingRight == false) FlipPlayer();
 
         //Jumping
-        if (Input.GetButton("Jump") && isGrounded == true){
+        if ((Input.GetButton("Jump") && isGrounded == true) || (TouchJump.jumpPressed && isGrounded == true)) {
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
             FindObjectOfType<AudioManager>().Play("jump");
@@ -143,11 +157,10 @@ public class player_controller : MonoBehaviour
                 {
                 GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
                 }   
-        else if (GetComponent<Rigidbody2D>().velocity.y > 0 && !Input.GetButton ("Jump")) 
+        else if ((GetComponent<Rigidbody2D>().velocity.y > 0) && (!Input.GetButton ("Jump")) && (!TouchJump.jumpPressed))
                 {
                 GetComponent<Rigidbody2D>().velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
-        
     }
 
     //Detects which way the sprite is currently facing and flips it if a movement is made in the opposite direction
@@ -163,7 +176,7 @@ public class player_controller : MonoBehaviour
         //if player touches EndOfLevel, player wins
         if (trig.gameObject.name == "EndOfLevel") 
         {
-            if (SceneManager.GetActiveScene().name == "Level10")
+            if (SceneManager.GetActiveScene().name == "Level20")
             {
                 WinScreen.Final = true;
             }
