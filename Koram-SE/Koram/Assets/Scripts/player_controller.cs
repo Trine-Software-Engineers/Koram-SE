@@ -114,10 +114,15 @@ public class player_controller : MonoBehaviour
             StartCoroutine(DoAttack());  //calls on the function for sequence of events when attack button pressed
         }  
 
-        joyX = joystick.Horizontal;
-        float tempMoveX = Input.GetAxis("Horizontal") + joyX;
-        if(tempMoveX > 1f) moveX = 1f;
-        else moveX = tempMoveX;
+        if(SaveManager.GetTouchScreenMode())
+        {
+            joyX = joystick.Horizontal;
+            float tempMoveX = Input.GetAxis("Horizontal") + joyX;
+            if(tempMoveX > 1f) moveX = 1f;
+            else moveX = tempMoveX;
+        }
+        else moveX = Input.GetAxis("Horizontal");
+
 
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
