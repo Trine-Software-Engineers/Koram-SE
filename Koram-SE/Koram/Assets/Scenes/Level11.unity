@@ -21731,7 +21731,7 @@ PrefabInstance:
         type: 3}
       propertyPath: HudUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181247399}
     - target: {fileID: 6196061672836282246, guid: 6d1fed5ce7cba444a8e02ff1af27f83f,
         type: 3}
       propertyPath: m_IsActive
@@ -22274,6 +22274,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c87f9e2bb8fc3e40a067da688b94a7b, type: 3}
+--- !u!1 &1181247399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5562251658631673029, guid: 2c87f9e2bb8fc3e40a067da688b94a7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181247398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1303127181
 PrefabInstance:
   m_ObjectHideFlags: 0
