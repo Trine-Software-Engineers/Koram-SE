@@ -22,8 +22,11 @@ public class player_controller : MonoBehaviour
 
     public bool shieldBlock = false;//
 
+    protected Joystick joystick;
+
     void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         anim = GetComponent<Animator>();
     }
 
@@ -116,14 +119,11 @@ public class player_controller : MonoBehaviour
 
         if(SaveManager.GetTouchScreenMode())
         {
-            if(TouchLeft.leftPressed) moveX = -1f;
-            else if(TouchRight.rightPressed) moveX = 1f;
-            else moveX = 0f;
+            moveX = joystick.Horizontal;
         }
         else moveX = Input.GetAxis("Horizontal");
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
-        Debug.Log(moveX);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
 
         if (moveX != 0.0f && Input.GetButton("Walk")) //if shift is down and sprite is moving it is walking

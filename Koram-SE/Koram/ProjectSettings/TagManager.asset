@@ -9,6 +9,7 @@ TagManager:
   - Enemy1
   - Ground
   - Water
+  - Joystick
   layers:
   - Default
   - TransparentFX
