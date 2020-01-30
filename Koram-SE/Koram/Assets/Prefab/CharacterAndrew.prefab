@@ -15175,7 +15175,7 @@ MonoBehaviour:
   fallMultiplier: 0.5
   lowJumpMultiplier: 6
   isGrounded: 0
-  invincible: 1
+  invincible: 0
   shieldBlock: 0
 --- !u!50 &2858023898930018436
 Rigidbody2D:

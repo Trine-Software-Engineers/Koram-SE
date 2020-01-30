@@ -30,6 +30,7 @@ public class DeathScreen : MonoBehaviour
         DeathMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsDead = false;
+
     }
 
     public void Pause()

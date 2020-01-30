@@ -43,6 +43,7 @@ public class player_controller : MonoBehaviour
     }
 
     void PlayerMove(){
+        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
         if(dead) return;
         
         //changes player speed according to if they are walking running or crouching
@@ -54,9 +55,10 @@ public class player_controller : MonoBehaviour
         {
             playerSpeed = .2f;
         }
-        else if(Input.GetButton("block") || (TouchShield.shieldPressed))
+        else if((Input.GetButton("block")&& (!SaveManager.GetTouchScreenMode()) || (TouchShield.shieldPressed)))
         {
             playerSpeed = 0.05f;
+            
         }
         else
         {
@@ -74,7 +76,7 @@ public class player_controller : MonoBehaviour
         }
 
         //Blocking with sheild
-         if(Input.GetButton("block") || (TouchShield.shieldPressed))
+        if((Input.GetButton("block")&& (!SaveManager.GetTouchScreenMode()) || (TouchShield.shieldPressed)))
         {
             anim.SetBool("isBlocking",true);
             shieldBlock = true;
@@ -86,7 +88,8 @@ public class player_controller : MonoBehaviour
         }
 
         //allows player to attack
-        SaveData SaveManager = GameObject.Find("SaveData").GetComponent<SaveData>();
+        
+
         if(((Input.GetMouseButton(0) && (!SaveManager.GetTouchScreenMode()) || (TouchAttack.attackPressed)) && !isAttacking))
         {
             isAttacking = true;
@@ -116,13 +119,9 @@ public class player_controller : MonoBehaviour
 
         if(SaveManager.GetTouchScreenMode())
         {
-            joyX = joystick.Horizontal;
-            float tempMoveX = Input.GetAxis("Horizontal") + joyX;
-            if(tempMoveX > 1f) moveX = 1f;
-            else moveX = tempMoveX;
+            moveX = joystick.Horizontal;
         }
         else moveX = Input.GetAxis("Horizontal");
-
 
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
        
@@ -151,6 +150,7 @@ public class player_controller : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2 (gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJump);
             anim.SetTrigger("isJumping"); //Playing the jump animation when player jumps
             FindObjectOfType<AudioManager>().Play("jump");
+            playerSpeed = 10f;
         }
 
         if (GetComponent<Rigidbody2D>().velocity.y < 0)
